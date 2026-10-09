@@ -251,3 +251,6 @@ _minted-*/
 /wslc/bhuos/readelf/readelf
 /wslc/VHDL/**/*.sdo
 /wslc/VHDL/**/*.vho
+
+# 音乐站静态发布目录
+/网页/QQmusic/dist/
