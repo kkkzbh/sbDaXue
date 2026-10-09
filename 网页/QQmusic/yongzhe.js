@@ -1,147 +1,67 @@
+"use strict";
 
-window.onload = function(){ 
-     var audio = document.getElementById('music');
-         audio.pause();//打开页面时无音乐
+const player = document.getElementById("player");
+const tracks = [...document.querySelectorAll(".track")];
+const title = document.getElementById("now-playing");
+const status = document.getElementById("player-status");
+const previous = document.getElementById("previous-track");
+const next = document.getElementById("next-track");
+let currentIndex = -1;
+let playRequest = 0;
+
+function renderPlayback() {
+  tracks.forEach((track, index) => {
+    const selected = index === currentIndex;
+    const playing = selected && !player.paused && !player.ended;
+    track.classList.toggle("is-current", selected);
+    track.setAttribute("aria-pressed", String(playing));
+    track.setAttribute("aria-label", `${playing ? "暂停" : "播放"} ${track.dataset.title}`);
+    track.querySelector(".track-indicator").textContent = playing ? "❚❚" : "▶";
+  });
 }
-function play() {
-    var audio = document.getElementById('music');
-    if (audio.paused) {
-        audio.play();
-        document.getElementById('musicico').src="./imgQQmusic/202.png";
-    }else{
-        audio.pause();
-        audio.currentTime = 0;//音乐从头播放
-        document.getElementById('musicico').src="./imgQQmusic/202.png";
+
+function playTrack(index) {
+  const request = ++playRequest;
+  const track = tracks[index];
+  if (currentIndex !== index) {
+    currentIndex = index;
+    player.src = new URL(track.dataset.src, document.baseURI).href;
+    title.textContent = `${track.dataset.title} · ${track.dataset.artist}`;
+    previous.disabled = false;
+    next.disabled = false;
+  }
+  status.textContent = "正在加载歌曲…";
+  renderPlayback();
+  player.play().catch((error) => {
+    // Selecting another song or pausing can cancel an in-flight play request.
+    if (request !== playRequest || error.name === "AbortError") return;
+    status.textContent = "播放失败，请检查网络或浏览器对该音频格式的支持。";
+    renderPlayback();
+  });
+}
+
+tracks.forEach((track, index) => {
+  track.addEventListener("click", () => {
+    if (index === currentIndex && !player.paused) {
+      ++playRequest;
+      player.pause();
+    } else {
+      playTrack(index);
     }
-}
+  });
+});
 
-window.onload = function(){ 
-    var audio = document.getElementById('ye0');
-        audio.pause();//打开页面时无音乐
-}
-function ye() {
-   var audio = document.getElementById('ye0');
-   if (audio.paused) {
-       audio.play();
-       document.getElementById('ye').src="./imgQQmusic/yequ.jpg";
-   }else{
-       audio.pause();
-       audio.currentTime = 0;//音乐从头播放
-       document.getElementById('ye').src="./imgQQmusic/yequ.jpg";
-   }
-}
-
-window.onload = function(){ 
-    var audio = document.getElementById('canji0');
-        audio.pause();//打开页面时无音乐
-}
-function canji() {
-   var audio = document.getElementById('canji0');
-   if (audio.paused) {
-       audio.play();
-       document.getElementById('canji').src="./imgQQmusic/canji.jpg";
-   }else{
-       audio.pause();
-       audio.currentTime = 0;//音乐从头播放
-       document.getElementById('canji').src="./imgQQmusic/canji.jpg";
-   }
-}
-
-window.onload = function(){ 
-    var audio = document.getElementById('niju0');
-        audio.pause();//打开页面时无音乐
-}
-function niju() {
-   var audio = document.getElementById('niju0');
-   if (audio.paused) {
-       audio.play();
-       document.getElementById('niju').src="./imgQQmusic/niju.jpg";
-   }else{
-       audio.pause();
-       audio.currentTime = 0;//音乐从头播放
-       document.getElementById('niju').src="./imgQQmusic/niju.jpg";
-   }
-}
-
-window.onload = function(){ 
-    var audio = document.getElementById('tuxing0');
-        audio.pause();//打开页面时无音乐
-}
-function tuxing() {
-   var audio = document.getElementById('tuxing0');
-   if (audio.paused) {
-       audio.play();
-       document.getElementById('tuxing').src="./imgQQmusic/tuxing.jpg";
-   }else{
-       audio.pause();
-       audio.currentTime = 0;//音乐从头播放
-       document.getElementById('tuxing').src="./imgQQmusic/tuxing.jpg";
-   }
-}
-
-
-window.onload = function(){ 
-    var audio = document.getElementById('ju0');
-        audio.pause();//打开页面时无音乐
-}
-function ju() {
-   var audio = document.getElementById('ju0');
-   if (audio.paused) {
-       audio.play();
-       document.getElementById('ju').src="./imgQQmusic/ju.jpg";
-   }else{
-       audio.pause();
-       audio.currentTime = 0;//音乐从头播放
-       document.getElementById('ju').src="./imgQQmusic/ju.jpg";
-   }
-}
-
-
-window.onload = function(){ 
-    var audio = document.getElementById('di0');
-        audio.pause();//打开页面时无音乐
-}
-function di() {
-   var audio = document.getElementById('di0');
-   if (audio.paused) {
-       audio.play();
-       document.getElementById('di').src="./imgQQmusic/di.jpg";
-   }else{
-       audio.pause();
-       audio.currentTime = 0;//音乐从头播放
-       document.getElementById('di').src="./imgQQmusic/di.jpg";
-   }
-}
-
-
-window.onload = function(){ 
-    var audio = document.getElementById('kan0');
-        audio.pause();//打开页面时无音乐
-}
-function kan() {
-   var audio = document.getElementById('kan0');
-   if (audio.paused) {
-       audio.play();
-       document.getElementById('kan').src="./imgQQmusic/kan.jpg";
-   }else{
-       audio.pause();
-       audio.currentTime = 0;//音乐从头播放
-       document.getElementById('kan').src="./imgQQmusic/kan.jpg";
-   }
-}
-
-window.onload = function(){ 
-    var audio = document.getElementById('xiao0');
-        audio.pause();//打开页面时无音乐
-}
-function xiao() {
-   var audio = document.getElementById('xiao0');
-   if (audio.paused) {
-       audio.play();
-       document.getElementById('xiao').src="./imgQQmusic/xiao.jpg";
-   }else{
-       audio.pause();
-       audio.currentTime = 0;//音乐从头播放
-       document.getElementById('xiao').src="./imgQQmusic/xiao.jpg";
-   }
-}
+document.getElementById("play-all").addEventListener("click", () => {
+  player.currentTime = 0;
+  playTrack(0);
+});
+previous.addEventListener("click", () => playTrack((currentIndex - 1 + tracks.length) % tracks.length));
+next.addEventListener("click", () => playTrack((currentIndex + 1) % tracks.length));
+player.addEventListener("ended", () => playTrack((currentIndex + 1) % tracks.length));
+player.addEventListener("playing", () => { status.textContent = "正在播放"; renderPlayback(); });
+player.addEventListener("pause", () => { status.textContent = "已暂停"; renderPlayback(); });
+player.addEventListener("waiting", () => { status.textContent = "正在缓冲…"; });
+player.addEventListener("error", () => {
+  status.textContent = "音频加载失败，请检查网络或浏览器对该音频格式的支持。";
+  renderPlayback();
+});

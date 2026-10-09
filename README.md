@@ -78,6 +78,8 @@ C语言大作业/作业/综合实验客房管理系统/
 
 三个 Unity 工程分别保存坦克/射击、平台跳跃教程和马里奥风格练习。每个工程都保留 `Assets` 及 `.meta`、`Packages`、`ProjectSettings`，可根据 `ProjectSettings/ProjectVersion.txt` 选择编辑器版本后重新生成缓存。
 
+[音乐网页在线演示](https://music.kkkzbh.cn/)位于 `网页/QQmusic`，包含 11 首原始音频、播放控制和自动部署配置。
+
 `Web` 包含具有生命值、经验、金币、武器等状态的 JavaScript 文字冒险/RPG 练习；`py` 实际保存 HTML/JavaScript 2048 小游戏。`HTMLCSS`、`网页`、`未知` 等保存页面、样式、脚本与相关素材。
 
 ### 数学建模、操作系统、网络和博弈论

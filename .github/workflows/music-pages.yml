@@ -1,0 +1,49 @@
+name: Publish music website
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '网页/QQmusic/**'
+      - '.github/workflows/music-pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: music-pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Check out the music website
+        uses: actions/checkout@v6
+        with:
+          sparse-checkout: 网页/QQmusic
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+      - name: Prepare the static site
+        shell: bash
+        run: |
+          mkdir _site
+          cp '网页/QQmusic/QQmusic.html' _site/index.html
+          cp '网页/QQmusic/yongzhe.js' '网页/QQmusic/player.css' '网页/QQmusic/CNAME' _site/
+          cp -R '网页/QQmusic/Music' '网页/QQmusic/imgQQmusic' _site/
+          touch _site/.nojekyll
+      - name: Upload website
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
