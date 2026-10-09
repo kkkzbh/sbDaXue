@@ -1,0 +1,101 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_unsigned.all;
+
+entity dis is
+    port(
+        clk: in std_logic;      -- PIN_210 (连续时钟)
+        reset: in std_logic;    -- PIN_151 
+        seg: out std_logic_vector(7 downto 0);
+        dig: out std_logic_vector(5 downto 0)
+    );
+end entity;
+
+architecture behavior of student_id_scroll is
+    signal scan_count: integer range 0 to 4000 := 0;
+    signal scroll_count: integer range 0 to 12000000 := 0;  -- 增加到1200万，约5秒滚动一次
+    signal scan_index: integer range 0 to 5 := 0;
+    signal scroll_index: integer range 0 to 15 := 0;
+    
+    -- 数码管编码
+    type seg_array is array (0 to 10) of std_logic_vector(7 downto 0);
+    constant seg_data: seg_array := (
+        "11000000", -- 0
+        "11111001", -- 1  
+        "10100100", -- 2
+        "10110000", -- 3
+        "10011001", -- 4
+        "10010010", -- 5
+        "10000010", -- 6
+        "11111000", -- 7
+        "10000000", -- 8
+        "10010000", -- 9
+        "11111111"  -- 空格
+    );
+    
+    -- 完整学号: 20231202051 + 5个空格
+    type id_array is array (0 to 15) of integer range 0 to 10;
+    constant student_id: id_array := (
+        2, 0, 2, 3, 1, 2, 0, 2, 0, 5, 1,  -- 20231202051
+        10, 10, 10, 10, 10                 -- 空格
+    );
+    
+    signal display_data: id_array := (10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+    
+begin
+    -- 扫描控制
+    process(clk)
+    begin
+        if rising_edge(clk) then
+            -- 数码管扫描 (约6kHz) - 保持不变
+            if scan_count < 4000 then
+                scan_count <= scan_count + 1;
+            else
+                scan_count <= 0;
+                if scan_index = 5 then
+                    scan_index <= 0;
+                else
+                    scan_index <= scan_index + 1;
+                end if;
+            end if;
+            
+            -- 滚动控制 - 大幅减慢 (约5秒滚动一次)
+            if scroll_count < 12000000 then  -- 24MHz × 5s = 12000000
+                scroll_count <= scroll_count + 1;
+            else
+                scroll_count <= 0;
+                if scroll_index = 15 then
+                    scroll_index <= 0;
+                else
+                    scroll_index <= scroll_index + 1;
+                end if;
+                
+                -- 更新显示数据
+                for i in 0 to 5 loop
+                    display_data(i) <= student_id((scroll_index + i) mod 16);
+                end loop;
+            end if;
+        end if;
+    end process;
+
+    -- 数码管显示
+    process(scan_index, display_data)
+    begin
+        case scan_index is
+            when 0 => dig <= "111110";
+            when 1 => dig <= "111101"; 
+            when 2 => dig <= "111011";
+            when 3 => dig <= "110111";
+            when 4 => dig <= "101111";
+            when 5 => dig <= "011111";
+            when others => dig <= "111111";
+        end case;
+        
+        if display_data(scan_index) = 10 then
+            seg <= seg_data(10);  -- 空格
+        else
+            seg <= seg_data(display_data(scan_index));
+        end if;
+    end process;
+
+end architecture;

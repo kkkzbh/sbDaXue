@@ -1,0 +1,654 @@
+C:.
+|   tt.txt
+|   
++---AddIns
+|   |   ICSharpCode.SharpDevelop.addin
+|   |   
+|   +---Analysis
+|   |   +---CodeAnalysis
+|   |   |       CodeAnalysis.addin
+|   |   |       CodeAnalysis.dll
+|   |   |       
+|   |   +---CodeCoverage
+|   |   |       CodeCoverage.addin
+|   |   |       CodeCoverage.dll
+|   |   |       
+|   |   +---CodeQuality
+|   |   |       CodeQuality.addin
+|   |   |       ICSharpCode.CodeQuality.dll
+|   |   |       
+|   |   +---MachineSpecifications
+|   |   |   |   MachineSpecifications.addin
+|   |   |   |   MachineSpecifications.dll
+|   |   |   |   
+|   |   |   \---Tools
+|   |   |       \---Machine.Specifications
+|   |   |               CommandLine.dll
+|   |   |               License.txt
+|   |   |               Machine.Specifications.dll
+|   |   |               Machine.Specifications.Reporting.dll
+|   |   |               mspec-clr4.exe
+|   |   |               mspec-x86-clr4.exe
+|   |   |               mspec-x86.exe
+|   |   |               mspec.exe
+|   |   |               Spark.dll
+|   |   |               
+|   |   +---SourceAnalysis
+|   |   |       SharpDevelop.SourceAnalysis.targets
+|   |   |       SourceAnalysis.addin
+|   |   |       SourceAnalysis.dll
+|   |   |       
+|   |   \---UnitTesting
+|   |           UnitTesting.addin
+|   |           UnitTesting.dll
+|   |           
+|   +---BackendBindings
+|   |   +---AspNet.Mvc
+|   |   |   |   AspNet.Mvc.addin
+|   |   |   |   AspNet.Mvc.dll
+|   |   |   |   Mono.TextTemplating.dll
+|   |   |   |   System.Web.Razor.dll
+|   |   |   |   TextTemplating.dll
+|   |   |   |   
+|   |   |   \---ItemTemplates
+|   |   |       +---CSharp
+|   |   |       |   \---CodeTemplates
+|   |   |       |       +---AddController
+|   |   |       |       |       Controller.tt
+|   |   |       |       |       
+|   |   |       |       \---AddView
+|   |   |       |           +---AspxCSharp
+|   |   |       |           |       Create.tt
+|   |   |       |           |       Delete.tt
+|   |   |       |           |       Details.tt
+|   |   |       |           |       Edit.tt
+|   |   |       |           |       Empty.tt
+|   |   |       |           |       List.tt
+|   |   |       |           |       
+|   |   |       |           \---CSHTML
+|   |   |       |                   Create.tt
+|   |   |       |                   Delete.tt
+|   |   |       |                   Details.tt
+|   |   |       |                   Edit.tt
+|   |   |       |                   Empty.tt
+|   |   |       |                   List.tt
+|   |   |       |                   
+|   |   |       \---VisualBasic
+|   |   |           \---CodeTemplates
+|   |   |               +---AddController
+|   |   |               |       Controller.tt
+|   |   |               |       
+|   |   |               \---AddView
+|   |   |                   +---AspxVisualBasic
+|   |   |                   |       Create.tt
+|   |   |                   |       Delete.tt
+|   |   |                   |       Details.tt
+|   |   |                   |       Edit.tt
+|   |   |                   |       Empty.tt
+|   |   |                   |       List.tt
+|   |   |                   |       
+|   |   |                   \---VBHTML
+|   |   |                           Create.tt
+|   |   |                           Delete.tt
+|   |   |                           Details.tt
+|   |   |                           Edit.tt
+|   |   |                           Empty.tt
+|   |   |                           List.tt
+|   |   |                           
+|   |   +---CppBinding
+|   |   |       CppBinding.addin
+|   |   |       CppBinding.dll
+|   |   |       
+|   |   +---CSharpBinding
+|   |   |       CSharpBinding.addin
+|   |   |       CSharpBinding.dll
+|   |   |       
+|   |   +---FSharpBinding
+|   |   |       FSharpBinding.addin
+|   |   |       FSharpBinding.dll
+|   |   |       
+|   |   +---VBBinding
+|   |   |       ICSharpCode.VBBinding.dll
+|   |   |       VBBinding.addin
+|   |   |       
+|   |   +---WixBinding
+|   |   |   |   SetupDialogControlLibrary.sdcl
+|   |   |   |   WixBinding.addin
+|   |   |   |   WixBinding.dll
+|   |   |   |   
+|   |   |   \---Templates
+|   |   |           DefaultLicense.rtf
+|   |   |           EmptyWixDialog.xft
+|   |   |           EmptyWixFile.xft
+|   |   |           EmptyWixProject.xpt
+|   |   |           WixDialog.xft
+|   |   |           WixUIFeatureTreeProject.xpt
+|   |   |           WixUIInstallDirProject.xpt
+|   |   |           WixUIMinimalProject.xpt
+|   |   |           WixUIMondoProject.xpt
+|   |   |           
+|   |   \---XamlBinding
+|   |           ICSharpCode.XamlBinding.dll
+|   |           XamlBinding.addin
+|   |           
+|   +---Debugger
+|   |       Debugger.AddIn.addin
+|   |       Debugger.AddIn.dll
+|   |       Debugger.Core.dll
+|   |       
+|   +---DisplayBindings
+|   |   +---AvalonEdit
+|   |   |       AvalonEdit.AddIn.addin
+|   |   |       ICSharpCode.AvalonEdit.AddIn.dll
+|   |   |       
+|   |   +---Data
+|   |   |       ICSharpCode.Data.addin
+|   |   |       ICSharpCode.Data.Addin.dll
+|   |   |       ICSharpCode.Data.Core.dll
+|   |   |       ICSharpCode.Data.Core.UI.dll
+|   |   |       ICSharpCode.Data.EDMDesigner.Core.dll
+|   |   |       ICSharpCode.Data.EDMDesigner.Core.UI.dll
+|   |   |       ICSharpCode.Data.SQLServer.dll
+|   |   |       
+|   |   +---Decompiler
+|   |   |       ICSharpCode.Decompiler.dll
+|   |   |       ILSpyAddIn.addin
+|   |   |       ILSpyAddIn.dll
+|   |   |       
+|   |   +---FormsDesigner
+|   |   |       FormsDesigner.addin
+|   |   |       FormsDesigner.dll
+|   |   |       
+|   |   +---HexEditor
+|   |   |       HexEditor.addin
+|   |   |       HexEditor.dll
+|   |   |       
+|   |   +---IconEditor
+|   |   |       IconEditor.addin
+|   |   |       ICSharpCode.IconEditor.dll
+|   |   |       
+|   |   +---ResourceEditor
+|   |   |       ResourceEditor.addin
+|   |   |       ResourceEditor.dll
+|   |   |       
+|   |   +---SettingsEditor
+|   |   |       SettingsEditor.addin
+|   |   |       SettingsEditor.dll
+|   |   |       
+|   |   +---WpfDesign
+|   |   |       ICSharpCode.WpfDesign.AddIn.dll
+|   |   |       ICSharpCode.WpfDesign.Designer.dll
+|   |   |       ICSharpCode.WpfDesign.dll
+|   |   |       ICSharpCode.WpfDesign.XamlDom.dll
+|   |   |       WpfDesign.addin
+|   |   |       Xceed.Wpf.Toolkit.dll
+|   |   |       
+|   |   \---XmlEditor
+|   |           XmlEditor.addin
+|   |           XmlEditor.dll
+|   |           
+|   +---Misc
+|   |   +---AddInManager2
+|   |   |       AddInManager2.addin
+|   |   |       ICSharpCode.AddInManager2.dll
+|   |   |       ICSharpCode.SharpZipLib.dll
+|   |   |       Microsoft.Web.XmlTransform.dll
+|   |   |       NuGet.Core.dll
+|   |   |       
+|   |   +---AddinScout
+|   |   |       AddInScout.addin
+|   |   |       AddinScout.dll
+|   |   |       
+|   |   +---FiletypeRegisterer
+|   |   |   |   FiletypeRegisterer.addin
+|   |   |   |   ICSharpCode.FiletypeRegisterer.dll
+|   |   |   |   
+|   |   |   \---filetypes
+|   |   |           addin.ico
+|   |   |           cmbx.ico
+|   |   |           cs.ico
+|   |   |           java.ico
+|   |   |           prjx.ico
+|   |   |           resx.ico
+|   |   |           vb.ico
+|   |   |           xfrm.ico
+|   |   |           xml.ico
+|   |   |           
+|   |   +---HelpViewer
+|   |   |       HelpViewer.addin
+|   |   |       HelpViewer.dll
+|   |   |       
+|   |   +---PackageManagement
+|   |   |   |   about_NuGet.Cmdlets.help.txt
+|   |   |   |   Microsoft.Web.XmlTransform.dll
+|   |   |   |   NuGet-LICENSE.txt
+|   |   |   |   NuGet.Console.Types.dll
+|   |   |   |   NuGet.Core.dll
+|   |   |   |   NuGet.exe
+|   |   |   |   PackageManagement.addin
+|   |   |   |   PackageManagement.Cmdlets.dll
+|   |   |   |   PackageManagement.Cmdlets.dll-Help.xml
+|   |   |   |   PackageManagement.dll
+|   |   |   |   PackageManagement.PowerShell.dll
+|   |   |   |   
+|   |   |   \---Scripts
+|   |   |           Package.Format.ps1xml
+|   |   |           
+|   |   +---Profiler
+|   |   |       Hook32.dll
+|   |   |       Hook64.dll
+|   |   |       ICSharpCode.Profiler.AddIn.addin
+|   |   |       ICSharpCode.Profiler.AddIn.dll
+|   |   |       ICSharpCode.Profiler.Controller.dll
+|   |   |       ICSharpCode.Profiler.Controls.dll
+|   |   |       IQToolkit.dll
+|   |   |       System.Data.SQLite.dll
+|   |   |       
+|   |   +---RegExpTk
+|   |   |       RegExpTk.addin
+|   |   |       RegExpTk.dll
+|   |   |       
+|   |   +---SearchAndReplace
+|   |   |       SearchAndReplace.addin
+|   |   |       SearchAndReplace.dll
+|   |   |       
+|   |   +---SharpDevelopReporting
+|   |   |       EmptyReport.xft
+|   |   |       ICSharpCode.Reporting.addin
+|   |   |       ICSharpCode.Reporting.Addin.dll
+|   |   |       ICSharpCode.Reporting.dll
+|   |   |       Irony.dll
+|   |   |       Irony.Interpreter.dll
+|   |   |       PdfSharp.dll
+|   |   |       Xceed.Wpf.Toolkit.dll
+|   |   |       
+|   |   +---StartPage
+|   |   |       StartPage.addin
+|   |   |       StartPage.dll
+|   |   |       
+|   |   +---TextTemplating
+|   |   |   |   Mono.TextTemplating.dll
+|   |   |   |   TextTemplating.addin
+|   |   |   |   TextTemplating.dll
+|   |   |   |   
+|   |   |   \---Templates
+|   |   |           CSharp.TextTemplate.xft
+|   |   |           VB.TextTemplate.xft
+|   |   |           
+|   |   \---UsageDataCollector
+|   |           System.Data.SQLite.dll
+|   |           UsageDataCollector.addin
+|   |           UsageDataCollector.AddIn.dll
+|   |           UsageDataCollector.dll
+|   |           UsageDataCollector.xml
+|   |           
+|   \---VersionControl
+|       |   GitAddIn.addin
+|       |   GitAddIn.dll
+|       |   
+|       \---SubversionAddIn
+|               ICSharpCode.Svn.addin
+|               SharpPlink-Win32.svnExe
+|               SharpSvn.dll
+|               SharpSvn.UI.dll
+|               SubversionAddIn.dll
+|               
++---bin
+|   |   AvalonDock.dll
+|   |   GraphSharp.Contracts.dll
+|   |   GraphSharp.Controls.dll
+|   |   GraphSharp.dll
+|   |   ICSharpCode.AvalonEdit.dll
+|   |   ICSharpCode.Build.Tasks.dll
+|   |   ICSharpCode.Core.dll
+|   |   ICSharpCode.Core.Presentation.dll
+|   |   ICSharpCode.Core.WinForms.dll
+|   |   ICSharpCode.NRefactory.Cecil.dll
+|   |   ICSharpCode.NRefactory.CSharp.dll
+|   |   ICSharpCode.NRefactory.CSharp.Refactoring.dll
+|   |   ICSharpCode.NRefactory.dll
+|   |   ICSharpCode.NRefactory.Xml.dll
+|   |   ICSharpCode.Scripting.dll
+|   |   ICSharpCode.SharpDevelop.BuildWorker120.exe
+|   |   ICSharpCode.SharpDevelop.BuildWorker120.exe.config
+|   |   ICSharpCode.SharpDevelop.BuildWorker35.exe
+|   |   ICSharpCode.SharpDevelop.BuildWorker35.exe.config
+|   |   ICSharpCode.SharpDevelop.BuildWorker40.exe
+|   |   ICSharpCode.SharpDevelop.BuildWorker40.exe.config
+|   |   ICSharpCode.SharpDevelop.dll
+|   |   ICSharpCode.SharpDevelop.Widgets.dll
+|   |   ICSharpCode.TreeView.dll
+|   |   log4net.dll
+|   |   Microsoft.Contracts.dll
+|   |   Mono.Cecil.dll
+|   |   QuickGraph.dll
+|   |   SharpDevelop.CheckMSBuild35Features.targets
+|   |   SharpDevelop.CodeAnalysis.targets
+|   |   SharpDevelop.EnvDTE.dll
+|   |   SharpDevelop.exe
+|   |   SharpDevelop.exe.config
+|   |   SharpDevelop.TargetingPack.targets
+|   |   WPFExtensions.dll
+|   |   
+|   \---Tools
+|       +---NUnit
+|       |   |   nunit-console-dotnet2-x86.exe
+|       |   |   nunit-console-dotnet2-x86.exe.config
+|       |   |   nunit-console-dotnet2.exe
+|       |   |   nunit-console-dotnet2.exe.config
+|       |   |   nunit-console-x86.exe
+|       |   |   nunit-console-x86.exe.config
+|       |   |   nunit-console.exe
+|       |   |   nunit-console.exe.config
+|       |   |   nunit.framework.dll
+|       |   |   
+|       |   \---lib
+|       |           nunit-console-runner.dll
+|       |           nunit.core.dll
+|       |           nunit.core.interfaces.dll
+|       |           nunit.util.dll
+|       |           
+|       \---OpenCover
+|           |   Autofac.Configuration.dll
+|           |   Autofac.dll
+|           |   Gendarme.Framework.dll
+|           |   Gendarme.Rules.Maintainability.dll
+|           |   log4net.config
+|           |   log4net.dll
+|           |   Mono.Cecil.dll
+|           |   Mono.Cecil.Pdb.dll
+|           |   OpenCover.Console.exe
+|           |   OpenCover.Console.exe.config
+|           |   OpenCover.Extensions.dll
+|           |   OpenCover.Framework.dll
+|           |   
+|           +---x64
+|           |       OpenCover.Profiler.dll
+|           |       
+|           \---x86
+|                   OpenCover.Profiler.dll
+|                   
++---data
+|   +---ConversionStyleSheets
+|   |       ShowXmlDocumentation.xsl
+|   |       
+|   +---layouts
+|   |       Debug.xml
+|   |       Default.xml
+|   |       LayoutConfig.xml
+|   |       Plain.xml
+|   |       
+|   +---modes
+|   |       C64CSharp.xshd
+|   |       CSharp-Mode-VSEnh.xshd
+|   |       
+|   +---options
+|   |   |   SharpDevelop-templates.xml
+|   |   |   SharpDevelop-tools.xml
+|   |   |   SharpDevelopControlLibrary.sdcl
+|   |   |   StandardHeader.xml
+|   |   |   
+|   |   \---TextLib
+|   |           ASCIITable.xml
+|   |           CSharpDocumentationTags.xml
+|   |           Licenses.xml
+|   |           XSLT.xml
+|   |           
+|   +---resources
+|   |   |   StringResources.cz.resources
+|   |   |   StringResources.de.resources
+|   |   |   StringResources.es-mx.resources
+|   |   |   StringResources.es.resources
+|   |   |   StringResources.fi.resources
+|   |   |   StringResources.fr.resources
+|   |   |   StringResources.hu.resources
+|   |   |   StringResources.it.resources
+|   |   |   StringResources.jp.resources
+|   |   |   StringResources.kr.resources
+|   |   |   StringResources.nl.resources
+|   |   |   StringResources.no.resources
+|   |   |   StringResources.pl.resources
+|   |   |   StringResources.pt-br.resources
+|   |   |   StringResources.pt.resources
+|   |   |   StringResources.ru.resources
+|   |   |   StringResources.se.resources
+|   |   |   StringResources.tr.resources
+|   |   |   StringResources.zh.resources
+|   |   |   
+|   |   +---InstallerBitmaps
+|   |   |       default-banner.bmp
+|   |   |       default-dialog.bmp
+|   |   |       exclamic.bmp
+|   |   |       info.bmp
+|   |   |       new.bmp
+|   |   |       up.bmp
+|   |   |       
+|   |   \---languages
+|   |           Arabic.png
+|   |           brazil.png
+|   |           bulgaria.png
+|   |           catalonia.png
+|   |           chinalg.png
+|   |           czech.png
+|   |           denmark.png
+|   |           england.png
+|   |           finnish.png
+|   |           france.png
+|   |           germany.png
+|   |           hungary.png
+|   |           italy.png
+|   |           japan.png
+|   |           LanguageDefinition.xml
+|   |           lithuania.png
+|   |           mexico.png
+|   |           netherlands.png
+|   |           norway.png
+|   |           poland.png
+|   |           portugal.png
+|   |           romania.png
+|   |           russia.png
+|   |           Serbia.png
+|   |           slovenia.png
+|   |           south_korea.png
+|   |           spain.png
+|   |           sweden.png
+|   |           turkey.png
+|   |           uk.png
+|   |           usa.png
+|   |           
+|   +---schemas
+|   |       AddIn.xsd
+|   |       appconfig.xsd
+|   |       difxapp.xsd
+|   |       firewall.xsd
+|   |       gaming.xsd
+|   |       iis.xsd
+|   |       manifest.xsd
+|   |       msmq.xsd
+|   |       netfx.xsd
+|   |       nuspec.xsd
+|   |       ps.xsd
+|   |       readme.txt
+|   |       sql.xsd
+|   |       util.xsd
+|   |       vs.xsd
+|   |       W3C-License.html
+|   |       wix.xsd
+|   |       wixloc.xsd
+|   |       XMLSchema.xsd
+|   |       xslt.xsd
+|   |       
+|   \---templates
+|       +---file
+|       |   +---CSharp
+|       |   |       ConfigurationElement.cs
+|       |   |       ConfigurationElementCollection.cs
+|       |   |       ConfigurationSection.cs
+|       |   |       CSharp.ConfigurationElement.xft
+|       |   |       CSharp.ConfigurationElementCollection.xft
+|       |   |       CSharp.ConfigurationSection.xft
+|       |   |       CSharp.Empty.xft
+|       |   |       CSharp.EmptyClass.xft
+|       |   |       CSharp.Exception.xft
+|       |   |       CSharp.Forms.Form.xft
+|       |   |       CSharp.Forms.UserControl.xft
+|       |   |       CSharp.Interface.xft
+|       |   |       CSharp.Mvc.Controller.xft
+|       |   |       CSharp.Mvc.Razor.LayoutPage.xft
+|       |   |       CSharp.Mvc.Razor.PartialPage.xft
+|       |   |       CSharp.Mvc.Razor.ViewPage.xft
+|       |   |       CSharp.Mvc.ViewContentPage.xft
+|       |   |       CSharp.Mvc.ViewMasterPage.xft
+|       |   |       CSharp.Mvc.ViewPage.xft
+|       |   |       CSharp.Mvc.ViewUserControl.xft
+|       |   |       CSharp.Patterns.Singleton.xft
+|       |   |       CSharp.RecentFilesCollection.xft
+|       |   |       CSharp.Struct.xft
+|       |   |       CSharp.UnitTest.xft
+|       |   |       CSharp.WcfRestService.xft
+|       |   |       CSharp.WcfService.xft
+|       |   |       CSharp.Web.WebControl.xft
+|       |   |       CSharp.Web.WebForm.xft
+|       |   |       CSharp.Web.WebHandler.xft
+|       |   |       CSharp.Web.WebService.xft
+|       |   |       CSharp.WPFFlowDocument.xft
+|       |   |       CSharp.WPFPage.xft
+|       |   |       CSharp.WPFPageFunction.xft
+|       |   |       CSharp.WPFResourceDictionary.xft
+|       |   |       CSharp.WPFUserControl.xft
+|       |   |       CSharp.WPFWindow.xft
+|       |   |       RecentFileElement.cs
+|       |   |       RecentFilesCollection.cs
+|       |   |       
+|       |   +---Misc
+|       |   |       AppConfigFile.xft
+|       |   |       EmptyMsBuildFile.xft
+|       |   |       EmptyResourceFile.xft
+|       |   |       EmptyTextFile.xft
+|       |   |       EmptyXMLFile.xft
+|       |   |       
+|       |   +---SharpDevelop
+|       |   |       AddInOptions.xft
+|       |   |       ExampleMenuCommand.xft
+|       |   |       ExampleOptionPanel.xft
+|       |   |       ExamplePad.xft
+|       |   |       ExampleView.xft
+|       |   |       SimpleCommand.xft
+|       |   |       
+|       |   +---VB
+|       |   |       VB.Empty.xft
+|       |   |       VB.EmptyClass.xft
+|       |   |       VB.Exception.xft
+|       |   |       VB.Forms.Form.xft
+|       |   |       VB.Forms.UserControl.xft
+|       |   |       VB.Interface.xft
+|       |   |       VB.Module.xft
+|       |   |       VB.Mvc.Controller.xft
+|       |   |       VB.Mvc.Razor.LayoutPage.xft
+|       |   |       VB.Mvc.Razor.PartialPage.xft
+|       |   |       VB.Mvc.Razor.ViewPage.xft
+|       |   |       VB.Mvc.ViewContentPage.xft
+|       |   |       VB.Mvc.ViewMasterPage.xft
+|       |   |       VB.Mvc.ViewPage.xft
+|       |   |       VB.Mvc.ViewUserControl.xft
+|       |   |       VB.MyExtensionClass.xft
+|       |   |       VB.Patterns.Singleton.xft
+|       |   |       VB.Structure.xft
+|       |   |       VB.UnitTest.xft
+|       |   |       VB.WcfRestService.xft
+|       |   |       VB.WcfService.xft
+|       |   |       VB.Web.WebControl.xft
+|       |   |       VB.Web.WebForm.xft
+|       |   |       VB.Web.WebHandler.xft
+|       |   |       VB.Web.WebService.xft
+|       |   |       VB.WPFFlowDocument.xft
+|       |   |       VB.WPFPage.xft
+|       |   |       VB.WPFPageFunction.xft
+|       |   |       VB.WPFResourceDictionary.xft
+|       |   |       VB.WPFUserControl.xft
+|       |   |       VB.WPFWindow.xft
+|       |   |       
+|       |   \---Web
+|       |           EmptyHTMLFile.xft
+|       |           EmptyJavaScript.xft
+|       |           EmptyStyleSheet.xft
+|       |           
+|       \---project
+|           |   AddInWritingHelp.txt
+|           |   ComplexExample.xpt.test
+|           |   
+|           +---CSharp
+|           |       ConsoleProject.xpt
+|           |       ControlLibrary.xpt
+|           |       CSharp.WcfRestServiceProject.xpt
+|           |       CSharp.WcfServiceProject.xpt
+|           |       DefaultAssemblyInfo.cs
+|           |       EmptyMvc3WebProject.xpt
+|           |       EmptyMvc4WebProject.xpt
+|           |       EmptyProject.xpt
+|           |       FormsProject.xpt
+|           |       Library.xpt
+|           |       Mvc3RazorProject.xpt
+|           |       Mvc3WebProject.xpt
+|           |       Mvc4RazorProject.xpt
+|           |       Mvc4WebProject.xpt
+|           |       NotifyIcon.xpt
+|           |       NotifyIconResources.resx
+|           |       PortableAssemblyInfo.cs
+|           |       PortableLibrary.xpt
+|           |       Service.xpt
+|           |       SharedAddin.xpt
+|           |       SharpDevelopAddin.xpt
+|           |       SharpDevelopCustomTool.xpt
+|           |       SharpDevelopCustomToolTemplate.xft.xml
+|           |       SharpDevelopMacro.xpt
+|           |       SilverlightApplication.xpt
+|           |       WebpageProject.xpt
+|           |       WebService.xpt
+|           |       WPFApplication.xpt
+|           |       WPFAssemblyInfo.cs
+|           |       WPFNavigationApplication.xpt
+|           |       
+|           +---Misc
+|           |       BlankSolution.xpt
+|           |       
+|           \---VB
+|                   ConsoleProject.xpt
+|                   ControlLibrary.xpt
+|                   DefaultAssemblyInfo.vb
+|                   EmptyMvc3WebProject.xpt
+|                   EmptyMvc4WebProject.xpt
+|                   EmptyProject.xpt
+|                   FormsProject.xpt
+|                   Library.xpt
+|                   Mvc3RazorProject.xpt
+|                   Mvc3WebProject.xpt
+|                   Mvc4RazorProject.xpt
+|                   Mvc4WebProject.xpt
+|                   MySettings.settings
+|                   MyWpfExtension.vb
+|                   NotifyIcon.xpt
+|                   NotifyIconResources.resx
+|                   Service.xpt
+|                   SharedAddin.xpt
+|                   SharpDevelopAddin.xpt
+|                   SharpDevelopCustomTool.xpt
+|                   SharpDevelopCustomToolTemplate.xft.xml
+|                   SharpDevelopMacro.xpt
+|                   SilverlightApplication.xpt
+|                   VB.WcfRestServiceProject.xpt
+|                   VB.WcfServiceProject.xpt
+|                   WebpageProject.xpt
+|                   WebService.xpt
+|                   WPFApplication.xpt
+|                   WPFAssemblyInfo.vb
+|                   WPFNavigationApplication.xpt
+|                   
+\---doc
+        BuiltWithSharpDevelop.png
+        copyright.txt
+        Dependencies.html
+        license.txt
+        readme.rtf
+        SharpDevelopInfoResources.txt
+        

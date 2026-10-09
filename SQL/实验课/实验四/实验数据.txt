@@ -1,0 +1,66 @@
+
+1．建立数据库“JXGL”
+create database JXGL;
+
+ 
+2.在数据库“JXGL”中建立表student，定义主码，并录入数据
+create table student
+(Sno char(9) primary key,
+Sname char(20) unique,
+Ssex char(2),
+Sage smallint,
+Sdept char(20)
+);
+insert
+into student
+values('201215121','李勇','男',20,'CS'),
+('201215122','刘晨','女',19,'CS'),
+('201215123','王敏','女',18,'MA'),
+('201215124','李莉','女',20,'MA'),
+('201215125','张立','男',19,'IS'),
+('201215126','刘晓意','男',24,'CS');
+
+
+3.在数据库“JXGL”中建立表course，定义主码和外码，并录入数据
+create table course
+(Cno char(4) primary key,
+Cname char(20) NOT NULL,
+Cpno char(4),
+Ccredit smallint,
+foreign key (Cpno)references course (Cno)
+);
+
+insert
+into course(Cno,Cname,Cpno,Ccredit)
+values('2','数学',NULL,2),
+('6','数据处理',NULL,2),
+('4','操作系统','6',3),
+('7','PASCAL语言','6',4),
+('5','数据结构','7',4),
+('1','数据库','5',4),
+('3','Design _ Pattern','1',4);
+
+ 
+4.在数据库“JXGL”中建立表sc，定义主码和外码，并录入数据
+create table SC(
+Sno char(9),
+Cno char(4),
+grade smallint,
+primary key(Sno,Cno),
+foreign key(Sno)references student (Sno),
+foreign key(Cno)references course (Cno)
+);
+insert into SC values
+('201215121','1',92),
+('201215121','2',85),
+('201215121','3',100),
+('201215121','4',88),
+('201215121','5',NULL),
+('201215121','6',97),
+('201215121','7',8),
+('201215122','2',90),
+('201215122','3',80),
+('201215123','5',59),
+('201215125','1',50),
+('201215125','2',NULL)，
+('201215125','3',77);

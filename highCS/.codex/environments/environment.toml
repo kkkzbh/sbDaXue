@@ -1,0 +1,11 @@
+version = 1
+name = "highCS"
+
+[setup]
+script = ""
+
+[[actions]]
+name = "启动 homo3 个人理财系统"
+icon = "run"
+command = "powershell -NoProfile -ExecutionPolicy Bypass -Command \"$env:Path = [Environment]::GetEnvironmentVariable('Path','Machine') + ';' + [Environment]::GetEnvironmentVariable('Path','User'); dotnet run --project 'homo3/PersonalFinanceApp/PersonalFinanceApp.csproj'\""
+platform = "win32"

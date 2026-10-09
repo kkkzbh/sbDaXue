@@ -1,0 +1,254 @@
+# 大学代码合集：保留课程源码、工程配置、必要资源与报告。
+# 普通练习按内容保留；目录名称不作为删除依据。
+
+# 第三方工具、参考仓库和独立研究资料
+/vcpkg/
+/CPlusPlusThings-master/
+/os-elephant/
+/xcpcio/
+/wslc/stdexec/
+/wslc/ReID/
+/C语言大作业/Thuihui.github.io-main/
+/C语言大作业/web-Design-Assignments-main/
+
+# 含硬编码凭据或学生原始/派生数据的项目，公开前需单独处理
+/Ascend/
+/py25114/
+/idontknow/
+/bigxin/
+/wslc/Ascend/
+/wslc/zfuture/
+/wslc/chat/
+/wslc/mchat/
+/wslc/CppSQL/
+
+# 当前对应私有仓库的教程和个人网页，公开范围单独确定
+/modern-cpp-algorithm-programming/
+/wslc/kkkzbhxTutorial/
+/gitweb/
+
+# 个人认证资料、账户及通讯录运行数据
+/MarkDown/Student Verification Report.md
+/homework/**/file/*.dat
+/C语言大作业/**/file/*.dat
+/Contacts/Contacts/Person.dat
+/Contacts/Contacts/pContact.dat
+
+# 云盘同步、桌面元数据和编辑器个人配置
+/.tmp.driveupload/
+/.tmp.drivedownload/
+.directory
+.DS_Store
+Thumbs.db
+.idea/
+.vs/
+.vscode/
+.run/
+*.iml
+*.suo
+*.user
+*.userprefs
+*.rsuser
+*.sln.docstates
+*.swp
+*.swo
+~$*
+
+# 本地凭据配置；示例文件保留
+.env
+.env.*
+!.env.example
+!.env.sample
+!.env.template
+*.pfx
+*.p12
+
+# Python/JavaScript依赖与缓存，保留依赖清单和锁文件
+.venv/
+venv/
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.uv-cache/
+.ipynb_checkpoints/
+*.pyc
+*.pyo
+*.pyd
+node_modules/
+.next/
+.nuxt/
+.docusaurus/
+/AscendWeb/dist/
+/PyTorchLearn/cache/
+/PyTorchLearn/data/Cora/
+
+# CMake与C/C++构建输出
+cmake-build-*/
+build/
+build-*/
+CMakeFiles/
+_deps/
+vcpkg_installed/
+gcm.cache/
+.cache/
+.ccls-cache/
+ipch/
+*.dir/
+CMakeCache.txt
+cmake_install.cmake
+compile_commands.json
+build.ninja
+.ninja_log
+.ninja_deps
+CTestTestfile.cmake
+ZERO_CHECK.vcxproj*
+ALL_BUILD.vcxproj*
+*.exe
+*.dll
+*.lib
+*.o
+*.obj
+*.a
+*.so
+*.so.*
+*.pch
+*.gch
+*.ifc
+*.pdb
+*.ilk
+*.idb
+*.ipch
+*.ncb
+*.sdf
+*.opendb
+*.tlog
+*.lastbuildstate
+*.recipe
+a.out
+
+# .NET/Java编译输出，保留Designer.cs、resx、xaml和项目文件
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+*.class
+.gradle/
+/PRJAVA/**/out/
+
+# Unity：保留Assets、meta文件、Packages与ProjectSettings
+/My project/Library/
+/My project/Logs/
+/My project/Temp/
+/My project/UserSettings/
+/My project/*.csproj
+/My project/*.sln
+/My project/UpgradeLog.htm
+/My project-2024-7-25/Library/
+/My project-2024-7-25/Logs/
+/My project-2024-7-25/Temp/
+/My project-2024-7-25/UserSettings/
+/My project-2024-7-25/*.csproj
+/My project-2024-7-25/*.sln
+/mla/Library/
+/mla/Logs/
+/mla/Temp/
+/mla/UserSettings/
+/mla/*.csproj
+/mla/*.sln
+# Assets中的OBJ模型是资源文件
+!/My project/Assets/**/*.obj
+!/My project-2024-7-25/Assets/**/*.obj
+!/mla/Assets/**/*.obj
+
+# Vivado生成目录，保留srcs、Verilog、XDC、XCI、COE/MEM及工程文件
+.Xil/
+*.runs/
+*.cache/
+*.sim/
+*.hw/
+*.gen/
+*.ip_user_files/
+*.jou
+*.wdb
+/CS_ALU/synth_1/
+/CS_ALU_TRUE/synth_1/
+/CS_adder/synth_1/
+/data_ram/synth_1/
+/ccu/**/synth_1/
+
+# Quartus仿真和编译缓存，保留VHDL、QSF/QPF与测试平台
+/wslc/VHDL/**/db/
+/wslc/VHDL/**/incremental_db/
+/wslc/VHDL/**/output_files/
+/wslc/VHDL/**/simulation/**/work/
+/wslc/VHDL/**/*.qws
+/wslc/VHDL/**/*.vcd
+
+# LaTeX中间文件，保留tex、参考资料与成品PDF
+*.aux
+*.fls
+*.fdb_latexmk
+*.synctex
+*.synctex.gz
+*.toc
+*.lof
+*.lot
+*.nav
+*.snm
+*.pygtex
+*.pygstyle
+_minted-*/
+*.log
+
+# 压缩程序与系统实验的运行输出
+/huffmancode/buff
+/huffmancode/buff2
+/huffmancode/out
+/wslc/os/hd*.img
+
+# 大型游戏归档、歌曲和实验视频，源码及精选图片保留
+/比较简单的大冒险.html
+/网页/myimage/比较简单的大冒险.html
+/网页/QQmusic/Music/
+/file/html/Music/
+/wslc/VHDL/**/*.[mM][pP]4
+
+# 客房管理源码在展开目录中保留；这些归档还包含运行数据和构建产物
+/homework(12)(6).zip
+/C语言大作业/作业/homework(12)(6).zip
+/C语言大作业/作业/综合实验客房管理系统.zip
+
+# 压缩包中独有的源码与资料保存在 archive-snapshots；依赖、缓存和重复归档排除。
+/C语言大作业/19.zip
+/PRJAVA/PRC/src/JAVA/EX8.zip
+/ccu.zip
+/file/zh.233.199.zip
+/wslc/VHDL/exp11/d.zip
+/wslc/VHDL/exp12/led_matrix.zip
+/wslc/VHDL/exp13/led_matrix.zip
+/wslc/VHDL/exp14.zip
+/wslc/VHDL/exp3/实验三.zip
+/wslc/VHDL/exp4/实验四.zip
+/wslc/VHDL/exp5/实验五.zip
+/wslc/VHDL/exp6/encode_16_4.rar
+/wslc/VHDL/exp7/transcode_led.zip
+/wslc/VHDL/exp9/c10.zip
+/wslc/VHDL/exp9/lshift.zip
+/wslc/gamet/exp6.zip
+/wslc/python/2024国赛B/2024国赛B.zip
+/未知/images.zip
+
+# 内嵌 Asio 保留使用中的头文件及许可证，下载文档和示例单独排除。
+/wslc/concurrency/include/asio-1.30.2/doc/
+/wslc/concurrency/include/asio-1.30.2/src/
+/java/data.dat
+/wslc/os/black
+/wslc/bhuos/fs/fsformat
+/wslc/bhuos/tools/fsformat
+/wslc/bhuos/readelf/readelf
+/wslc/VHDL/**/*.sdo
+/wslc/VHDL/**/*.vho

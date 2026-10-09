@@ -1,0 +1,51 @@
+%! Author = k
+%! Date = 2024/11/20
+
+% Preamble
+\documentclass[11pt]{article}
+
+\usepackage{amsmath}
+\usepackage[UTF8]{ctex}
+\usepackage{multirow}
+\usepackage{booktabs} % 用于更好看的表格线
+\usepackage{array} % 用于调整列宽
+\usepackage{caption} % 用于设置表格标题
+\usepackage{geometry}
+
+\pagestyle{empty} % 隐藏页眉页脚
+
+\captionsetup[table]{labelformat=empty} % 禁用表格编号
+
+\geometry{a4paper,paperwidth = 30cm, paperheight = 30cm}
+
+\begin{document}
+
+    % 表格代码开始
+    \begin{table}[h]
+        \centering
+        \renewcommand{\arraystretch}{1.5} % 调整行间距
+        \setlength{\tabcolsep}{12pt} % 调整列间距
+        \begin{tabular}{>{\centering}p{2cm}|>{\centering}p{2cm}|>{\centering}p{2cm}|>{\centering}p{2cm}|c} % 控制边框：| 表示有竖线，c 表示居中对齐
+            \hline % 表格顶部边框
+            \textbf{$J$} & \textbf{$K$} & \textbf{$Q^{n}$} & \textbf{$Q^{n + 1}$} & \textbf{输出状态说明} \\ % 表头
+            \hline % 表头下边框
+            0 & 0 & 0 & \multirow{2}{*}{ $ \hspace{0.7cm} \left. \begin{aligned} 0 \\ 1  \end{aligned} \right\} Q^n $ } & \multirow{2}{*}{\centering 输出状态不变} \\ % 第一行
+            0 & 0 & 1 &   &  \\ % 第二行
+            \hline
+            0 & 1 & 0 & \multirow{2}{*}{ $ \hspace{0.4cm} \left. \begin{aligned} 0 \\ 0 \end{aligned} \right\} 0 $ } & \multirow{2}{*}{\centering 输出状态与$J$相同} \\ % 第三行，合并说明单元格
+            0 & 1 & 1 &   & \\
+            \hline
+            1 & 0 & 0 & \multirow{2}{*}{ $ \hspace{0.4cm} \left. \begin{aligned} 1 \\ 1 \end{aligned} \right\} 1 $ } & \multirow{2}{*}{\centering 输出状态与$J$相同} \\ % 第四行
+            1 & 0 & 1 &   & \\
+            \hline
+            1 & 1 & 0 & \multirow{2}{*}{ $ \hspace{0.7cm} \left. \begin{aligned} 1 \\ 0  \end{aligned} \right\} \overline{Q}^n $ } & \multirow{2}{*}{\centering 每来一个脉冲，输出状态改变一次} \\ % 第五行
+            1 & 1 & 1 &   & \\
+            \hline
+        \end{tabular}
+        \caption{主从$J-K$触发器的特性表} % 表格标题
+        \label{tab:D_flip_flop} % 表格引用标签
+    \end{table}
+    % 表格代码结束
+
+\end{document}
+

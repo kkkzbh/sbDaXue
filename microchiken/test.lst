@@ -1,0 +1,44 @@
+Microsoft (R) Macro Assembler Version 6.11		    09/12/25 17:36:26
+tempfile.asm						     Page 1 - 1
+
+
+ 0000				codes segment
+				    assume cs:codes
+
+ 0000				start:
+				    ; 打印字符'1'
+ 0000  B2 31			    mov dl, '1'     ; 将字�?1'存入dl寄存�?
+ 0002  B4 02			    mov ah, 2       ; 2号功能调用：显示字符
+ 0004  CD 21			    int 21h         ; 调用dos中断
+				    
+				    ; 等待按键
+ 0006  B4 01			    mov ah, 1       ; 1号功能调用：等待键盘输入
+ 0008  CD 21			    int 21h         ; 调用dos中断
+				    
+				    ; 程序结束
+ 000A  B4 4C			    mov ah, 4ch     ; 4ch功能调用：程序终�?
+ 000C  CD 21			    int 21h         ; 返回dos系统
+
+ 000E				codes ends
+				    end start
+Microsoft (R) Macro Assembler Version 6.11		    09/12/25 17:36:26
+tempfile.asm						     Symbols 2 - 1
+
+
+
+
+Segments and Groups:
+
+                N a m e                 Size     Length   Align   Combine Class
+
+codes  . . . . . . . . . . . . .	16 Bit	 000E	  Para	  Private 
+
+
+Symbols:
+
+                N a m e                 Type     Value    Attr
+
+start  . . . . . . . . . . . . .	L Near	 0000	  codes	
+
+	   0 Warnings
+	   0 Errors

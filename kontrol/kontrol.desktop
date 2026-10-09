@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Kontrol
+Comment=Kontrol GUI application
+Exec=env KONTROL_DBUS_TIMEOUT_MS=800 KONTROL_CLI_TIMEOUT_MS=1200 /home/kkkzbh/code/kontrol/cmake-build-debug/kontrol
+TryExec=/home/kkkzbh/code/kontrol/cmake-build-debug/kontrol
+Path=/home/kkkzbh/code/kontrol
+Terminal=false
+Categories=Utility;
+StartupNotify=true

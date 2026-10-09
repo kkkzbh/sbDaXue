@@ -1,0 +1,280 @@
+/* ========================================
+   NOIR CARD STYLE - 刺杀博弈
+   黑白配色 + 红色点缀 + 卡片式布局
+   ======================================== */
+
+:root {
+  /* 核心配色 */
+  --bg-dark: #0a0a0a;
+  --bg-card: #141414;
+  --bg-card-hover: #1a1a1a;
+  --border-color: #2a2a2a;
+  
+  /* 文字颜色 */
+  --text-primary: #ffffff;
+  --text-secondary: #a0a0a0;
+  --text-muted: #666666;
+  
+  /* 强调色 */
+  --accent-red: #dc143c;
+  --accent-red-light: rgba(220, 20, 60, 0.15);
+  --accent-green: #22c55e;
+  --accent-green-light: rgba(34, 197, 94, 0.15);
+  
+  /* 字体 */
+  --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', monospace;
+  
+  /* 卡片样式 */
+  --card-radius: 12px;
+  --card-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  
+  /* 动画 */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== Header ===== */
+.app-header {
+  background: var(--bg-card);
+  padding: 32px 24px;
+  text-align: center;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.app-header h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--accent-red);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* ===== Main Content ===== */
+.app-main {
+  flex: 1;
+  padding: 40px 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ===== Footer ===== */
+.app-footer {
+  background: var(--bg-card);
+  padding: 20px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  border-top: 1px solid var(--border-color);
+}
+
+/* ===== Error Banner ===== */
+.error-banner {
+  background: var(--accent-red-light);
+  border: 1px solid var(--accent-red);
+  border-radius: var(--card-radius);
+  color: var(--accent-red);
+  padding: 14px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  margin-bottom: 24px;
+}
+
+.error-banner button {
+  background: transparent;
+  border: none;
+  color: var(--accent-red);
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 0 4px;
+  opacity: 0.7;
+  transition: opacity var(--transition-fast);
+}
+
+.error-banner button:hover {
+  opacity: 1;
+}
+
+/* ===== Phase Headers ===== */
+.phase-header {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.phase-header h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+}
+
+.phase-header p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+/* ===== Setup Phase ===== */
+.setup-phase {
+  animation: fadeIn 0.4s ease;
+}
+
+.setup-container {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* ===== Start Button ===== */
+.start-button {
+  background: var(--accent-red);
+  color: var(--text-primary);
+  border: none;
+  padding: 18px 48px;
+  font-family: var(--font-main);
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: var(--card-radius);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  align-self: center;
+  box-shadow: 0 4px 16px rgba(220, 20, 60, 0.3);
+}
+
+.start-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(220, 20, 60, 0.4);
+  background: #e82148;
+}
+
+.start-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.start-button:disabled {
+  background: var(--border-color);
+  color: var(--text-muted);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* ===== Loading Overlay ===== */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(10, 10, 10, 0.9);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--border-color);
+  border-top-color: var(--accent-red);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-bottom: 16px;
+}
+
+.loading-text {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== Section Styles ===== */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.section-header h2 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.section-desc {
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .app-header {
+    padding: 24px 16px;
+  }
+  
+  .app-header h1 {
+    font-size: 1.4rem;
+  }
+  
+  .app-main {
+    padding: 24px 16px;
+  }
+  
+  .phase-header h2 {
+    font-size: 1.1rem;
+  }
+}

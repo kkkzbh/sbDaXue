@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title-text { font-family: Arial, sans-serif; font-size: 16px; font-weight: bold; fill: #2c3e50; }
+      .normal-text { font-family: Arial, sans-serif; font-size: 12px; fill: #34495e; }
+      .small-text { font-family: Arial, sans-serif; font-size: 10px; fill: #34495e; }
+      .group-box { fill: #ecf0f1; stroke: #34495e; stroke-width: 2; rx: 8; }
+      .treatment-box { fill: #e8f5e8; stroke: #27ae60; stroke-width: 2; rx: 8; }
+      .control-box { fill: #fef9e7; stroke: #f39c12; stroke-width: 2; rx: 8; }
+      .process-box { fill: #ebf3fd; stroke: #3498db; stroke-width: 2; rx: 8; }
+      .arrow { stroke: #34495e; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+      .timeline-line { stroke: #95a5a6; stroke-width: 2; stroke-dasharray: 5,5; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#34495e" />
+    </marker>
+  </defs>
+  
+  <!-- Timeline -->
+  <text x="40" y="30" class="title-text">Quasi-Experimental Design Timeline</text>
+  <line x1="100" y1="50" x2="700" y2="50" class="timeline-line"/>
+  
+  <!-- Phase 1: Initial State -->
+  <rect x="80" y="70" width="120" height="80" class="process-box"/>
+  <text x="140" y="90" class="title-text" text-anchor="middle">Phase 1</text>
+  <text x="140" y="110" class="normal-text" text-anchor="middle">Pre-test</text>
+  <text x="140" y="125" class="small-text" text-anchor="middle">All 180 students</text>
+  <text x="140" y="140" class="small-text" text-anchor="middle">Baseline assessment</text>
+  
+  <!-- Phase 2: Group Assignment -->
+  <rect x="240" y="70" width="120" height="80" class="process-box"/>
+  <text x="300" y="90" class="title-text" text-anchor="middle">Phase 2</text>
+  <text x="300" y="110" class="normal-text" text-anchor="middle">Group Assignment</text>
+  <text x="300" y="125" class="small-text" text-anchor="middle">Two course sections</text>
+  <text x="300" y="140" class="small-text" text-anchor="middle">Random allocation</text>
+  
+  <!-- Phase 3: Intervention -->
+  <rect x="400" y="70" width="120" height="80" class="process-box"/>
+  <text x="460" y="90" class="title-text" text-anchor="middle">Phase 3</text>
+  <text x="460" y="110" class="normal-text" text-anchor="middle">Intervention</text>
+  <text x="460" y="125" class="small-text" text-anchor="middle">4-week module</text>
+  <text x="460" y="140" class="small-text" text-anchor="middle">Different tools</text>
+  
+  <!-- Phase 4: Final Assessment -->
+  <rect x="560" y="70" width="120" height="80" class="process-box"/>
+  <text x="620" y="90" class="title-text" text-anchor="middle">Phase 4</text>
+  <text x="620" y="110" class="normal-text" text-anchor="middle">Post-test</text>
+  <text x="620" y="125" class="small-text" text-anchor="middle">All 180 students</text>
+  <text x="620" y="140" class="small-text" text-anchor="middle">Final assessment</text>
+  
+  <!-- Arrows between phases -->
+  <line x1="200" y1="110" x2="240" y2="110" class="arrow"/>
+  <line x1="360" y1="110" x2="400" y2="110" class="arrow"/>
+  <line x1="520" y1="110" x2="560" y2="110" class="arrow"/>
+  
+  <!-- Group split -->
+  <text x="400" y="200" class="title-text" text-anchor="middle">Intervention Details</text>
+  
+  <!-- Treatment Group -->
+  <rect x="80" y="230" width="280" height="150" class="treatment-box"/>
+  <text x="220" y="250" class="title-text" text-anchor="middle">Treatment Group (n=90)</text>
+  <text x="90" y="275" class="normal-text">AI-Assisted Programming Tools:</text>
+  <text x="100" y="295" class="small-text">• GitHub Copilot integration</text>
+  <text x="100" y="310" class="small-text">• ChatGPT for problem-solving</text>
+  <text x="100" y="325" class="small-text">• 12-page handbook with examples</text>
+  <text x="100" y="340" class="small-text">• Prompting strategy training</text>
+  <text x="100" y="355" class="small-text">• Critical evaluation checklists</text>
+  
+  <!-- Control Group -->
+  <rect x="440" y="230" width="280" height="150" class="control-box"/>
+  <text x="580" y="250" class="title-text" text-anchor="middle">Control Group (n=90)</text>
+  <text x="450" y="275" class="normal-text">Standard Development Tools:</text>
+  <text x="460" y="295" class="small-text">• Traditional IDE (no AI extensions)</text>
+  <text x="460" y="310" class="small-text">• Standard lab worksheets</text>
+  <text x="460" y="325" class="small-text">• Conventional debugging methods</text>
+  <text x="460" y="340" class="small-text">• Manual code documentation</text>
+  <text x="460" y="355" class="small-text">• Traditional help resources</text>
+  
+  <!-- Arrows from Phase 2 to groups -->
+  <line x1="280" y1="150" x2="200" y2="230" class="arrow"/>
+  <line x1="320" y1="150" x2="600" y2="230" class="arrow"/>
+  
+  <!-- Analysis phase -->
+  <rect x="260" y="420" width="280" height="100" class="process-box"/>
+  <text x="400" y="440" class="title-text" text-anchor="middle">Phase 5: Analysis</text>
+  <text x="400" y="460" class="normal-text" text-anchor="middle">Statistical Comparison</text>
+  <text x="280" y="480" class="small-text">• Pre-test vs Post-test performance gains</text>
+  <text x="280" y="495" class="small-text">• Between-group differences in learning outcomes</text>
+  <text x="280" y="510" class="small-text">• Effect size calculations and significance testing</text>
+  
+  <!-- Arrows from groups to analysis -->
+  <line x1="220" y1="380" x2="380" y2="420" class="arrow"/>
+  <line x1="580" y1="380" x2="420" y2="420" class="arrow"/>
+  
+  <!-- Population info -->
+  <rect x="20" y="540" width="760" height="50" class="group-box"/>
+  <text x="400" y="560" class="title-text" text-anchor="middle">Study Population</text>
+  <text x="400" y="580" class="normal-text" text-anchor="middle">180 first-year CS majors at Hebei University • No prior university-level programming experience • Two intact course sections</text>
+</svg>

@@ -1,0 +1,62 @@
+# exp9_counter10.qsf — Cyclone III EP3C16Q240C8
+# Top: counter10 (同步清零的十进制计数器)
+
+# 器件与项目基础
+set_global_assignment -name FAMILY "Cyclone III"
+set_global_assignment -name DEVICE EP3C16Q240C8
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 13.1
+set_global_assignment -name LAST_QUARTUS_VERSION 13.1
+
+# 顶层与源文件
+# 顶层改为 exp9_top：同时例化 counter10 和 L_shifter8
+set_global_assignment -name TOP_LEVEL_ENTITY exp9_top
+set_global_assignment -name VHDL_FILE counter10.vhd
+set_global_assignment -name VHDL_FILE l_shifter8.vhd
+set_global_assignment -name VHDL_FILE exp9_top.vhd
+
+# 温度/电压配置（沿用板卡默认）
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name NOMINAL_CORE_SUPPLY_VOLTAGE 1.2V
+set_global_assignment -name DEVICE_FILTER_PACKAGE PQFP
+set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 1
+set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "3.3-V LVCMOS"
+set_global_assignment -name CYCLONEII_RESERVE_NCEO_AFTER_CONFIGURATION "USE AS REGULAR IO"
+
+# 配置相关（保持默认禁用配置管脚）
+set_global_assignment -name ENABLE_CONFIGURATION_PINS OFF
+set_global_assignment -name ENABLE_NCE_PIN OFF
+set_global_assignment -name ENABLE_BOOT_SEL_PIN OFF
+set_global_assignment -name USE_CONFIGURATION_DEVICE OFF
+set_global_assignment -name CRC_ERROR_OPEN_DRAIN OFF
+
+# 仿真设置（VHDL 流）
+set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (VHDL)"
+set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "VHDL" -section_id eda_simulation
+set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST ON -section_id eda_simulation
+
+# 端口管脚约束
+# 时钟：单步按键，按一下产生一个上升沿（板丝印 CLK?），低抖动人力时钟
+set_location_assignment PIN_211 -to clk
+
+# 同步清零：使用拨码开关 KD1（低有效，符合 counter10.clr 设计）
+set_location_assignment PIN_37 -to clr
+
+# 计数并行输出到独立 LED（LDD1..LDD4，低电平点亮）
+set_location_assignment PIN_85 -to q[3]
+set_location_assignment PIN_84 -to q[2]
+set_location_assignment PIN_83 -to q[1]
+set_location_assignment PIN_82 -to q[0]
+
+# 进位输出到 LDD5（低电平点亮）
+set_location_assignment PIN_81 -to co
+
+# 预留：如需连续时钟或复位按键，可按需加：
+# set_location_assignment PIN_210 -to clk_cont   # 24MHz 连续时钟
+# set_location_assignment PIN_151 -to rst_btn_p   # 复位正脉冲
+
+# 分区保持（默认即可）
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top

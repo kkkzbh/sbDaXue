@@ -1,0 +1,1 @@
+{"name":"Local: main","url":"c:\\sbDaXue\\emp1\\main.cpp","tests":[{"id":1750418951023,"input":"5\n1 2 1 2 2","output":"5"},{"id":1750422179836,"input":"5\n1 2 2 1 2","output":"5"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\sbDaXue\\emp1\\main.cpp","group":"local","local":true}

@@ -1,0 +1,6 @@
+.idea/
+
+AGENTS.md
+
+build*/
+cmake-build-*/

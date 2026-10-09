@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="ArrayApp/ArrayApp.csproj" />
+  <Project Path="ScoreApp/ScoreApp.csproj" />
+</Solution>

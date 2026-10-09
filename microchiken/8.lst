@@ -1,0 +1,143 @@
+Microsoft (R) Macro Assembler Version 6.11		    09/24/25 23:08:46
+tempfile.asm						     Page 1 - 1
+
+
+				.MODEL SMALL
+				.STACK 100h
+
+ 0000				.DATA
+
+ 0000				.CODE
+ 0000				main PROC
+ 0000  B8 ---- R		    mov ax, @data
+ 0003  8E D8			    mov ds, ax
+
+ 0005  33 DB			    xor bx, bx              ; 累积结果
+ 0007  BE 000A			    mov si, 10              ; 十进制乘子
+
+ 000A				read_next:
+ 000A  B4 01			    mov ah, 01h             ; 读取并回显键盘字符
+ 000C  CD 21			    int 21h
+
+ 000E  3C 30			    cmp al, '0'
+ 0010  72 14			    jb output_result        ; 小于 '0' 视为结束
+ 0012  3C 39			    cmp al, '9'
+ 0014  77 10			    ja output_result        ; 大于 '9' 结束输入
+
+ 0016  2C 30			    sub al, '0'
+ 0018  32 E4			    xor ah, ah              ; 当前数字放入 AX
+ 001A  8B C8			    mov cx, ax
+
+ 001C  8B C3			    mov ax, bx
+ 001E  F7 E6			    mul si                  ; 累积值 * 10
+ 0020  03 C1			    add ax, cx              ; 加上新数字
+ 0022  8B D8			    mov bx, ax
+ 0024  EB E4			    jmp read_next
+
+ 0026				output_result:
+ 0026  E8 003A			    call PrintNewLine       ; 换行后再输出数值
+ 0029  8B C3			    mov ax, bx
+ 002B  E8 0005			    call PrintDecimalAX
+
+ 002E  B8 4C00			    mov ax, 4C00h
+ 0031  CD 21			    int 21h
+ 0033				main ENDP
+
+ 0033				PrintDecimalAX PROC NEAR
+ 0033  50			    push ax
+ 0034  53			    push bx
+ 0035  51			    push cx
+ 0036  52			    push dx
+
+ 0037  BB 000A			    mov bx, 10
+ 003A  33 C9			    xor cx, cx             ; 位数计数器
+
+ 003C  83 F8 00			    cmp ax, 0
+ 003F  75 08			    jne collect_digits
+
+ 0041  B2 30			    mov dl, '0'
+ 0043  B4 02			    mov ah, 02h
+ 0045  CD 21			    int 21h
+ 0047  EB 15			    jmp restore_registers
+
+ 0049				collect_digits:
+ 0049  33 D2			    xor dx, dx             ; 除法前清零 DX
+ 004B  F7 F3			    div bx                 ; AX 除以 10，DX 保存余数
+ 004D  52			    push dx                ; 将余数压栈
+ 004E  41			    inc cx
+ 004F  83 F8 00			    cmp ax, 0
+ 0052  75 F5			    jne collect_digits
+
+ 0054				print_loop:
+ 0054  5A			    pop dx
+ 0055  80 C2 30			    add dl, '0'
+ 0058  B4 02			    mov ah, 02h
+ 005A  CD 21			    int 21h
+ 005C  E2 F6			    loop print_loop
+
+ 005E				restore_registers:
+ 005E  5A			    pop dx
+ 005F  59			    pop cx
+ 0060  5B			    pop bx
+ 0061  58			    pop ax
+ 0062  C3			    ret
+ 0063				PrintDecimalAX ENDP
+
+ 0063				PrintNewLine PROC NEAR
+ 0063  B2 0D			    mov dl, 0Dh
+ 0065  B4 02			    mov ah, 02h
+ 0067  CD 21			    int 21h
+ 0069  B2 0A			    mov dl, 0Ah
+ 006B  B4 02			    mov ah, 02h
+ 006D  CD 21			    int 21h
+ 006F  C3			    ret
+ 0070				PrintNewLine ENDP
+
+				END main
+
+Microsoft (R) Macro Assembler Version 6.11		    09/24/25 23:08:46
+tempfile.asm						     Symbols 2 - 1
+
+
+
+
+Segments and Groups:
+
+                N a m e                 Size     Length   Align   Combine Class
+
+DGROUP . . . . . . . . . . . . .	GROUP
+_DATA  . . . . . . . . . . . . .	16 Bit	 0000	  Word	  Public  'DATA'	
+STACK  . . . . . . . . . . . . .	16 Bit	 0100	  Para	  Stack	  'STACK'	 
+_TEXT  . . . . . . . . . . . . .	16 Bit	 0070	  Word	  Public  'CODE'	
+
+
+Procedures,  parameters and locals:
+
+                N a m e                 Type     Value    Attr
+
+PrintDecimalAX . . . . . . . . .	P Near	 0033	  _TEXT	Length= 0030 Public
+  collect_digits . . . . . . . .	L Near	 0049	  _TEXT	
+  print_loop . . . . . . . . . .	L Near	 0054	  _TEXT	
+  restore_registers  . . . . . .	L Near	 005E	  _TEXT	
+PrintNewLine . . . . . . . . . .	P Near	 0063	  _TEXT	Length= 000D Public
+main . . . . . . . . . . . . . .	P Near	 0000	  _TEXT	Length= 0033 Public
+  read_next  . . . . . . . . . .	L Near	 000A	  _TEXT	
+  output_result  . . . . . . . .	L Near	 0026	  _TEXT	
+
+
+Symbols:
+
+                N a m e                 Type     Value    Attr
+
+@CodeSize  . . . . . . . . . . .	Number	 0000h	 
+@DataSize  . . . . . . . . . . .	Number	 0000h	 
+@Interface . . . . . . . . . . .	Number	 0000h	 
+@Model . . . . . . . . . . . . .	Number	 0002h	 
+@code  . . . . . . . . . . . . .	Text   	 _TEXT
+@data  . . . . . . . . . . . . .	Text   	 DGROUP
+@fardata?  . . . . . . . . . . .	Text   	 FAR_BSS
+@fardata . . . . . . . . . . . .	Text   	 FAR_DATA
+@stack . . . . . . . . . . . . .	Text   	 DGROUP
+
+	   0 Warnings
+	   0 Errors

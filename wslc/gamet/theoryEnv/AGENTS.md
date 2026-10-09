@@ -1,0 +1,4 @@
+- 题目为question.md，对应的解答为answer.md
+- 使用简体中文作为主要语言回答我，包括Implementation Plan和task，都要使用简体中文编写。
+- 使用Pacdoc，模板采用custom-reference.docx，导出为answer.docx
+- answer.md的风格应当贴合学术论文

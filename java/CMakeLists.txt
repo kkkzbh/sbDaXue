@@ -1,0 +1,68 @@
+cmake_minimum_required(VERSION 3.27)
+project(java)
+
+set(CMAKE_CXX_STANDARD 20)
+
+include_directories(algorithm)
+include_directories(lib)
+
+add_executable(java
+        algorithm/BinarySearch.h
+        algorithm/gcd.h
+        algorithm/lcm.h
+        algorithm/MaxMin.h
+        algorithm/sort.h
+        algorithm/swap.h
+        lib/_List.cpp
+        lib/_List.h
+        lib/_Poly.cpp
+        lib/_Poly.h
+        lib/AVL.hpp
+        lib/BST.hpp
+        lib/comparator.h
+        lib/DList.cpp
+        lib/DList.h
+        lib/graph.hpp
+        lib/heap.hpp
+        lib/list.hpp
+        lib/poly.cpp
+        lib/poly.h
+        lib/queue.hpp
+        lib/set.hpp
+        lib/stack.hpp
+        lib/tree.hpp
+        lib/vector.hpp
+        main.cpp
+        header/chrono.h
+        header/iterator.h
+        header/GPA.h
+        algorithm/prime.h
+        lib/hashtable.hpp
+        header/ctype
+        lib/graph.hpp
+        lib/graph.hpp
+        lib/BST.hpp
+        header/chrono.h
+        header/mulcross.h
+        lib/tree.hpp
+        algorithm/KMP.h
+        header/print.h
+        algorithm/read.h
+        header/freopen.h
+        algorithm/prime.h
+        algorithm/Dijkstra.h
+        algorithm/str_hash.h
+        M_pre.cpp
+        newlib/thrit.h
+        newlib/decl.h
+        newlib/tree
+        newlib/basic_binary_tree.h
+        newlib/xds.h
+        newlib/bstree.h
+        newlib/avltree.h
+        newlib/compare.h
+        newlib/avl.h
+        newlib/priority_queue.h
+        newlib/Tarray.h
+        newlib/carray.h
+)

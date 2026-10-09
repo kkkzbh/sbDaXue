@@ -1,0 +1,15 @@
+
+
+
+\documentclass[tikz,border=10pt]{standalone}
+\usepackage{tikz-timing}
+
+\begin{document}
+\begin{tikztimingtable}[timing/d/background/.style={fill=none}, timing/hv/.style={timing/hv, dashed}]
+    CP  &  LHLHLHLHLHLHLH \\  % Clock signal
+    Q0  &  LLLHHLLHHLLHHL \\  % Q0 waveform
+    Q1  &  LLHHLLLLHHLLLL \\  % Q1 waveform
+    Q2  &  LHHLLLLLHHLLLL \\  % Q2 waveform
+    Q3  &  HHLLLLLLLHHLLL \\  % Q3 waveform
+\end{tikztimingtable}
+\end{document}

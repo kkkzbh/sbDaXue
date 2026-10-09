@@ -1,0 +1,306 @@
+/* ========================================
+   GameFlow - 游戏流程组件
+   ======================================== */
+
+.game-flow-component {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Game Board - 双栏布局 */
+.game-board {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 24px;
+  margin: 32px 0;
+}
+
+/* Character Sections */
+.mike-section,
+.killer-section {
+  flex: 1;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--card-radius);
+  padding: 28px;
+  box-shadow: var(--card-shadow);
+}
+
+.mike-section:hover,
+.killer-section:hover {
+  border-color: var(--text-muted);
+}
+
+/* Character Card */
+.character-card {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.character-icon {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.character-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.character-role {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Action Display */
+.action-display {
+  text-align: center;
+  margin: 24px 0;
+}
+
+.action-label {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+
+.action-badge {
+  display: inline-block;
+  padding: 14px 28px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  background: var(--bg-dark);
+}
+
+.action-badge.guard {
+  border-color: var(--text-primary);
+  color: var(--text-primary);
+}
+
+.action-badge.hide {
+  border-color: var(--text-muted);
+  color: var(--text-secondary);
+}
+
+/* Probability Info */
+.probability-info {
+  background: var(--bg-dark);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 20px;
+}
+
+.probability-info h4 {
+  margin: 0 0 12px 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.prob-list {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.prob-item {
+  padding: 4px 0;
+}
+
+/* VS Divider */
+.versus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--accent-red);
+  padding: 0 8px;
+}
+
+/* Decision Panel */
+.decision-panel h3 {
+  text-align: center;
+  margin: 0 0 24px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Strategy Hint */
+.strategy-hint {
+  background: var(--bg-dark);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 28px;
+}
+
+.strategy-hint h4 {
+  margin: 0 0 12px 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.hint-content {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.hint-content ul {
+  margin: 10px 0;
+  padding-left: 20px;
+}
+
+.hint-content li {
+  padding: 3px 0;
+}
+
+.hint-result {
+  margin-top: 14px;
+  padding: 10px 14px;
+  background: var(--accent-green-light);
+  border: 1px solid var(--accent-green);
+  border-radius: 6px;
+  color: var(--accent-green);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.action-btn {
+  flex: 1;
+  max-width: 200px;
+  padding: 24px 20px;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg-card);
+}
+
+.action-btn:hover:not(:disabled) {
+  transform: translateY(-3px);
+}
+
+.action-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.action-btn.kill {
+  border-color: var(--accent-red);
+}
+
+.action-btn.kill:hover:not(:disabled) {
+  background: var(--accent-red-light);
+  box-shadow: 0 8px 24px rgba(220, 20, 60, 0.2);
+}
+
+.action-btn.leave {
+  border-color: var(--accent-green);
+}
+
+.action-btn.leave:hover:not(:disabled) {
+  background: var(--accent-green-light);
+  box-shadow: 0 8px 24px rgba(34, 197, 94, 0.2);
+}
+
+.btn-icon {
+  font-size: 2rem;
+}
+
+.btn-text {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.btn-desc {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.action-btn.kill .btn-text {
+  color: var(--accent-red);
+}
+
+.action-btn.leave .btn-text {
+  color: var(--accent-green);
+}
+
+/* Loading Indicator */
+.loading-indicator {
+  text-align: center;
+  margin-top: 20px;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+/* Belief Reminder */
+.belief-reminder {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--card-radius);
+  padding: 20px 24px;
+  box-shadow: var(--card-shadow);
+}
+
+.belief-reminder h4 {
+  margin: 0 0 12px 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.belief-values {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--text-primary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .game-board {
+    flex-direction: column;
+  }
+
+  .versus {
+    padding: 12px 0;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .action-btn {
+    max-width: 100%;
+    width: 100%;
+  }
+}

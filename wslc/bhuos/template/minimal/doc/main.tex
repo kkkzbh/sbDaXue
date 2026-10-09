@@ -1,0 +1,28 @@
+% Minimal OS Docs Template (ctex + custom style)
+\documentclass[12pt,oneside]{ctexbook}
+
+% Project custom style
+\usepackage{style/custom}
+
+% Metadata
+\newcommand{\ProjectName}{OS Docs Template}
+\newcommand{\DocVersion}{v0.1}
+% No cover page in the template version
+
+\title{x\\\large {\ProjectName} \ \DocVersion}
+\author{Your Name}
+\date{\today}
+
+\begin{document}
+
+\tableofcontents
+
+% -------------------- Preface --------------------
+\frontmatter
+\include{chapters/00-preface}
+
+% -------------------- Main matter --------------------
+\mainmatter
+% Add more chapters with \include{chapters/NN-topic}
+
+\end{document}

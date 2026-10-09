@@ -1,0 +1,30 @@
+# 聊天服务器配置
+
+[server]
+host = "0.0.0.0"
+port = 8888
+
+[thread_pool]
+chat_pool_size = 4      # 前台聊天线程数
+db_pool_size = 2        # 后台数据库线程数
+
+[redis]
+host = "127.0.0.1"
+port = 6379
+message_list_key = "chat:messages"
+max_cached_messages = 50
+
+[database]
+# 直接连接 PostgreSQL (使用 pgpass 认证)
+host = "127.0.0.1"
+port = 5432              # PostgreSQL 默认端口
+database = "learnrm"
+user = "kkkzbh"
+# password 使用 ~/.pgpass 文件
+
+[history]
+push_count = 50         # 进入房间推送最近N条消息
+
+[db_worker]
+batch_interval_ms = 5000  # 批量入库间隔(毫秒)
+batch_size = 100          # 每批最大消息数

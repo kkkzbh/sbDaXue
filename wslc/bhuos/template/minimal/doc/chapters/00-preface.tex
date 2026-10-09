@@ -1,0 +1,17 @@
+% Preface (template)
+\chapter{前言}
+
+本模板基于 ctexbook，配合自定义样式 `style/custom.sty` 与 `minted` 提供的代码高亮。
+
+\begin{notebox}
+在你的项目中，将代码片段优先以 `\\codefilerange{lang}{../path}{first}{last}` 的方式从仓库中直接引用，以保持与源码同步。若路径布局不同，请据实调整相对路径。
+\end{notebox}
+
+下面给出一个最小代码块示例（验证 `minted` 与分隔线样式是否正常）：
+
+\begin{codeblock}{nasm}
+; hello from minted
+mov ax, 0x3
+int 0x10
+\end{codeblock}
+

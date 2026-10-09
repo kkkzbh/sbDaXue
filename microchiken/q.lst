@@ -1,0 +1,170 @@
+Microsoft (R) Macro Assembler Version 6.11		    10/22/25 14:19:14
+tempfile.asm						     Page 1 - 1
+
+
+				;=========================================================================
+				; 文件名：s1.asm
+				; 功能：将AX中的无符号数以二进制形式输出显示
+				; 环境：16位DOS MASM
+				; 说明：包含BIN_DISPLAY子程序和主程序测试代码
+				;=========================================================================
+
+				.model small
+				.stack 100H
+
+ 0000				.data
+				    ; 此程序不需要数据变量
+
+ 0000				.code
+
+ 0000				main proc
+				    ; 主程序开始
+				    ; 测试数据：将不同数值加载到AX中进行测试
+
+				    ; 测试1：输出0的二进制形式
+ 0000  B8 0000			    mov ax, 0
+ 0003  E8 002B			    call bin_display           ; 调用二进制输出子程序
+ 0006  E8 0041			    call newline              ; 换行
+
+				    ; 测试2：输出1的二进制形式
+ 0009  B8 0001			    mov ax, 1
+ 000C  E8 0022			    call bin_display
+ 000F  E8 0038			    call newline
+
+				    ; 测试3：输出255的二进制形式 (0000000011111111)
+ 0012  B8 00FF			    mov ax, 255
+ 0015  E8 0019			    call bin_display
+ 0018  E8 002F			    call newline
+
+				    ; 测试4：输出65535的二进制形式 (1111111111111111)
+ 001B  B8 FFFF			    mov ax, 65535
+ 001E  E8 0010			    call bin_display
+ 0021  E8 0026			    call newline
+
+				    ; 测试5：输出12345的二进制形式
+ 0024  B8 3039			    mov ax, 12345
+ 0027  E8 0007			    call bin_display
+ 002A  E8 001D			    call newline
+
+				    ; 程序结束，返回DOS
+ 002D  B4 4C			    mov ah, 4Ch
+ 002F  CD 21			    int 21h
+ 0031				main endp
+
+				;=========================================================================
+				; 子程序名：bin_display
+				; 功能：将AX中的无符号数以二进制形式输出显示
+				; 入口参数：AX = 要显示的无符号数
+				; 出口参数：无
+				; 使用的寄存器：AX, CX, DX
+				;=========================================================================
+ 0031				bin_display proc
+				    ; 保存寄存器
+ 0031  51			    push cx                   ; 保存CX寄存器
+ 0032  52			    push dx                   ; 保存DX寄存器
+
+				    ; 设置循环计数器，共输出16位二进制数
+ 0033  B9 0010			    mov cx, 16                ; CX = 16，循环计数器
+
+ 0036				display_loop:
+				    ; 将AX的最高位移到CF标志位
+ 0036  D1 E0			    shl ax, 1                 ; AX逻辑左移1位，最高位进入CF
+
+				    ; 判断CF标志位
+ 0038  72 04			    jc display_one            ; 如果CF=1，跳转到输出'1'
+
+				    ; CF=0，输出字符'0'
+ 003A  B2 30			    mov dl, '0'               ; DL = '0'
+ 003C  EB 02			    jmp output_char           ; 跳转到字符输出
+
+ 003E				display_one:
+				    ; CF=1，输出字符'1'
+ 003E  B2 31			    mov dl, '1'               ; DL = '1'
+
+ 0040				output_char:
+				    ; 调用DOS中断输出单个字符
+ 0040  B4 02			    mov ah, 2                 ; AH = 2，DOS输出单字符功能
+ 0042  CD 21			    int 21h                   ; 调用DOS中断21h
+
+				    ; 循环计数器减1，判断是否继续
+ 0044  49			    dec cx                    ; CX = CX - 1
+ 0045  75 EF			    jnz display_loop          ; 如果CX≠0，继续循环
+
+				    ; 恢复寄存器
+ 0047  5A			    pop dx                    ; 恢复DX寄存器
+ 0048  59			    pop cx                    ; 恢复CX寄存器
+
+ 0049  C3			    ret                       ; 子程序返回
+ 004A				bin_display endp
+
+				;=========================================================================
+				; 子程序名：newline
+				; 功能：输出回车换行
+				; 入口参数：无
+				; 出口参数：无
+				;=========================================================================
+ 004A				newline proc
+ 004A  50			    push ax                   ; 保存AX
+ 004B  52			    push dx                   ; 保存DX
+
+				    ; 输出回车符CR (Carriage Return)
+ 004C  B2 0D			    mov dl, 0Dh               ; DL = 回车符ASCII码
+ 004E  B4 02			    mov ah, 2                 ; AH = 2，输出单字符功能
+ 0050  CD 21			    int 21h                   ; 调用DOS中断
+
+				    ; 输出换行符LF (Line Feed)
+ 0052  B2 0A			    mov dl, 0Ah               ; DL = 换行符ASCII码
+ 0054  B4 02			    mov ah, 2                 ; AH = 2，输出单字符功能
+ 0056  CD 21			    int 21h                   ; 调用DOS中断
+
+ 0058  5A			    pop dx                    ; 恢复DX
+ 0059  58			    pop ax                    ; 恢复AX
+
+ 005A  C3			    ret                       ; 子程序返回
+ 005B				newline endp
+
+				end main
+Microsoft (R) Macro Assembler Version 6.11		    10/22/25 14:19:14
+tempfile.asm						     Symbols 2 - 1
+
+
+
+
+Segments and Groups:
+
+                N a m e                 Size     Length   Align   Combine Class
+
+DGROUP . . . . . . . . . . . . .	GROUP
+_DATA  . . . . . . . . . . . . .	16 Bit	 0000	  Word	  Public  'DATA'	
+STACK  . . . . . . . . . . . . .	16 Bit	 0100	  Para	  Stack	  'STACK'	 
+_TEXT  . . . . . . . . . . . . .	16 Bit	 005B	  Word	  Public  'CODE'	
+
+
+Procedures,  parameters and locals:
+
+                N a m e                 Type     Value    Attr
+
+bin_display  . . . . . . . . . .	P Near	 0031	  _TEXT	Length= 0019 Public
+  display_loop . . . . . . . . .	L Near	 0036	  _TEXT	
+  display_one  . . . . . . . . .	L Near	 003E	  _TEXT	
+  output_char  . . . . . . . . .	L Near	 0040	  _TEXT	
+main . . . . . . . . . . . . . .	P Near	 0000	  _TEXT	Length= 0031 Public
+newline  . . . . . . . . . . . .	P Near	 004A	  _TEXT	Length= 0011 Public
+
+
+Symbols:
+
+                N a m e                 Type     Value    Attr
+
+@CodeSize  . . . . . . . . . . .	Number	 0000h	 
+@DataSize  . . . . . . . . . . .	Number	 0000h	 
+@Interface . . . . . . . . . . .	Number	 0000h	 
+@Model . . . . . . . . . . . . .	Number	 0002h	 
+@code  . . . . . . . . . . . . .	Text   	 _TEXT
+@data  . . . . . . . . . . . . .	Text   	 DGROUP
+@fardata?  . . . . . . . . . . .	Text   	 FAR_BSS
+@fardata . . . . . . . . . . . .	Text   	 FAR_DATA
+@stack . . . . . . . . . . . . .	Text   	 DGROUP
+
+	   0 Warnings
+	   0 Errors

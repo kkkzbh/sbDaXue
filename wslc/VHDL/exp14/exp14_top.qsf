@@ -1,0 +1,151 @@
+# -------------------------------------------------------------------------- #
+# exp14: 矩阵键盘扫描 + 2x2 矩阵运算
+# Quartus II 引脚约束文件
+# FPGA: Cyclone III EP3C16Q240C8
+# -------------------------------------------------------------------------- #
+
+# 器件配置
+set_global_assignment -name FAMILY "Cyclone III"
+set_global_assignment -name DEVICE EP3C16Q240C8
+set_global_assignment -name TOP_LEVEL_ENTITY exp14_top
+
+# 项目设置
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 13.1
+set_global_assignment -name LAST_QUARTUS_VERSION 13.1
+
+# 温度与IO标准
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "3.3-V LVCMOS"
+
+# 配置管脚设置
+set_global_assignment -name ENABLE_CONFIGURATION_PINS OFF
+set_global_assignment -name ENABLE_NCE_PIN OFF
+set_global_assignment -name ENABLE_BOOT_SEL_PIN OFF
+set_global_assignment -name CYCLONEIII_CONFIGURATION_SCHEME "PASSIVE SERIAL"
+set_global_assignment -name USE_CONFIGURATION_DEVICE OFF
+set_global_assignment -name CRC_ERROR_OPEN_DRAIN OFF
+set_global_assignment -name RESERVE_ALL_UNUSED_PINS_WEAK_PULLUP "AS INPUT TRI-STATED"
+set_global_assignment -name OUTPUT_IO_TIMING_NEAR_END_VMEAS "HALF VCCIO" -rise
+set_global_assignment -name OUTPUT_IO_TIMING_NEAR_END_VMEAS "HALF VCCIO" -fall
+set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -rise
+set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -fall
+set_global_assignment -name CYCLONEII_RESERVE_NCEO_AFTER_CONFIGURATION "USE AS REGULAR IO"
+
+# 源文件
+set_global_assignment -name VHDL_FILE exp14_top.vhd
+set_global_assignment -name VHDL_FILE key_scanner.vhd
+set_global_assignment -name VHDL_FILE matrix_calculator.vhd
+set_global_assignment -name VHDL_FILE seg6_mux.vhd
+set_global_assignment -name VHDL_FILE led_matrix_2x2_hex.vhd
+
+# 仿真设置
+set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (VHDL)"
+set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "VHDL" -section_id eda_simulation
+
+# -------------------------------------------------------------------------- #
+# 引脚约束
+# -------------------------------------------------------------------------- #
+
+# 时钟信号 - 连续时钟 24MHz
+set_location_assignment PIN_210 -to clk
+
+# 复位信号 - 高电平有效（按键按下产生正脉冲）
+set_location_assignment PIN_151 -to reset
+
+# 蜂鸣器输出
+set_location_assignment PIN_174 -to buzzer
+
+# -------------------------------------------------------------------------- #
+# 键盘阵列行扫描 (Key_r1-Key_r4)，低电平有效
+# 引脚：18、19、20、21
+# -------------------------------------------------------------------------- #
+set_location_assignment PIN_18 -to key_r[0]
+set_location_assignment PIN_19 -to key_r[1]
+set_location_assignment PIN_20 -to key_r[2]
+set_location_assignment PIN_21 -to key_r[3]
+
+# 键盘阵列列扫描 (Key_c1-Key_c4)
+# 引脚：9、6、5、4
+set_location_assignment PIN_9 -to key_c[0]
+set_location_assignment PIN_6 -to key_c[1]
+set_location_assignment PIN_5 -to key_c[2]
+set_location_assignment PIN_4 -to key_c[3]
+
+# -------------------------------------------------------------------------- #
+# LED数码管段选（a、b、c、d、e、f、g、dp），低电平有效
+# 引脚：173、171、168、167、166、164、162、160
+# seg(0)=a ... seg(6)=g seg(7)=dp
+# -------------------------------------------------------------------------- #
+set_location_assignment PIN_173 -to seg[0]
+set_location_assignment PIN_171 -to seg[1]
+set_location_assignment PIN_168 -to seg[2]
+set_location_assignment PIN_167 -to seg[3]
+set_location_assignment PIN_166 -to seg[4]
+set_location_assignment PIN_164 -to seg[5]
+set_location_assignment PIN_162 -to seg[6]
+set_location_assignment PIN_160 -to seg[7]
+
+# LED数码管字选（LDC1..LDC6），低电平有效
+# 引脚：148、147、146、145、144、143
+set_location_assignment PIN_148 -to dig[0]
+set_location_assignment PIN_147 -to dig[1]
+set_location_assignment PIN_146 -to dig[2]
+set_location_assignment PIN_145 -to dig[3]
+set_location_assignment PIN_144 -to dig[4]
+set_location_assignment PIN_143 -to dig[5]
+
+# -------------------------------------------------------------------------- #
+# LED发光管（LDD1..LDD8），低电平有效
+# 引脚：85、84、83、82、81、80、78、73
+# -------------------------------------------------------------------------- #
+set_location_assignment PIN_85 -to ldd[0]
+set_location_assignment PIN_84 -to ldd[1]
+set_location_assignment PIN_83 -to ldd[2]
+set_location_assignment PIN_82 -to ldd[3]
+set_location_assignment PIN_81 -to ldd[4]
+set_location_assignment PIN_80 -to ldd[5]
+set_location_assignment PIN_78 -to ldd[6]
+set_location_assignment PIN_73 -to ldd[7]
+
+# -------------------------------------------------------------------------- #
+# LED阵列行选 (r1-r16)，低电平有效
+# 引脚：142、137、135、134、132、131、128、127、126、120、119、118、117、113、112、111
+# -------------------------------------------------------------------------- #
+set_location_assignment PIN_142 -to row[0]
+set_location_assignment PIN_137 -to row[1]
+set_location_assignment PIN_135 -to row[2]
+set_location_assignment PIN_134 -to row[3]
+set_location_assignment PIN_132 -to row[4]
+set_location_assignment PIN_131 -to row[5]
+set_location_assignment PIN_128 -to row[6]
+set_location_assignment PIN_127 -to row[7]
+set_location_assignment PIN_126 -to row[8]
+set_location_assignment PIN_120 -to row[9]
+set_location_assignment PIN_119 -to row[10]
+set_location_assignment PIN_118 -to row[11]
+set_location_assignment PIN_117 -to row[12]
+set_location_assignment PIN_113 -to row[13]
+set_location_assignment PIN_112 -to row[14]
+set_location_assignment PIN_111 -to row[15]
+
+# LED阵列列选 (c1-c16)，低电平有效
+# 引脚：110、109、108、106、103、102、101、100、99、98、95、94、93、88、87、86
+set_location_assignment PIN_110 -to col[0]
+set_location_assignment PIN_109 -to col[1]
+set_location_assignment PIN_108 -to col[2]
+set_location_assignment PIN_106 -to col[3]
+set_location_assignment PIN_103 -to col[4]
+set_location_assignment PIN_102 -to col[5]
+set_location_assignment PIN_101 -to col[6]
+set_location_assignment PIN_100 -to col[7]
+set_location_assignment PIN_99 -to col[8]
+set_location_assignment PIN_98 -to col[9]
+set_location_assignment PIN_95 -to col[10]
+set_location_assignment PIN_94 -to col[11]
+set_location_assignment PIN_93 -to col[12]
+set_location_assignment PIN_88 -to col[13]
+set_location_assignment PIN_87 -to col[14]
+set_location_assignment PIN_86 -to col[15]
+

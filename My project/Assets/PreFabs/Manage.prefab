@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6630986575214898084
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 53643525256795612}
+  - component: {fileID: 8133789162914979797}
+  m_Layer: 0
+  m_Name: Manage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &53643525256795612
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6630986575214898084}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -11.322, y: -7.989, z: -0.002031931}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8133789162914979797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6630986575214898084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d08866e49a6c2844e90df9b60e2e77c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  airBarrier: {fileID: 5830317380940320610, guid: 43c30eaa30a426e479193c9dd0ae93c1, type: 3}
+  barrier: {fileID: 8789250811217204634, guid: cee712e083702104c9b262eeeb29e100, type: 3}
+  grass: {fileID: 3986676678403455222, guid: 088afb67cd9a57f4ebbf2f7ee5ed96b8, type: 3}
+  home: {fileID: 1463195310218997374, guid: d0d0f04789c8fd84783444302318b3ae, type: 3}
+  river: {fileID: 8105994014004294125, guid: e8898ec0d1c1f734590d8dab64a9ee47, type: 3}
+  wall: {fileID: 2030566970006579341, guid: 524cbbefe431c614a804395be9a50399, type: 3}
+  bullet: {fileID: 8929041642633712166, guid: fc072ad850f1717439490ea1c62bd30d, type: 3}
+  enemyBullet: {fileID: 5584997548683455461, guid: da93414e059d0ed49993b92133ba5b95, type: 3}
+  player: {fileID: 7139057948148658932, guid: ee485403e0c86b74898fb0a7cf3ac731, type: 3}
+  enemy:
+  - {fileID: 3009690068372628858, guid: b20423ed8c3b5a94c829ec7f9cf3d60e, type: 3}
+  - {fileID: 3967578802529999369, guid: 06126025a9cc05c4184ed1995466dbe0, type: 3}
+  bornEffect: {fileID: 1023120003915191829, guid: 0fd04b2919cd7ef4f886619b661feaf7, type: 3}
+  explodeEffect: {fileID: 7441765866685244003, guid: 3ad4bba7f6aa811419cbae0c18549e7d, type: 3}
+  defendEffect: {fileID: 6749767501085761051, guid: f485d2d1be09570419b9224c7475bb0b, type: 3}
+  hpText: {fileID: 0}
+  scoresText: {fileID: 0}

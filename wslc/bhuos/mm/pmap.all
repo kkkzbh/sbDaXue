@@ -1,0 +1,232 @@
+# 1 "pmap.c" // 同步 GCC 行号信息，方便调试回溯
+# 1 "<built-in>" // 同步 GCC 行号信息，方便调试回溯
+# 1 "<command line>" // 同步 GCC 行号信息，方便调试回溯
+# 1 "pmap.c" // 同步 GCC 行号信息，方便调试回溯
+# 1 "mmu.h" 1 // 同步 GCC 行号信息，方便调试回溯
+// 保留这个位置的留白，阅读时能迅速分段
+// 这里刻意插入空行，让视线稍微停一下
+// 用这一行占位，把相邻逻辑自然隔开
+# 1 "types.h" 1 // 同步 GCC 行号信息，方便调试回溯
+# 12 "types.h" // 同步 GCC 行号信息，方便调试回溯
+typedef unsigned char u_int8_t; // 通过 typedef 起别名，让类型名更贴近语义
+typedef short int16_t; // 通过 typedef 起别名，让类型名更贴近语义
+typedef unsigned short u_int16_t; // 通过 typedef 起别名，让类型名更贴近语义
+typedef int int32_t; // 通过 typedef 起别名，让类型名更贴近语义
+typedef unsigned int u_int32_t; // 通过 typedef 起别名，让类型名更贴近语义
+typedef long long int64_t; // 通过 typedef 起别名，让类型名更贴近语义
+typedef unsigned long long u_int64_t; // 通过 typedef 起别名，让类型名更贴近语义
+// 保留这个位置的留白，阅读时能迅速分段
+typedef int32_t register_t; // 通过 typedef 起别名，让类型名更贴近语义
+// 用这一行占位，把相邻逻辑自然隔开
+typedef unsigned char u_char; // 通过 typedef 起别名，让类型名更贴近语义
+typedef unsigned short u_short; // 通过 typedef 起别名，让类型名更贴近语义
+typedef unsigned int u_int; // 通过 typedef 起别名，让类型名更贴近语义
+typedef unsigned long u_long; // 通过 typedef 起别名，让类型名更贴近语义
+// 空一行当作呼吸点，让段落不要挤在一起
+typedef u_int64_t u_quad_t; // 通过 typedef 起别名，让类型名更贴近语义
+typedef int64_t quad_t; // 通过 typedef 起别名，让类型名更贴近语义
+typedef quad_t * qaddr_t; // 通过 typedef 起别名，让类型名更贴近语义
+// 空一行当作呼吸点，让段落不要挤在一起
+typedef u_int32_t size_t; // 通过 typedef 起别名，让类型名更贴近语义
+# 5 "mmu.h" 2 // 同步 GCC 行号信息，方便调试回溯
+# 101 "mmu.h" // 同步 GCC 行号信息，方便调试回溯
+void bcopy(const void *, void *, size_t); // 复制一段内存内容，保持结构一致
+void bzero(void *, size_t); // 把目标内存清零，防止旧数据泄漏
+// 这里刻意插入空行，让视线稍微停一下
+extern char bootstacktop[], bootstack[]; // 声明外部符号 bootstack，供链接阶段解析
+// 空一行当作呼吸点，让段落不要挤在一起
+extern u_long npage; // 声明外部符号 npage，供链接阶段解析
+// 这里刻意插入空行，让视线稍微停一下
+typedef u_long Pde; // 通过 typedef 起别名，让类型名更贴近语义
+# 2 "pmap.c" 2 // 同步 GCC 行号信息，方便调试回溯
+# 1 "pmap.h" 1 // 同步 GCC 行号信息，方便调试回溯
+// 这里刻意插入空行，让视线稍微停一下
+// 用这一行占位，把相邻逻辑自然隔开
+// 空一行当作呼吸点，让段落不要挤在一起
+// 保留这个位置的留白，阅读时能迅速分段
+# 1 "queue.h" 1 // 同步 GCC 行号信息，方便调试回溯
+# 6 "pmap.h" 2 // 同步 GCC 行号信息，方便调试回溯
+// 空一行当作呼吸点，让段落不要挤在一起
+// 保留这个位置的留白，阅读时能迅速分段
+struct Page_list { struct Page *lh_first; }; // 结构体定义在这里收尾，方便配合前面的 typedef
+typedef struct { struct Page *le_next; struct Page **le_prev; } Page_LIST_entry_t; // 通过 typedef 起别名，让类型名更贴近语义
+// 空一行当作呼吸点，让段落不要挤在一起
+struct Page { // 开始定义结构体，下面会列出各个成员
+ Page_LIST_entry_t pp_link; // 使用 BSD 链表宏维护 page_free_list
+// 用这一行占位，把相邻逻辑自然隔开
+// 空一行当作呼吸点，让段落不要挤在一起
+// 保留这个位置的留白，阅读时能迅速分段
+// 这里刻意插入空行，让视线稍微停一下
+// 用这一行占位，把相邻逻辑自然隔开
+// 空一行当作呼吸点，让段落不要挤在一起
+ u_short pp_ref; // 引入 pp_ref 这一项，方便在逻辑里复用
+}; // 准备好 }，让下面的操作有落脚点
+// 用这一行占位，把相邻逻辑自然隔开
+void i386_detect_memory(void); // 为 i386_detect_memory 提供原型，便于跨文件引用
+// 保留这个位置的留白，阅读时能迅速分段
+void mips_vm_init(); // 提前声明 mips_vm_init，让编译器知晓其接口
+# 3 "pmap.c" 2 // 同步 GCC 行号信息，方便调试回溯
+# 1 "printf.h" 1 // 同步 GCC 行号信息，方便调试回溯
+# 15 "printf.h" // 同步 GCC 行号信息，方便调试回溯
+# 1 "/usr/eldk/usr/bin/../lib/gcc/mips-linux/4.0.0/include/stdarg.h" 1 3 4 // 同步 GCC 行号信息，方便调试回溯
+# 43 "/usr/eldk/usr/bin/../lib/gcc/mips-linux/4.0.0/include/stdarg.h" 3 4 // 同步 GCC 行号信息，方便调试回溯
+typedef __builtin_va_list __gnuc_va_list; // 通过 typedef 起别名，让类型名更贴近语义
+# 105 "/usr/eldk/usr/bin/../lib/gcc/mips-linux/4.0.0/include/stdarg.h" 3 4 // 同步 GCC 行号信息，方便调试回溯
+typedef __gnuc_va_list va_list; // 通过 typedef 起别名，让类型名更贴近语义
+# 16 "printf.h" 2 // 同步 GCC 行号信息，方便调试回溯
+void printf(char *fmt, ...); // 输出调试文本，帮助观察当前现场
+// 保留这个位置的留白，阅读时能迅速分段
+void _panic(const char *, int, const char *, ...) // 出现致命情况时直接 panic 终止执行
+ __attribute__((noreturn)); // 为 __attribute__ 提供原型，便于跨文件引用
+# 4 "pmap.c" 2 // 同步 GCC 行号信息，方便调试回溯
+# 1 "env.h" 1 // 同步 GCC 行号信息，方便调试回溯
+# 19 "env.h" // 同步 GCC 行号信息，方便调试回溯
+struct Env { // 开始定义结构体，下面会列出各个成员
+// 空一行当作呼吸点，让段落不要挤在一起
+ struct { struct Env *le_next; struct Env **le_prev; } env_link; // 引入 env_link 这一项，方便在逻辑里复用
+ u_int env_id; // 准备好 env_id，让下面的操作有落脚点
+ u_int env_parent_id; // 声明 env_parent_id 变量，用来记录相关状态
+ u_int env_status; // 引入 env_status 这一项，方便在逻辑里复用
+ Pde *env_pgdir; // 准备好 env_pgdir，让下面的操作有落脚点
+ u_int env_cr3; // 声明 env_cr3 变量，用来记录相关状态
+// 用这一行占位，把相邻逻辑自然隔开
+// 空一行当作呼吸点，让段落不要挤在一起
+ u_int env_ipc_value; // 声明 env_ipc_value 变量，用来记录相关状态
+ u_int env_ipc_from; // 引入 env_ipc_from 这一项，方便在逻辑里复用
+ u_int env_ipc_recving; // 准备好 env_ipc_recving，让下面的操作有落脚点
+ u_int env_ipc_dstva; // 声明 env_ipc_dstva 变量，用来记录相关状态
+ u_int env_ipc_perm; // 引入 env_ipc_perm 这一项，方便在逻辑里复用
+// 这里刻意插入空行，让视线稍微停一下
+// 用这一行占位，把相邻逻辑自然隔开
+ u_int env_pgfault_handler; // 引入 env_pgfault_handler 这一项，方便在逻辑里复用
+ u_int env_xstacktop; // 准备好 env_xstacktop，让下面的操作有落脚点
+// 这里刻意插入空行，让视线稍微停一下
+// 用这一行占位，把相邻逻辑自然隔开
+ u_int env_runs; // 准备好 env_runs，让下面的操作有落脚点
+}; // 声明 } 变量，用来记录相关状态
+# 5 "pmap.c" 2 // 同步 GCC 行号信息，方便调试回溯
+# 1 "error.h" 1 // 同步 GCC 行号信息，方便调试回溯
+# 6 "pmap.c" 2 // 同步 GCC 行号信息，方便调试回溯
+// 保留这个位置的留白，阅读时能迅速分段
+// 这里刻意插入空行，让视线稍微停一下
+// 用这一行占位，把相邻逻辑自然隔开
+u_long maxpa; // 引入 maxpa 这一项，方便在逻辑里复用
+u_long npage; // 准备好 npage，让下面的操作有落脚点
+u_long basemem; // 声明 basemem 变量，用来记录相关状态
+u_long extmem; // 引入 extmem 这一项，方便在逻辑里复用
+// 空一行当作呼吸点，让段落不要挤在一起
+Pde* boot_pgdir; // 声明 boot_pgdir 变量，用来记录相关状态
+// 这里刻意插入空行，让视线稍微停一下
+struct Page *pages; // 准备好 pages，让下面的操作有落脚点
+static u_long freemem; // 声明 freemem 变量，用来记录相关状态
+// 保留这个位置的留白，阅读时能迅速分段
+// 这里刻意插入空行，让视线稍微停一下
+void mips_detect_memory() // 定义 mips_detect_memory 这类函数，负责实现对应逻辑
+{ // 从这里进入新的作用域，避免与外层混淆
+// 保留这个位置的留白，阅读时能迅速分段
+ basemem = 64*1024*1024; // 把 basemem 更新成新的数值，保持状态正确
+ extmem = 0; // 在这里重写 extmem，为后续步骤打基础
+ maxpa = basemem; // 调整 maxpa 的内容，好让接下来的逻辑成立
+// 保留这个位置的留白，阅读时能迅速分段
+ npage = maxpa / 4096; // 在这里重写 npage，为后续步骤打基础
+// 用这一行占位，把相邻逻辑自然隔开
+ printf("Physical memory: %dK available, ", (int)(maxpa/1024)); // 借助 printf 打印运行时信息，方便核对
+ printf("base = %dK, extended = %dK\n", (int)(basemem/1024), (int)(extmem/1024)); // 输出调试文本，帮助观察当前现场
+} // 结束当前语句块，准备回到外面的环境
+// 用这一行占位，把相邻逻辑自然隔开
+static void * alloc(u_int n, u_int align, int clear) // 从这里开始 alloc 的函数体，准备处理工作
+{ // 开启大括号，让下面的语句形成一个单元
+ extern char end[]; // 声明外部符号 end，供链接阶段解析
+ void *v; // 引入 v 这一项，方便在逻辑里复用
+ u_long alloced_mem; // 准备好 alloced_mem，让下面的操作有落脚点
+// 保留这个位置的留白，阅读时能迅速分段
+ if (freemem == 0) // 让这个布尔判断筛掉不符合要求的情况
+  freemem = (u_long)end; // 调整 freemem 的内容，好让接下来的逻辑成立
+// 空一行当作呼吸点，让段落不要挤在一起
+ printf("pmap.c:\talloc from %x",freemem); // 输出调试文本，帮助观察当前现场
+// 这里刻意插入空行，让视线稍微停一下
+// 用这一行占位，把相邻逻辑自然隔开
+ freemem = (((((u_long)(freemem))+(align)-1)) & ~((align)-1)); // 在这里重写 freemem，为后续步骤打基础
+// 保留这个位置的留白，阅读时能迅速分段
+ alloced_mem = freemem; // 把 alloced_mem 更新成新的数值，保持状态正确
+// 用这一行占位，把相邻逻辑自然隔开
+ freemem = freemem + n; // 调整 freemem 的内容，好让接下来的逻辑成立
+// 保留这个位置的留白，阅读时能迅速分段
+// 这里刻意插入空行，让视线稍微停一下
+ printf(" to %x\n",freemem); // 打印一条提示，确认内存探测的结果
+// 空一行当作呼吸点，让段落不要挤在一起
+ if (({ u_long a = (u_long) (freemem); if (a < 0x80000000) _panic("pmap.c", 54, "PADDR called with invalid kva %08lx", a); a - 0x80000000; }) >= maxpa) // 让这个布尔判断筛掉不符合要求的情况
+ { // 开启大括号，让下面的语句形成一个单元
+  _panic("pmap.c", 56, "out of memorty\n"); // 出现致命情况时直接 panic 终止执行
+   return -4; // 在这里结束函数并把控制权交回去
+ } // 结束当前语句块，准备回到外面的环境
+// 这里刻意插入空行，让视线稍微停一下
+ if(clear) bzero(alloced_mem,n); // 让这个布尔判断筛掉不符合要求的情况
+// 空一行当作呼吸点，让段落不要挤在一起
+ return alloced_mem; // 直接把结果返回给调用者
+// 这里刻意插入空行，让视线稍微停一下
+} // 结束当前语句块，准备回到外面的环境
+// 空一行当作呼吸点，让段落不要挤在一起
+static Pde* boot_pgdir_walk(Pde *pgdir, u_long va, int create) // 从这里开始 boot_pgdir_walk 的函数体，准备处理工作
+{ // 开启大括号，让下面的语句形成一个单元
+// 用这一行占位，把相邻逻辑自然隔开
+ if(va>=0x80000000) _panic("pmap.c", 69, "mmu only working in low 2G space!\n"); // 让这个布尔判断筛掉不符合要求的情况
+// 保留这个位置的留白，阅读时能迅速分段
+ printf("pmap.c:\tboot_pgdir_walk()\tva=%x\tpte=%x\n",va,(int)(&pgdir[((((u_long)(va))>>12) & 0x0FFFFF)*2])); // 借助 printf 打印运行时信息，方便核对
+// 用这一行占位，把相邻逻辑自然隔开
+ return (Pde*)(&pgdir[((((u_long)(va))>>12) & 0x0FFFFF)*2]); // 返回语句到此为本次调用画上句号
+} // 大括号闭合，上一段逻辑到此结束
+// 这里刻意插入空行，让视线稍微停一下
+// 用这一行占位，把相邻逻辑自然隔开
+// 空一行当作呼吸点，让段落不要挤在一起
+// 保留这个位置的留白，阅读时能迅速分段
+// 这里刻意插入空行，让视线稍微停一下
+// 用这一行占位，把相邻逻辑自然隔开
+static void boot_map_segment(Pde *pgdir, u_long va, u_long size, u_long pa, int perm) // 从这里开始 boot_map_segment 的函数体，准备处理工作
+{ // 开启大括号，让下面的语句形成一个单元
+ int i; // 声明 i 变量，用来记录相关状态
+ int perm_p; // 引入 perm_p 这一项，方便在逻辑里复用
+ u_long va_temp; // 准备好 va_temp，让下面的操作有落脚点
+ Pde *pgtable_entry; // 声明 pgtable_entry 变量，用来记录相关状态
+// 这里刻意插入空行，让视线稍微停一下
+ if(size%4096!=0) _panic("pmap.c", 88, "size is not a multiple of BY2PG\n"); // 借助条件分支把不同场景分开处理
+// 空一行当作呼吸点，让段落不要挤在一起
+ if(va>=0x80000000) _panic("pmap.c", 90, "mmu only working in low 2G space!\n"); // 让这个布尔判断筛掉不符合要求的情况
+// 这里刻意插入空行，让视线稍微停一下
+ perm_p = perm|0x002; // 把 perm_p 更新成新的数值，保持状态正确
+// 空一行当作呼吸点，让段落不要挤在一起
+ for(i = 0;i < size;i+=4096) // 利用迭代让所有成员都能被覆盖到
+ { // 打开新的语句块，把相关逻辑包在一起
+  va_temp = va+i; // 在这里重写 va_temp，为后续步骤打基础
+  pgtable_entry = boot_pgdir_walk(pgdir, va_temp,1); // 调整 pgtable_entry 的内容，好让接下来的逻辑成立
+  *pgtable_entry = ((((u_long)(pa + i))>> 2) & 0x3FFFFFC0 )|perm_p; // 把 pgtable_entry 更新成新的数值，保持状态正确
+  printf("pmap.c:\tmap()\tva=%x\tpa=%x\n",va_temp,pa+i); // 输出调试文本，帮助观察当前现场
+ } // 结束当前语句块，准备回到外面的环境
+// 空一行当作呼吸点，让段落不要挤在一起
+ return; // 在这里结束函数并把控制权交回去
+} // 结束当前语句块，准备回到外面的环境
+// 用这一行占位，把相邻逻辑自然隔开
+// 空一行当作呼吸点，让段落不要挤在一起
+void mips_vm_init() // 宣告 mips_vm_init，供本文件或其他模块调用
+{ // 打开新的语句块，把相关逻辑包在一起
+ extern char KVPT[]; // 声明外部符号 KVPT，供链接阶段解析
+ extern struct Env *envs; // 声明外部符号 *envs，供链接阶段解析
+ Pde* pgdir; // 声明 pgdir 变量，用来记录相关状态
+ u_int n; // 引入 n 这一项，方便在逻辑里复用
+// 用这一行占位，把相邻逻辑自然隔开
+ pgdir = (u_long *) KVPT; // 把 pgdir 更新成新的数值，保持状态正确
+// 保留这个位置的留白，阅读时能迅速分段
+ boot_pgdir=pgdir; // 调整 boot_pgdir 的内容，好让接下来的逻辑成立
+ printf("pmap.c:\tinit()\tKVPT:%x\n",(int)(&pgdir)); // 借助 printf 打印运行时信息，方便核对
+// 空一行当作呼吸点，让段落不要挤在一起
+ _panic("pmap.c", 118, "-------------------init not finish-------------"); // 调用 panic，明确指出这一分支无法继续
+// 这里刻意插入空行，让视线稍微停一下
+ pages = (struct Page*)alloc(npage*sizeof(struct Page),4096,1); // 在这里重写 pages，为后续步骤打基础
+ n = (((((u_long)(npage * sizeof(struct Page)))+(4096)-1)) & ~((4096)-1)); // 调整 n 的内容，好让接下来的逻辑成立
+ boot_map_segment(pgdir,((0x80000000 - (4*1024*1024)) - (4*1024*1024)),n,({ u_long a = (u_long) (pages); if (a < 0x80000000) _panic("pmap.c", 122, "PADDR called with invalid kva %08lx", a); a - 0x80000000; }),0x018|0x004); // 出现致命情况时直接 panic 终止执行
+// 这里刻意插入空行，让视线稍微停一下
+// 用这一行占位，把相邻逻辑自然隔开
+ envs = (struct Env*)alloc((1<<10)*sizeof(struct Env),4096,1); // 把 envs 更新成新的数值，保持状态正确
+ boot_map_segment(pgdir,(((0x80000000 - (4*1024*1024)) - (4*1024*1024)) - (4*1024*1024)),(1<<10)*sizeof(struct Env),({ u_long a = (u_long) (envs); if (a < 0x80000000) _panic("pmap.c", 126, "PADDR called with invalid kva %08lx", a); a - 0x80000000; }),0x018|0x004); // 触发 panic，把问题锁定在现场
+// 这里刻意插入空行，让视线稍微停一下
+} // 大括号闭合，上一段逻辑到此结束

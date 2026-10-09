@@ -1,0 +1,227 @@
+#pragma once
+
+#include"hash.h"
+#include"utility.h"
+#include"concept.h"
+
+/* ************************************ /*
+
+    由于map不是本次的关键 故下面只放出源码  不再给出注释
+    但这里的map 对标C++中的 std::unordered_map 而不是 基于红黑树实现的 std::map
+
+/* ************************************ */
+
+template<typename T,typename U,typename Hash = hash<T>>
+        requires hashable<T>
+struct map
+{
+
+    template<typename stkmem>
+    auto friend write(const map<std::string,stkmem>& map,std::ofstream& ofs) -> void;
+
+    template<typename stkmem>
+    auto friend read(map<std::string,stkmem>& map,std::ifstream& ifs) -> void;
+
+private:
+
+    struct M_iterator
+    {
+        using value_type = std::pair<T,U>;
+
+        M_iterator() = default;
+
+        M_iterator(value_type* M_ptr,uint64 ind,uint64 p,std::vector<std::vector<value_type>>& v)
+                : ptr(M_ptr),index(ind),pos(p),vec(&v){}
+
+        auto friend operator==(const M_iterator& i1,const M_iterator& i2) -> bool
+        {
+            return i1.ptr == i2.ptr;
+        }
+
+        auto operator*() -> value_type&
+        {
+            return *ptr;
+        }
+
+        auto operator*() const -> const value_type&
+        {
+            return *ptr;
+        }
+
+        auto operator->() -> value_type*
+        {
+            return ptr;
+        }
+
+        auto operator->() const -> const value_type*
+        {
+            return ptr;
+        }
+
+        auto operator++() -> M_iterator&
+        {
+            if(pos == (*vec)[index].size() - 1)
+            {
+                while(index != (*vec).size() - 1 and (*vec)[++index].empty()){}
+                if(index == (*vec).size() - 1)
+                {
+                    ptr = nullptr;
+                }
+                else
+                {
+                    pos = 0;
+                    ptr = &(*vec)[index][pos];
+                }
+            }
+            else
+            {
+                ptr = &(*vec)[index][++pos];
+            }
+            return *this;
+        }
+
+        auto operator++(int) -> M_iterator
+        {
+            M_iterator ret{ *this };
+            ++(*this);
+            return ret;
+        }
+
+    private:
+
+        std::vector<std::vector<value_type>>* vec;
+
+        value_type* ptr{ nullptr };
+
+        uint64 index;
+        uint64 pos;
+
+    };
+
+public:
+
+    constexpr static uint64 default_size{ 32 };
+    constexpr static double loading{ 0.80 };
+
+    using value_type = std::pair<T,U>;
+    using iterator = M_iterator;
+
+    //using const_iterator = const M_iterator;    // out of the time, realize for the time being.
+
+    map() : sz(default_size)
+    {
+        vec.resize(default_size);
+    }
+
+    explicit map(uint64 cap) : sz(cap)
+    {
+        vec.resize(cap);
+    }
+
+    auto insert(const value_type& val) -> void
+    {
+        if(static_cast<double>(cnt) / vec.size() > loading)
+        {
+            rehash();
+        }
+        vec[conv(val.first)].push_back(val);
+        ++cnt;
+    }
+
+    auto insert(value_type&& val) -> void
+    {
+        if(static_cast<double>(cnt) / vec.size() > loading)
+        {
+            rehash();
+        }
+        vec[conv(val.first)].push_back(std::move(val));
+        ++cnt;
+    }
+
+
+    auto find(const T& key) -> iterator
+    {
+        uint64 it{ hash<T>{}(key) };
+        return find(it,key);
+    }
+
+    auto find(uint64 it,const T& key) -> iterator
+    {
+        it %= sz;
+        for(uint64 i{},cei{ vec[it].size() }; i != cei; ++i)
+        {
+            if(vec[it][i].first == key)
+            {
+                return iterator{ &vec[it][i],it,i,vec };
+            }
+        }
+        return end();
+    }
+
+    auto operator[](const T& key) -> U&
+    {
+        uint64 it{ conv(key) };
+        for(uint64 i{},cei{ vec[it].size() }; i != cei; ++i)
+        {
+            if(vec[it][i].first == key)
+            {
+                return vec[it][i].second;
+            }
+        }
+        vec[it].emplace_back(key,U{});
+        return vec[it].back().second;
+    }
+
+    auto operator[](T&& key) -> U&
+    {
+        uint64 it{ conv(key) };
+        for(uint64 i{},cei{ vec[it].size() }; i != cei; ++i)
+        {
+            if(vec[it][i].first == key)
+            {
+                return vec[it][i].second;
+            }
+        }
+        vec[it].emplace_back(std::move(key),U{});
+        return vec[it].back().second;
+    }
+
+    auto begin() -> iterator
+    {
+        uint64 index{ -1ull };
+        while(vec[++index].empty()){}
+        return iterator{ &vec[index].front(),index,0,vec };
+    }
+
+
+    auto end() -> iterator
+    {
+        return iterator{};
+    }
+
+
+private:
+
+    std::vector<std::vector<value_type>> vec;
+    uint64 cnt{};
+    uint64 sz{};
+
+    auto conv(const T& val) const -> uint64
+    {
+        return hash<T>{}(val) % sz;
+    }
+
+    auto rehash() -> void
+    {
+        std::vector<std::vector<value_type>> buf(sz = (vec.size() << 1));
+        for(auto&& v : vec)
+        {
+            for(auto&& val : v)
+            {
+                buf[conv(val.first)].push_back(std::move(val));
+            }
+        }
+        vec = std::move(buf);
+    }
+
+};

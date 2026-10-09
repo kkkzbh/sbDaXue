@@ -1,0 +1,25 @@
+# 输入引脚 KD1-KD16
+set_location_assignment PIN_37 -to in0
+set_location_assignment PIN_38 -to in1
+set_location_assignment PIN_41 -to in2
+set_location_assignment PIN_43 -to in3
+set_location_assignment PIN_44 -to in4
+set_location_assignment PIN_45 -to in5
+set_location_assignment PIN_49 -to in6
+set_location_assignment PIN_50 -to in7
+set_location_assignment PIN_51 -to in8
+set_location_assignment PIN_52 -to in9
+set_location_assignment PIN_55 -to in10
+set_location_assignment PIN_56 -to in11
+set_location_assignment PIN_57 -to in12
+set_location_assignment PIN_64 -to in13
+set_location_assignment PIN_65 -to in14
+set_location_assignment PIN_68 -to in15
+
+# 输出引脚 LD1-LD4, LD7-LD8
+set_location_assignment PIN_85 -to dout[0]
+set_location_assignment PIN_84 -to dout[1]
+set_location_assignment PIN_83 -to dout[2]
+set_location_assignment PIN_82 -to dout[3]
+set_location_assignment PIN_78 -to nul
+set_location_assignment PIN_73 -to inv

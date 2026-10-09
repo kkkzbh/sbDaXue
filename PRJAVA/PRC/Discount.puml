@@ -1,0 +1,42 @@
+@startuml
+actor User
+
+entity main {
+    main()
+}
+
+entity stack {
+    push(T val)
+    pop()
+    top()
+    empty()
+}
+
+entity buffer {
+    gc()
+    mb()
+    last()
+}
+
+entity utils {
+    hash(int c)
+    isnum(int c)
+    isdigit(int c)
+}
+
+main -> stack : push
+main -> stack : pop
+main -> stack : top
+main -> stack : empty
+main -> buffer : gc
+main -> buffer : mb
+main -> utils : hash
+main -> utils : isnum
+main -> utils : isdigit
+main -> buffer : last
+main -> utils : printf
+
+utils : isnum --> isdigit
+utils : isnum --> buffer : last
+
+@enduml

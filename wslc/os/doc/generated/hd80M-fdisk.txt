@@ -1,0 +1,15 @@
+Disk hd80M.img: 79.73 MiB, 83607552 bytes, 163296 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0xfa3671b1
+
+Device     Boot  Start    End Sectors  Size Id Type
+hd80M.img1        2048  34815   32768   16M 83 Linux
+hd80M.img4       34816 163295  128480 62.7M  5 Extended
+hd80M.img5       36864  55295   18432    9M 66 unknown
+hd80M.img6       57344  81919   24576   12M 66 unknown
+hd80M.img7       83968  98303   14336    7M 66 unknown
+hd80M.img8      100352 131071   30720   15M 66 unknown
+hd80M.img9      133120 163295   30176 14.7M 66 unknown

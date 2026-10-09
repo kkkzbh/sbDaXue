@@ -1,0 +1,6 @@
+{
+  "name": "kontrol",
+  "version-string": "0.1.0",
+  "description": "Fedora KDE native ASUS control panel",
+  "dependencies": []
+}

@@ -1,0 +1,55 @@
+cmake_minimum_required(VERSION 3.28.3)
+
+# 设置 CUDA 相关变量
+set(CMAKE_CUDA_COMPILER "/usr/local/cuda/bin/nvcc")
+set(CUDAToolkit_ROOT "/usr")
+set(CUDA_TOOLKIT_ROOT_DIR "/usr")
+set(CUDAToolkit_INCLUDE_DIR "/usr/include")
+set(CUDA_INCLUDE_DIRS "/usr/include")
+
+set(CMAKE_CUDA_COMPILER_FLAGS "${CMAKE_CUDA_COMPILER_FLAGS} -I/usr/include")
+
+project(luogu LANGUAGES CXX CUDA)
+
+set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CUDA_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CUDA_STANDARD_REQUIRED ON)
+
+add_executable(luogu
+        lib/temp/pre.cpp
+    main.cpp
+)
+
+target_precompile_headers(luogu PRIVATE <bits/stdc++.h>)
+
+set(CMAKE_PREFIX_PATH "/usr/local/libtorch")
+set(Torch_DIR "/usr/local/libtorch/share/cmake/Torch")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${TORCH_CXX_FLAGS}")
+
+find_package(CUDAToolkit REQUIRED)
+find_package(Python3 REQUIRED)
+find_package(Torch REQUIRED)
+
+set_target_properties(luogu PROPERTIES
+    CUDA_ARCHITECTURES native
+    CUDA_SEPARABLE_COMPILATION ON
+)
+
+target_include_directories(luogu PRIVATE
+    ${CUDA_INCLUDE_DIRS}
+)
+
+target_link_libraries(luogu PRIVATE "${TORCH_LIBRARIES}")
+
+if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+    add_compile_options(-stdlib=libstdc++)
+    include_directories(/user/include/c++/14)
+    add_compile_options(-fmodules)
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -stdlib=libstdc++")
+endif()
+
+if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    add_compile_options(-fmodules-ts)
+    target_link_libraries(luogu PRIVATE stdc++exp)
+endif()

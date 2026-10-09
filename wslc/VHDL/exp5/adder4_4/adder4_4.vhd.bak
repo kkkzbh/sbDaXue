@@ -1,0 +1,84 @@
+-- 硬件描述语言实验：四位全加器实验
+-- 实体名称：adder4_3
+-- 功能：通过结构描述方式，使用四个一位全加器级联实现四位加法器
+-- 描述方法：结构描述（Structure Description）
+-- 日期：2025年
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+-- 实体声明：定义四位加法器的外部接口
+entity adder4_3 is
+    Port (
+        A  : in  STD_LOGIC_VECTOR(3 downto 0);  -- 4位加数A
+        B  : in  STD_LOGIC_VECTOR(3 downto 0);  -- 4位加数B
+        Ci : in  STD_LOGIC;                      -- 低位进位输入
+        S  : out STD_LOGIC_VECTOR(3 downto 0);  -- 4位和输出
+        Co : out STD_LOGIC                       -- 高位进位输出
+    );
+end adder4_3;
+
+-- 构造体：使用结构描述方式实现四位加法器
+architecture Structural of adder4_3 is
+    
+    -- 元件声明：声明一位全加器元件
+    component full_adder
+        Port (
+            a  : in  STD_LOGIC;
+            b  : in  STD_LOGIC;
+            ci : in  STD_LOGIC;
+            s  : out STD_LOGIC;
+            co : out STD_LOGIC
+        );
+    end component;
+    
+    -- 内部信号声明：用于连接各级全加器的进位信号
+    signal C0, C1, C2 : STD_LOGIC;
+    
+begin
+    
+    -- 第0位全加器 U0：最低位
+    -- 输入：A(0), B(0), Ci
+    -- 输出：S(0), C0（进位到第1位）
+    U0: full_adder port map (
+        a  => A(0),
+        b  => B(0),
+        ci => Ci,
+        s  => S(0),
+        co => C0
+    );
+    
+    -- 第1位全加器 U1
+    -- 输入：A(1), B(1), C0（来自第0位的进位）
+    -- 输出：S(1), C1（进位到第2位）
+    U1: full_adder port map (
+        a  => A(1),
+        b  => B(1),
+        ci => C0,
+        s  => S(1),
+        co => C1
+    );
+    
+    -- 第2位全加器 U2
+    -- 输入：A(2), B(2), C1（来自第1位的进位）
+    -- 输出：S(2), C2（进位到第3位）
+    U2: full_adder port map (
+        a  => A(2),
+        b  => B(2),
+        ci => C1,
+        s  => S(2),
+        co => C2
+    );
+    
+    -- 第3位全加器 U3：最高位
+    -- 输入：A(3), B(3), C2（来自第2位的进位）
+    -- 输出：S(3), Co（最终进位输出）
+    U3: full_adder port map (
+        a  => A(3),
+        b  => B(3),
+        ci => C2,
+        s  => S(3),
+        co => Co
+    );
+    
+end Structural;

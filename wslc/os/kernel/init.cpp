@@ -1,0 +1,56 @@
+
+#include <stdio.h>
+#include <interrupt.h>
+#include <time.h>
+#include <assert.h>
+#include <keyboard.h>
+
+import alloc;
+import tss;
+import syscall.init;
+import ide.init;
+import filesystem.init;
+import console;
+import thread.init;
+
+auto call_global_constructors() -> void
+{
+    typedef void (*constrctror)();
+    extern constrctror __init_array_start[];
+    extern constrctror __init_array_end[];
+    for(auto p = __init_array_start; p != __init_array_end; ++p) {
+        (*p)();
+    }
+
+}
+
+auto clear_bss() -> void
+{
+    extern char __bss_start[];
+    extern char _end[];
+    for(auto p = __bss_start; p != _end; ++p) {
+        *p = 0;
+    }
+}
+
+auto init_all() -> void
+{
+    puts("init_all\n");
+    clear_bss();                // 清零 BSS 段，必须在全局构造函数之前！
+    call_global_constructors(); // 调用C++全局构造函数
+
+    idt_init();         // 初始化 中断
+    mem_init();         // 初始化 内存管理系统
+    thread_init();      // 初始化 线程环境
+    timer_init();       // 初始化 PIT
+    keyboard_init();    // 初始化 键盘中断
+    tss_init();         // 初始化 tss
+    syscall_init();     // 初始化 系统调用
+
+    // 初始化硬盘要开中断
+    intr_enable();
+    ide_init();         // 初始化 硬盘
+
+    filesystem_init();  // 初始化 文件系统
+
+}

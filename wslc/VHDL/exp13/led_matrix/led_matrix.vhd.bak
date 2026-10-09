@@ -1,0 +1,158 @@
+--------------------------------------------------------------------------------
+-- LED阵列汉字显示实验 (exp12)
+-- 功能：16×16 LED阵列滚动显示 "高康嘉23计科1班"
+-- 班级：23计科1班  姓名：高康嘉
+-- 低电平有效（低亮），滚动切换显示
+--------------------------------------------------------------------------------
+
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+USE ieee.std_logic_unsigned.ALL;
+USE ieee.numeric_std.ALL;
+
+ENTITY led_matrix IS
+    PORT (
+        clk   : IN  STD_LOGIC;                      -- 24MHz时钟输入
+        reset : IN  STD_LOGIC;                      -- 复位信号（高电平有效）
+        row   : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);  -- 行选信号（低电平有效）
+        col   : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)   -- 列选信号（低电平有效，低亮）
+    );
+END led_matrix;
+
+ARCHITECTURE behavior OF led_matrix IS
+    -- 汉字数量：高康嘉23计科1班 = 9个字符
+    CONSTANT CHAR_COUNT : INTEGER := 9;
+    
+    -- 汉字点阵ROM类型定义：每个汉字16行，每行16位
+    TYPE char_row_type IS ARRAY (0 TO 15) OF STD_LOGIC_VECTOR(15 DOWNTO 0);
+    TYPE char_rom_type IS ARRAY (0 TO CHAR_COUNT-1) OF char_row_type;
+    
+    -- 汉字点阵数据 (1表示点亮，输出时取反变为低电平有效)
+    -- 使用标准16×16点阵字库数据
+    CONSTANT char_rom : char_rom_type := (
+        -- 字符0: "高" (16x16点阵)
+        (
+            X"0100", X"0100", X"7FFC", X"0100", X"1FF0", X"0100", X"7FFC", X"4104",
+            X"5FF4", X"5004", X"5FF4", X"5004", X"5FF4", X"4004", X"400C", X"4004"
+        ),
+        -- 字符1: "康" (16x16点阵)
+        (
+            X"0080", X"7FFE", X"4002", X"1FF0", X"1010", X"1FF0", X"1010", X"1FF0",
+            X"0100", X"7FFE", X"0380", X"0540", X"0930", X"110E", X"6104", X"0100"
+        ),
+        -- 字符2: "嘉" (16x16点阵)
+        (
+            X"1FF0", X"1010", X"1FF0", X"1010", X"1FF0", X"0000", X"7FFE", X"0440",
+            X"1FF0", X"1010", X"1FF0", X"0100", X"7FFE", X"0100", X"0500", X"0200"
+        ),
+        -- 字符3: "2" (16x16点阵)
+        (
+            X"0000", X"0000", X"1F80", X"30C0", X"30C0", X"0060", X"00C0", X"0180",
+            X"0300", X"0600", X"0C00", X"1800", X"3FC0", X"3FC0", X"0000", X"0000"
+        ),
+        -- 字符4: "3" (16x16点阵)
+        (
+            X"0000", X"0000", X"1F80", X"30C0", X"30C0", X"00C0", X"0780", X"0780",
+            X"00C0", X"0060", X"30C0", X"30C0", X"1F80", X"0F00", X"0000", X"0000"
+        ),
+        -- 字符5: "计" (16x16点阵)
+        (
+            X"0000", X"2020", X"1120", X"1120", X"0020", X"0020", X"FFFE", X"0020",
+            X"0020", X"0420", X"0420", X"0820", X"0820", X"1020", X"5020", X"2020"
+        ),
+        -- 字符6: "科" (16x16点阵)
+        (
+            X"1000", X"1000", X"1004", X"FDFE", X"1100", X"1188", X"1248", X"1448",
+            X"1808", X"1008", X"1008", X"2808", X"2408", X"4408", X"8008", X"0038"
+        ),
+        -- 字符7: "1" (16x16点阵)
+        (
+            X"0000", X"0000", X"0C00", X"1C00", X"3C00", X"0C00", X"0C00", X"0C00",
+            X"0C00", X"0C00", X"0C00", X"0C00", X"3F00", X"3F00", X"0000", X"0000"
+        ),
+        -- 字符8: "班" (16x16点阵)
+        (
+            X"0000", X"1F3E", X"1122", X"1122", X"1F22", X"1122", X"1122", X"1F3E",
+            X"0100", X"2108", X"2108", X"2108", X"3F08", X"2108", X"010E", X"0100"
+        )
+    );
+    
+    -- 分频计数器
+    SIGNAL scan_count   : STD_LOGIC_VECTOR(11 DOWNTO 0) := (OTHERS => '0');  -- 行扫描分频
+    SIGNAL scroll_count : STD_LOGIC_VECTOR(23 DOWNTO 0) := (OTHERS => '0');  -- 滚动分频
+    
+    -- 行扫描索引 (0-15)
+    SIGNAL row_index : INTEGER RANGE 0 TO 15 := 0;
+    
+    -- 当前显示的字符索引 (0 to CHAR_COUNT-1)
+    SIGNAL char_index : INTEGER RANGE 0 TO CHAR_COUNT-1 := 0;
+    
+    -- 行选信号寄存器
+    SIGNAL row_sel : STD_LOGIC_VECTOR(15 DOWNTO 0);
+    
+    -- 列数据寄存器
+    SIGNAL col_data : STD_LOGIC_VECTOR(15 DOWNTO 0);
+
+BEGIN
+    -- 主时序进程
+    PROCESS(clk, reset)
+    BEGIN
+        IF reset = '1' THEN
+            -- 复位所有计数器
+            scan_count <= (OTHERS => '0');
+            scroll_count <= (OTHERS => '0');
+            row_index <= 0;
+            char_index <= 0;
+        ELSIF rising_edge(clk) THEN
+            -- 行扫描分频计数器
+            -- 24MHz / 2400 = 10kHz扫描频率，16行 = 625Hz刷新率
+            IF scan_count = X"95F" THEN  -- 2399
+                scan_count <= (OTHERS => '0');
+                -- 行索引递增
+                IF row_index = 15 THEN
+                    row_index <= 0;
+                ELSE
+                    row_index <= row_index + 1;
+                END IF;
+            ELSE
+                scan_count <= scan_count + 1;
+            END IF;
+            
+            -- 滚动分频计数器
+            -- 24MHz / 24000000 = 1Hz，每秒切换一个字符
+            IF scroll_count = X"16E35F" THEN  -- 1499999 (约16Hz用于测试，实际使用可改大)
+                scroll_count <= (OTHERS => '0');
+                -- 字符索引递增
+                IF char_index = CHAR_COUNT - 1 THEN
+                    char_index <= 0;
+                ELSE
+                    char_index <= char_index + 1;
+                END IF;
+            ELSE
+                scroll_count <= scroll_count + 1;
+            END IF;
+        END IF;
+    END PROCESS;
+    
+    -- 行选信号生成（独热码，低电平有效）
+    PROCESS(row_index)
+    BEGIN
+        row_sel <= (OTHERS => '1');  -- 默认全高（不选中）
+        row_sel(row_index) <= '0';   -- 选中当前行（低电平有效）
+    END PROCESS;
+    
+    -- 列数据读取（从ROM读取当前字符的当前行数据）
+    PROCESS(char_index, row_index)
+    BEGIN
+        col_data <= char_rom(char_index)(row_index);
+    END PROCESS;
+    
+    -- 输出赋值
+    -- 行选：低电平有效
+    row <= row_sel;
+    
+    -- 列选：低电平有效，低亮
+    -- 点阵数据中1表示点亮，取反后0表示点亮（低电平有效）
+    col <= NOT col_data;
+
+END behavior;

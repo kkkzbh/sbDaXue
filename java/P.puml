@@ -1,0 +1,489 @@
+@startuml
+
+skinparam class {
+    Padding 20
+    Margin 10
+}
+
+scale 1000000 width
+
+class menu {
+    - static std::mutex mx
+    - static std::condition_variable cv
+    - static bool isrun
+    - static bool end_pm
+    - std::thread pm
+    + menu()
+    + ~menu()
+    + static void pmenu()
+    + static void pmenu_buf(std::ostringstream& os)
+    + void oper()
+    + static void pcompress(const std::function<bool(const std::string_view file, const std::string_view output)>& fun)
+}
+
+namespace progress {
+    class progress {
+        - static std::string compress_bar
+        - static std::string decpress_bar
+        - static std::mutex mux
+        - static std::condition_variable cdv
+        - static std::thread bar
+        - static bool run
+        - static bool end
+        + static void pcompress()
+        + static void pdecpress()
+    }
+}
+
+class print {
+    + print(const std::string_view fmt_str, Args&&... args)
+    + print(Value&& i)
+    + println(const std::string_view fmt_str, Args&&... args)
+}
+
+namespace sentence {
+    class sentences {
+        + static constexpr const char* sentences[]
+    }
+}
+
+
+menu -- progress : uses
+menu -- print : uses
+print --> std::format : depends
+print --> std::vformat : depends
+
+namespace std {
+    class vector {
+        - std::size_t size
+        + std::size_t capacity
+    }
+}
+
+class priority_queue {
+    - std::vector<T> a
+    + priority_queue()
+    + priority_queue(il: std::initializer_list<T>)
+    + priority_queue(st: M_iterator, ed: M_iterator)
+    + priority_queue(st: M_iterator, n: int)
+    + priority_queue(vec: std::vector<T>&&)
+    + push(const val: T&) -> void
+    + push(val: T&&) -> void
+    + emplace(Args&&...) -> void
+    + top() -> T&
+    + pop() -> void
+    + size() const noexcept -> std::size_t
+    + empty() const noexcept -> bool
+    - adj_down(std::size_t it, T&& val) -> void
+    - make() -> void
+}
+
+priority_queue --> std::vector : uses
+
+namespace huftree {
+    class huftree {
+        +huftree(const std::array<uint64, ch_size>& feq)
+        +operator=(huftree&& huf) noexcept -> huftree&
+        +get_iterator() -> iterator
+        +get_sum() const -> uint64
+    }
+}
+
+namespace hufcode {
+    class hufcode {
+        +hufcode(const huftree& tree)
+        +hufcode(std::ifstream& ifs)
+        +operator[](unsigned char c) -> std::string&
+        +operator[](const std::string& s) -> char
+        +operator[](std::string&& s) -> char
+    }
+}
+
+class map {
+    +vec
+    +cnt
+    +sz
+}
+
+namespace write_read {
+    class WriteRead {
+        +write(const map<std::string, stkmem>& map, std::ofstream& ofs)
+        +read(map<std::string, stkmem>& map, std::ifstream& ifs)
+        +write(const Tree& tree, std::ofstream& ofs)
+        +read(Tree& tree, std::ifstream& ifs)
+    }
+}
+
+huftree::huftree -> priority_queue::priority_queue : use
+hufcode::hufcode -> huftree::huftree : use
+hufcode::create -> huftree::hufnode : use
+hufcode::create -> hufcode::create : call
+
+huftree::huftree -> huftree::operator= : call
+huftree::get_iterator -> huftree::iterator : return
+hufcode::create -> map::insert : call
+hufcode::hufcode -> hufcode::create : call
+hufcode::hufcode -> write_read::WriteRead::read : call
+
+write_read::WriteRead::write -> map : access
+write_read::WriteRead::read -> map : access
+write_read::WriteRead::write -> huftree::huftree : access
+write_read::WriteRead::read -> huftree::huftree : access
+
+
+class string_buffer {
+    push(data: const char*)
+    to_int() : int
+    move(size: int)
+}
+
+class compress {
+    compress(file: std::string_view, output: std::string_view) : bool
+}
+
+class depress {
+    depress(file: std::string_view, output: std::string_view) : bool
+}
+
+progress -- compress : bar
+progress -- compress : end
+progress -- compress : pcompress
+
+progress -- depress : bar
+progress -- depress : end
+progress -- depress : pdecpress
+
+compress -- huftree : word_frequency
+compress -- huftree : huftree
+compress -- hufcode : hufcode
+compress -- progress : compress_bar
+compress -- string_buffer : buf
+
+depress -- huftree : huftree
+depress -- hufcode : hufcode
+depress -- progress : decpress_bar
+depress -- string_buffer : buf
+
+class hash<T> {
+    operator()(str: T) : uint64
+}
+
+hash -- compress : operator(hash)
+hash -- depress : operator(hash)
+
+package "map" {
+    class map<T, U, Hash>
+    interface write
+    interface read
+    class M_iterator {
+        - std::vector<std::vector<std::pair<T, U>>>* vec
+        - std::pair<T, U>* ptr
+        - uint64 index
+        - uint64 pos
+    }
+
+    map ..> write : uses
+    map ..> read : uses
+    map --> M_iterator : has
+
+    class M_iterator {
+        value_type: std::pair<T, U>
+        operator==(i1: M_iterator, i2: M_iterator): bool
+        operator*(): value_type&
+        operator->(): value_type*
+        operator++(): M_iterator&
+        operator++(int): M_iterator
+    }
+
+    map --> utility : uses
+    map --> hash : uses
+}
+
+package "utility" {
+    class utility
+}
+
+package "hash" {
+    class hash<T>
+    class hash<std::string>
+    class hash<tuple>
+}
+
+map --> utility
+map --> hash
+
+package "string_buffer" {
+    class string_buffer {
+        - char s[buffer_size]
+        - uint64 l
+        - uint64 r
+        - uint64 sz
+    }
+
+    class M_iterator {
+        - char* s
+        - char* ptr
+        + operator<=>(ptr1: M_iterator, ptr2: M_iterator): std::strong_ordering
+        + operator==(ptr1: M_iterator, ptr2: M_iterator): bool
+        + operator->(): char*
+        + operator*(): char
+        + operator++(): M_iterator&
+        + operator++(int): M_iterator
+    }
+
+    string_buffer --> M_iterator : has
+
+    class string_buffer {
+        + operator+=(str: const char*): string_buffer&
+        + operator+=(c: const char): string_buffer&
+        + operator bool(): bool
+        + push(str: const char*): void
+        + push(c: const char): void
+        + ignore(): void
+        + pop(): void
+        + move(dis: uint64): void
+        + get(): char
+        + make(): std::string
+        + to_int(): int
+        + size(): uint64
+        + empty(): bool
+        + begin(): iterator
+        + end(): iterator
+    }
+
+    class M_iterator {
+        value_type: std::pair<T, U>
+        operator==(i1: M_iterator, i2: M_iterator): bool
+        operator*(): value_type&
+        operator->(): value_type*
+        operator++(): M_iterator&
+        operator++(int): M_iterator
+    }
+}
+
+package "utility.h" {
+
+
+    class int64
+    class uint64
+    class int8
+    class uint8
+    class uint
+    class int16
+    class uint16
+    class wchar
+    class uwchar
+    class tuple {
+        uint16 first
+        uint16 second
+        char third
+    }
+
+    class up {
+        + up(i: std::size_t) : std::size_t
+    }
+
+    class left {
+        + left(i: std::size_t) : std::size_t
+    }
+
+    class right {
+        + right(i: std::size_t) : std::size_t
+    }
+
+    class to_int {
+        + to_int(i: uint64, data: std::string) : int
+        + to_int(i: uint64, data: const char*) : int
+    }
+
+
+    int64 -- long_long
+    uint64 -- unsigned_long_long
+    int8 -- char
+    uint8 -- unsigned_char
+    uint -- unsigned_int
+    int16 -- short
+    uint16 -- unsigned_short
+    wchar -- short
+    uwchar -- unsigned_short
+
+    tuple -- uint16 : first
+    tuple -- uint16 : second
+    tuple -- char : third
+
+    up -- std::size_t
+    left -- std::size_t
+    right -- std::size_t
+
+    to_int : i: uint64
+    to_int : data: std::string
+
+    to_int : i: uint64
+    to_int : data: const_char*
+
+
+}
+
+package "time.h" {
+
+
+    class TIME {
+        - char[4] tm_sec
+        - char[4] tm_min
+        - char[4] tm_hour
+        - char[4] tm_mday
+        - char[4] tm_mon
+        - char[8] tm_year
+        - char[4] tm_wday
+        - char[8] tm_yday
+        - char[4] tm_isdst
+        - char[12] hms
+        - char[16] ymd
+        - char[28] ymd_hms
+        - char[32] ymd_w_hms
+    }
+
+
+    class M_t {
+        - TIME* tim
+        + ~M_t()
+    }
+
+    class time {
+        + refresh_time(TIM: TIME*) : TIME*
+        + referesh() : TIME*
+    }
+
+
+    TIME -- char : tm_sec
+    TIME -- char : tm_min
+    TIME -- char : tm_hour
+    TIME -- char : tm_mday
+    TIME -- char : tm_mon
+    TIME -- char : tm_year
+    TIME -- char : tm_wday
+    TIME -- char : tm_yday
+    TIME -- char : tm_isdst
+    TIME -- char : hms
+    TIME -- char : ymd
+    TIME -- char : ymd_hms
+    TIME -- char : ymd_w_hms
+
+    M_t -- TIME : tim
+
+    time -- TIME : refresh_time()
+    time -- TIME : referesh()
+
+}
+
+package "file_processing.h" {
+
+
+    class word_frequency {
+        + word_frequency(path: std::string_view) : std::array<uint64, ch_size>
+    }
+
+    class tuple_frequency {
+        + tuple_frequency(path: std::string_view) : map<tuple, uint>
+    }
+
+
+    word_frequency --> std::array<uint64, ch_size>
+    tuple_frequency : map<tuple, uint>
+
+}
+
+package "clock.h" {
+
+    class now {
+        + now() : decltype(std::chrono::high_resolution_clock::now())
+    }
+
+    class ptime {
+        + ptime(start: decltype(std::chrono::high_resolution_clock::now()), end: decltype(std::chrono::high_resolution_clock::now())) : void
+    }
+
+
+    class NOW {
+        + NOW : std::chrono::high_resolution_clock::time_point
+    }
+
+    class START {
+        + START : std::chrono::high_resolution_clock::time_point
+    }
+
+    class END {
+        + END : std::chrono::high_resolution_clock::time_point
+    }
+
+    class PTIME {
+        + PTIME : void
+    }
+}
+
+ptime --> ptime:start
+ptime --> ptime:end
+NOW --> std::chrono::high_resolution_clock::time_point
+START --> std::chrono::high_resolution_clock::time_point
+END --> std::chrono::high_resolution_clock::time_point
+PTIME --> void
+pcompress --> PTIME
+
+
+package "Concepts" {
+    class comparable {
+        + requires(a: T, b: T) { a < b } -> std::convertible_to<bool>
+    }
+
+    class hashable {
+        + requires(a: T) { hash<T>{}(a) } -> std::convertible_to<uint64>
+    }
+
+    class contain_a {
+        + requires(tree: T) { tree.a }
+    }
+}
+
+Utility ..> Time: uses
+Clock ..> Time: uses
+Compression ..> Clock: uses
+Compression ..> Concepts: uses
+
+package "Compression Algorithms"  {
+    class rle {
+        + rle_compress(file: std::string_view, output: std::string_view = "../out.nt"): bool
+        + rle_depress(file: std::string_view, output: std::string_view = "../de.znt"): bool
+    }
+    class "lz77" {
+        + lz_compress(const std::string_view file, const std::string_view output = "../out.nt") : bool
+        + lz_depress(const std::string_view file, const std::string_view output = "../de.znt") : bool
+    }
+    class "deflate"{
+        + deflate_compress(file" const std::string_view file,const std::string_view output = "../out.nt") -> bool
+        + deflate_depress(file" const std::string_view file,const std::string_view output = "../out.nt") -> bool
+    }
+}
+
+Utility --> "Compression Algorithms": uses
+FileHandling --> "Compression Algorithms": uses
+"Menu Functions" --> "Compression Algorithms": calls
+pcompress --> lz_compress
+pdecpress --> lz_depress
+
+class "deflate_tree" {
+    - a : std::vector<deflate_node>
+}
+
+class "deflate_code" {
+    + operator[](const tuple tuple) : std::string&
+    + operator[](const std::string& s) : tuple
+    + operator[](std::string&& s) : tuple
+}
+
+pcompress --> deflate_compress
+deflate_compress --> "deflate_tree"
+deflate_compress --> "deflate_code"
+deflate_depress --> "deflate_tree"
+pdecpress --> deflate_depress
+
+@enduml

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36429.23 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tourial_test", "tourial_test.vcxproj", "{B77FC8C8-FA3A-43E9-B67D-22EE5F572991}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B77FC8C8-FA3A-43E9-B67D-22EE5F572991}.Debug|x64.ActiveCfg = Debug|x64
+		{B77FC8C8-FA3A-43E9-B67D-22EE5F572991}.Debug|x64.Build.0 = Debug|x64
+		{B77FC8C8-FA3A-43E9-B67D-22EE5F572991}.Debug|x86.ActiveCfg = Debug|Win32
+		{B77FC8C8-FA3A-43E9-B67D-22EE5F572991}.Debug|x86.Build.0 = Debug|Win32
+		{B77FC8C8-FA3A-43E9-B67D-22EE5F572991}.Release|x64.ActiveCfg = Release|x64
+		{B77FC8C8-FA3A-43E9-B67D-22EE5F572991}.Release|x64.Build.0 = Release|x64
+		{B77FC8C8-FA3A-43E9-B67D-22EE5F572991}.Release|x86.ActiveCfg = Release|Win32
+		{B77FC8C8-FA3A-43E9-B67D-22EE5F572991}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F2DB0166-8EC1-4FB8-B679-55B267D54290}
+	EndGlobalSection
+EndGlobal

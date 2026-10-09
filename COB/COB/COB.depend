@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1712637009 source:c:\sbdaxue\cob\cob\main.cpp
+	<iostream>
+	<array>
+	<vector>
+	<bitset>
+

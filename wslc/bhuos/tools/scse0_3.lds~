@@ -1,0 +1,47 @@
+OUTPUT_ARCH(mips)              /* 目标架构为 MIPS，决定链接器的目标平台 */
+ENTRY(_start)                  /* 指定程序入口符号 _start */
+
+SECTIONS                       /* 开始定义输出节布局 */
+{
+  . = 0x80000000;              /* 位置计数器设为 0x80000000（低地址异常入口） */
+   .interrupt1 : {             /* 输出节 .interrupt1：放置一类 TLB 相关入口 */
+  *(.text.rftlb1)              /* 收集输入节 .text.rftlb1 的内容 */
+    }
+
+  . = 0x80000080;              /* 设置到 0x80000080（另一异常入口地址） */
+   .interrupt2 : {             /* 输出节 .interrupt2：放置另一类 TLB 相关入口 */
+  *(.text.rftlb2)              /* 收集输入节 .text.rftlb2 的内容 */
+    }
+
+  . = 0x80010000;              /* 文本与只读数据起始地址 */
+  .text : {                    /* 常规代码段 .text */
+        *(.text)               /* 汇聚所有输入文件的 .text 节 */
+	*(.rodata)               /* 只读数据 .rodata */
+	*(.rodata1)              /* 只读数据的变体节 .rodata1 */
+	*(.rodata.str1.4)        /* 4 字节对齐的只读字符串表 */
+        }
+
+  .reginfo : { *(.reginfo) }   /* MIPS 专用 .reginfo 节，记录寄存器与 ABI 信息 */
+
+  .date : {                    /* 名为 .date 的输出节：此处收集 .data 输入节 */
+	*(.data)                   /* 已初始化数据放入此处（原样保留节名，不改语义） */
+	}
+
+  .bss  : {                    /* 未初始化数据段 .bss 与动态 bss */
+	*(.dynbss)                /* 动态分配的 bss 区域 */
+	*(.bss)                   /* 常规 bss 区域 */
+  }
+   
+  . = 0x803F8000;              /* 设置位置计数器：内核栈区域起点 */
+  .kernelstk : {               /* 输出节 .kernelstk：放置静态分配的内核栈 */
+	*(.data.stk)               /* 收集输入节 .data.stk */
+	}
+
+   . = 0x80400000;             /* 设置位置计数器：高端内核虚拟页表区 */
+   KVPT = . ;                  /* 定义符号 KVPT 指向当前地址（内核 VPT 起始） */
+.kernelvpt : {                 /* 输出节 .kernelvpt：内核虚拟页表 */
+  *(.data.vpt)                 /* 收集输入节 .data.vpt（虚拟页表数据） */
+    }
+
+   end = . ;                   /* 定义 end 符号为镜像末尾 */
+}

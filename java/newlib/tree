@@ -1,0 +1,10 @@
+#pragma once
+
+#include"basic_binary_tree.h"
+#include"thr_binary_tree.h"
+#include"thrit.h"
+#include"algotree.h"
+#include"xds.h"
+#include"bstree.h"
+#include"avltree.h"
+#include"avl.h"

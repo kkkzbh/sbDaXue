@@ -1,0 +1,22 @@
+
+#include "regdef.h"     // 通用寄存器别名
+#include "cp0regdef.h"  // CP0 寄存器别名
+
+#define LEAF(symbol)                     \
+                .globl  symbol;          /* 导出符号 */               \
+                .align  2;               /* 4 字节对齐 */              \
+                .type   symbol,@function;/* 声明为函数 */              \
+                .ent    symbol,0;        /* 函数起始 */                \
+symbol:         .frame  sp,0,ra          /* 建立栈帧（大小 0，返回寄存器 ra） */
+
+#define NESTED(symbol, framesize, rpc)   \
+                .globl  symbol;          /* 导出符号 */               \
+                .align  2;               /* 4 字节对齐 */              \
+                .type   symbol,@function;/* 声明为函数 */              \
+                .ent    symbol,0;        /* 函数起始 */                \
+symbol:         .frame  sp, framesize, rpc /* 建立栈帧（指定大小与返回点） */
+
+#define END(function)                    \
+                .end    function;        /* 函数结束 */                \
+                .size   function,.-function /* 计算函数大小 */
+

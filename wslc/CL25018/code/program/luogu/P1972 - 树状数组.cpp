@@ -1,0 +1,358 @@
+
+
+#include<iostream>
+#include<vector>
+#include<algorithm>
+#include<iterator>
+#include<cmath>
+#include<numeric>
+#include<cstring>
+#include<functional>
+#include<string>
+#include<bitset>
+#include<deque>
+#include<queue>
+#include<cassert>
+#include<stack>
+#include<optional>
+#include<array>
+#include<unordered_set>
+#include<unordered_map>
+#include<map>
+#include<set>
+
+#if __cplusplus >= 202002L
+#include<format>
+#include<ranges>
+#include<bit>
+#include<span>
+#endif
+
+#define fun auto
+#define main fun main
+#define let auto
+
+#if __cplusplus >= 202002L
+
+#define list std::ranges::random_access_range auto
+#define range std::ranges::range auto
+
+#else
+
+#define list auto
+
+#endif
+
+using namespace std::ranges::views;
+
+template<typename T>
+concept STD_array = requires(T array)
+{
+    typename T::value_type;
+    { array[0] } -> std::same_as<std::add_lvalue_reference<typename T::value_type>>;
+};
+
+template<typename T>
+concept Array = STD_array<T> or std::is_array_v<T>;
+
+template<typename... Args>
+fun print(const std::format_string<Args...> fmts,Args&&... args)
+{
+    std::cout << std::vformat(fmts.get(), std::make_format_args(args...));
+}
+
+template<typename T>
+fun print(T&& arg)
+{
+    print("{}",arg);
+}
+
+fun println()
+{
+    print('\n');
+}
+
+template<typename... Args>
+fun println(const std::format_string<Args...> fmts,Args&&... args)
+{
+    print(fmts,std::forward<Args>(args)...);
+    println();
+}
+
+template<typename T>
+fun println(T&& arg)
+{
+    println("{}",arg);
+}
+
+template<Array T>
+fun scan(T& array,int n)
+{
+    if constexpr(std::is_array_v<T>)
+    {
+        std::copy_n(std::istream_iterator<std::remove_all_extents_t<T>>{ std::cin },n, std::ranges::begin(array) + 1);
+    }
+    else
+    {
+        std::copy_n(std::istream_iterator<typename T::value_type>{ std::cin },n,array.begin() + 1);
+    }
+}
+
+template<Array T,std::integral... Args>
+fun scan(T& array,int n,Args... args)
+{
+    for(int i : iota(1,n + 1))
+    {
+        scan(array[i],args...);
+    }
+}
+
+template<typename... Args>
+fun scan(Args&... args)
+{
+    (std::cin >> ... >> args);
+}
+
+namespace fasti
+{
+    struct istream
+    {
+        template<typename T>
+        struct iterator
+        {
+            using difference_type = std::ptrdiff_t;
+            using value_type = T;
+            fun friend operator==(iterator x,iterator y) { return !normal; }
+            fun operator++() -> iterator&
+            {
+                if(lazy) {
+                    cin >> val;
+                } else {
+                    lazy = true;
+                }
+                return *this;
+            }
+            fun operator++(int) -> iterator
+            {
+                iterator ret{ *this };
+                ++*this;
+                return ret;
+            }
+            fun operator*() const noexcept
+            {
+                if(lazy) {
+                    cin >> val;
+                    lazy = false;
+                }
+                return val;
+            }
+            fun operator->() const noexcept
+            {
+                if(lazy) {
+                    cin >> val;
+                    lazy = false;
+                }
+                return std::addressof(val);
+            }
+            mutable T val{ read<T>() };
+            mutable bool lazy{};
+        };
+
+        constexpr static int n{ 640000 };
+        static inline char buffer[n], *l{ buffer }, *r{ l };
+        static istream cin;
+        static inline bool normal{ true };
+
+        operator bool()
+        {
+            return normal;
+        }
+
+        fun static get() -> char
+        {
+            if(l == r) {
+                if(r = (l = buffer) + fread(buffer, 1, n, stdin); l == r) {
+                    normal = false;
+                    return *l;
+                }
+            }
+            return *l++;
+        }
+
+        fun static get(char &c) -> istream&
+        {
+            c = get();
+            return cin;
+        }
+
+        fun static peek() -> char
+        {
+            return *l;
+        }
+
+        fun static ignore()
+        {
+            ++l;
+        }
+
+        fun static unget()
+        {
+            --l;
+        }
+
+        template<typename T>
+        fun static read() -> T
+        {
+            T ret;
+            cin >> ret;
+            return ret;
+        }
+
+        fun friend operator>>(istream& is,char& c) -> istream&
+        {
+            while(normal and isspace(c = get())) {}
+            return is;
+        }
+
+#if __cplusplus >= 202002L
+        template<std::integral T>
+#else
+        template<typename T>
+#endif
+        fun friend operator>>(istream& is, T& v) -> istream&
+        {
+            bool negative{};
+            char c{};
+            while(get(c) and isspace(c)) {}
+            if(!normal) {
+                return is;
+            }
+            if(c == '-') {
+                negative = true;
+                if(!get(c) or c < '0' or c > '9') {
+                    return is;
+                }
+            }
+            v = T{};
+            do {
+                v = v * 10 + (c ^ 48);
+            }while(get(c) and c >= '0' and c <= '9');
+            if(negative) {
+                v = -v;
+            }
+            if(normal) {
+                unget();
+            }
+            return is;
+        }
+    private:
+        istream() = default;
+    };
+
+}
+fasti::istream fasti::istream::cin;
+auto& cin =  fasti::istream::cin;
+template<typename T>
+using fiterator = fasti::istream::iterator<T>;
+
+using int64 = long long;
+using uint64 = unsigned long long;
+using double128 = long double;
+
+#if __cplusplus >= 202002L
+using namespace std::views;
+#endif
+
+constexpr int INF = std::numeric_limits<int>::max();
+constexpr int64 INF64 = std::numeric_limits<int64>::max();
+
+template<typename T = int>
+struct fenwick
+{
+    template<std::integral I>
+    explicit fenwick(I n) noexcept : a(std::vector<T>(n)) {}
+
+    fun modify(int i,T v) noexcept
+    {
+        for(++i; i <= a.size(); i += i & -i)
+        {
+            a[i - 1] += v;
+        }
+    }
+
+    [[nodiscard]]
+    fun reduce(int i) const noexcept -> T
+    {
+        T ret{};
+        for(++i; i; i -= i & -i)
+        {
+            ret += a[i - 1];
+        }
+        return ret;
+    }
+
+    [[nodiscard]]
+    fun reduce(int l,int r) const noexcept -> T
+    {
+        return reduce(r) - reduce(l - 1);
+    }
+
+    fun operator()(int l,int r) const noexcept -> T
+    {
+        return reduce(l,r);
+    }
+
+    [[nodiscard]]
+    fun select(T k) const noexcept -> int = delete;
+
+    std::vector<T> a;
+};
+
+struct node
+{
+    fun friend operator>>(auto& is,node& n) -> auto&
+    {
+        return is >> n.l >> n.r;
+    }
+    int l,r,i;
+};
+
+fun solve()
+{
+    int n;
+    cin >> n;
+    std::vector<int> a;
+    std::ranges::copy_n(fiterator<int>{},n,std::back_inserter(a));
+    int m;
+    cin >> m;
+    std::vector<node> rd(m);
+    for(int i : iota(0,m)) {
+        cin >> rd[i].l >> rd[i].r;
+        rd[i].i = i;
+    }
+    std::ranges::sort(rd,std::less<>{},[](node x){ return x.r; });
+    fenwick fw{ n };
+    let lz = [&a,&fw,map = std::map<int,int>{},i = 0](int it) mutable{
+        for(; i <= it; ++i) {
+            auto [ptr,flag] = map.emplace(a[i],i);
+            if(!flag) {
+                fw.modify(ptr->second,-1);
+                ptr->second = i;
+            }
+            fw.modify(i,1);
+        }
+    };
+    std::vector<int> ans(m);
+    for(auto [l,r,i] : rd) {
+        --l,--r;
+        lz(r);
+        ans[i] = fw(l,r);
+    }
+    std::ranges::copy(ans,std::ostream_iterator<int>{ std::cout,"\n" });
+}
+
+main() -> int
+{
+    std::ios::sync_with_stdio(false),std::cin.tie(nullptr);
+    std::invoke(solve);
+}

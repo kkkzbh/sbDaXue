@@ -1,0 +1,377 @@
+% bhuos 实验二文档
+\documentclass[12pt,oneside]{ctexbook}
+
+% Project custom style
+\usepackage{style/custom}
+
+% Metadata
+\newcommand{\ProjectName}{bhuos 内核实验}
+\newcommand{\DocVersion}{实验二}
+
+\title{实验二\\\large {\ProjectName}}
+\author{Codex 助手}
+\date{\today}
+
+\begin{document}
+
+\tableofcontents
+\mainmatter
+
+\section*{一、宏和全局变量}
+\addcontentsline{toc}{section}{一、宏和全局变量}
+
+\subsection*{链表管理宏}
+\paragraph{LIST\_HEAD}
+原分析报告 仅提到“创建链表头”，实际上该宏会声明一个包含 \codeinline{lh_first} 指针的结构体类型，用于管理首结点。需要和 LIST\_HEAD\_INITIALIZER 搭配使用。
+\codefilerange{c}{../../include/queue.h}{5}{8}
+
+\paragraph{LIST\_HEAD\_INITIALIZER（更正 原分析报告 中的拼写）}
+原文给出的 \codeinline{LIST_HEAD_INITIALIZE} 拼写有误，正确宏会把头指针置空，既可用于静态初始化也可用于链表重置。
+\codefilerange{c}{../../include/queue.h}{10}{10}
+
+\paragraph{LIST\_ENTRY}
+并非“链表第一个节点”，而是定义链表节点内部的 \codeinline{le_next}/\codeinline{le_prev} 指针字段，供任意结构体嵌入。
+\codefilerange{c}{../../include/queue.h}{12}{16}
+
+\paragraph{LIST\_EMPTY}
+用 \codeinline{lh_first == NULL} 判断链表是否为空，需传入表头指针。
+\codefilerange{c}{../../include/queue.h}{18}{18}
+
+\paragraph{LIST\_FIRST}
+返回首元指针，是对 \codeinline{head->lh_first} 的安全包装。
+\codefilerange{c}{../../include/queue.h}{19}{19}
+
+\paragraph{LIST\_FOREACH}
+原分析报告 未提及循环条件，该宏以 \codeinline{LIST_FIRST} 为起点，以 \codeinline{LIST_NEXT} 为推进，保证遍历整个链表。
+\codefilerange{c}{../../include/queue.h}{21}{24}
+
+\paragraph{LIST\_INIT}
+执行时会把 \codeinline{lh_first} 置空，常用于运行期重置链表。原分析报告 把它描述成“创建新链表”略显含糊。
+\codefilerange{c}{../../include/queue.h}{26}{28}
+
+\paragraph{LIST\_INSERT\_AFTER}
+并非只修改“新节点两个指针”，实现上同时维护被插入节点原后继元素的 \codeinline{le_prev}，以保证双向一致。
+\codefilerange{c}{../../include/queue.h}{32}{39}
+
+\paragraph{LIST\_INSERT\_BEFORE（纠正 原分析报告 中“LIST\_INSERT\_TAIL 在前插入”的写法）}
+原分析报告 将“在某节点前插入”误写成 \codeinline{LIST_INSERT_TAIL}。真正执行前插的是 \codeinline{LIST_INSERT_BEFORE}，其核心是重定向待插节点和原节点的前驱指针。
+\codefilerange{c}{../../include/queue.h}{41}{46}
+
+\paragraph{LIST\_INSERT\_HEAD}
+除非链表为空，否则需要同时修正原首元的 \codeinline{le_prev}，确保双向链正确。原分析报告 的描述缺少这一点。
+\codefilerange{c}{../../include/queue.h}{48}{53}
+
+\paragraph{LIST\_INSERT\_TAIL}
+内核源码提供了线性扫描尾插版本，会在链表为空时退化为头插，和 原分析报告 标注的“仅需前后指针”不同。
+\codefilerange{c}{../../include/queue.h}{55}{69}
+
+\paragraph{LIST\_REMOVE}
+删除节点时既要更新前驱保存的 \codeinline{le_prev}，又要在存在后继时修正它的 \codeinline{le_prev}，否则链表会断裂。
+\codefilerange{c}{../../include/queue.h}{71}{76}
+\subsection*{页号与地址转换宏}
+\paragraph{BY2PG}
+实验指导只说“定义页大小”，源码明确固定为 4096 字节，对应 4KB 页框，是所有对齐逻辑的基准。
+\codefilerange{c}{../../include/mmu.h}{5}{5}
+
+\paragraph{PDMAP}
+该常量等于 4MB，指出单个页目录项（PDE）可映射的跨度，原分析报告 未给出数值。
+\codefilerange{c}{../../include/mmu.h}{6}{6}
+
+\paragraph{PGSHIFT}
+确认为 12，对应 2 的 12 次方即 4KB。用于页号与地址之间左/右移转换。
+\codefilerange{c}{../../include/mmu.h}{7}{7}
+
+\paragraph{PDX(va)}
+不仅“提取页目录索引”，还屏蔽出虚拟地址的高 10 位，供一级页表索引使用。
+\codefilerange{c}{../../include/mmu.h}{11}{11}
+
+\paragraph{PTX(va)}
+与 PDX 类似，负责提取中间 10 位以索引二级页表。原分析报告 重复列出一次，可合并理解。
+\codefilerange{c}{../../include/mmu.h}{12}{12}
+
+\paragraph{PTE\_ADDR(pte)}
+原分析报告 把参数写成“va”略显不准。宏通过屏蔽低 12 位得到某个页表项指向的物理页基址。
+\codefilerange{c}{../../include/mmu.h}{14}{14}
+
+\paragraph{PPN(x)}
+原文说“从物理地址提取页号”是准确的，补充说明可以同时处理虚拟地址或物理地址，效果都是截断低 12 位。
+\codefilerange{c}{../../include/mmu.h}{17}{18}
+
+\paragraph{VA2PFN(va)}
+它不是直接得到“页框号”整数，而是把低 12 位清零后返回可写入 CP0 EntryLo 的 PFN 字段。
+\codefilerange{c}{../../include/mmu.h}{21}{21}
+
+\paragraph{PTE\_V}
+有效位在 0x0200，硬件据此判断 PTE/PDE 是否可用；缺失会触发 TLB 异常。
+\codefilerange{c}{../../include/mmu.h}{25}{27}
+
+\paragraph{PTE\_R}
+在 MIPS 本实验里承担“是否允许写入”与“脏位”双重角色，原分析报告 仅说明“可读”需要修正。
+\codefilerange{c}{../../include/mmu.h}{25}{27}
+
+\paragraph{ULIM/UVPT/UPAGES/UENVS}
+这组常量共同描述高地址布局：\codeinline{ULIM} 分隔内核与用户空间；往下依次为 \codeinline{UVPT}、\codeinline{UPAGES}、\codeinline{UENVS}，每段占用 \codeinline{PDMAP} 大小。
+\codefilerange{c}{../../include/mmu.h}{34}{42}
+
+\paragraph{PDMAP（再次说明用途）}
+配合前述常量，\codeinline{PDMAP} 让 UVPT/UPAGES/UENVS 以整块只读窗口映射。
+\codefilerange{c}{../../include/mmu.h}{5}{42}
+
+\paragraph{PADDR(kva)}
+需要保证参数位于内核高半区 (\codeinline{>= ULIM})，否则会 panic；原分析报告 中“PADDR(freemem)”只是特例。
+\codefilerange{c}{../../include/mmu.h}{82}{88}
+
+\paragraph{KADDR(pa)}
+以 \codeinline{PPN(pa) < npage} 为界限，把物理地址投射到 \codeinline{ULIM} 以上的线性映射区。
+\codefilerange{c}{../../include/mmu.h}{91}{97}
+
+\paragraph{PDE/Pte 类型}
+源码中用 \codeinline{typedef u_long} 明确页表项宽度 32 位，补上 原分析报告 未写出的类型声明。
+\codefilerange{c}{../../include/mmu.h}{75}{77}
+
+\paragraph{VA2PA 辅助函数}
+原分析报告 将 \codeinline{va2pa} 归入“宏”，但它其实是内联函数，会先检查 PDE/PTE 的有效位再返回物理地址。
+\codefilerange{c}{../../include/pmap.h}{38}{47}
+
+\paragraph{ROUND}
+定义位于 \codeinline{types.h}，通过“加 n-1 再清零低位”实现向上对齐，要求 n 为 2 的幂。
+\codefilerange{c}{../../include/types.h}{36}{37}
+
+\paragraph{panic}
+\codeinline{panic} 是 \codeinline{_panic} 的包装，会自动携带文件名与行号；原分析报告 可以补上这一点。
+\codefilerange{c}{../../include/printf.h}{7}{10}
+
+\paragraph{npage}
+并非宏，而是 \codeinline{u_long} 全局变量，由 \codeinline{mips_detect_memory()} 设定为物理页总数。
+\codefilerange{c}{../../mm/pmap.c}{8}{17}
+
+\paragraph{BY2PG 与 PGSHIFT 的联动}
+在 原分析报告 中分别出现，源码表明用 \codeinline{PGSHIFT} 做位移可以从页号计算回 \codeinline{BY2PG} 对齐地址。
+\codefilerange{c}{../../include/mmu.h}{5}{8}
+
+\paragraph{ULIM 再说明}
+\codeinline{ULIM} 也被 \codeinline{PADDR}/\codeinline{KADDR} 用作合法性判断的阈值，是内核线性映射的起点。
+\codefilerange{c}{../../include/mmu.h}{34}{38}
+
+\paragraph{NENV}
+通过 \codeinline{LOG2NENV} 控制大小，当前设为 1024；与 \codeinline{ENVX}、\codeinline{GET_ENV_ASID} 等宏共同管理环境索引。
+\codefilerange{c}{../../include/env.h}{10}{14}
+
+\paragraph{UPAGES/UENVS}
+除了虚拟地址常量，还对应着 \codeinline{mips_vm_init} 中的两次 \codeinline{boot_map_segment}，确保 \codeinline{pages[]} 与 \codeinline{envs[]} 可在只读窗口访问。
+\codefilerange{c}{../../include/mmu.h}{40}{42}
+
+\paragraph{VA2PFN 与 GET\_ENV\_ASID 的协同}
+当 TLB 例程调用 \codeinline{tlb_out} 或写 EntryLo 时，会分别用 \codeinline{VA2PFN} 提供 PFN，用 \codeinline{GET_ENV_ASID} 区分地址空间。
+\codefilerange{c}{../../include/env.h}{10}{14}
+
+\paragraph{page2pa/page2kva/pa2page}
+这三者不是宏但在 原分析报告 中被列出。\codeinline{page2pa} 左移页号得到物理地址；\codeinline{page2kva} 进一步通过 \codeinline{KADDR} 获取线性地址；\codeinline{pa2page} 则包含越界检查。
+\codefilerange{c}{../../include/pmap.h}{21}{36}
+
+\paragraph{tlb\_out}
+TLB 失效不是“宏”而是 \codeinline{mm/tlb_asm.S} 中的汇编函数，接受完整 EntryHi（含 ASID+VPN）并执行 \codeinline{tlbp}/\codeinline{tlbwi} 覆写。
+\codefilerange{gas}{../../mm/tlb_asm.S}{5}{34}
+
+\paragraph{VA2PFN 与 pageout 的关系}
+\codeinline{pageout()} 将 \codeinline{VA2PFN(va)} 作为页对齐地址插入页表，因此该宏实际返回带齐整偏移的虚拟地址。
+\codefilerange{c}{../../mm/pmap.c}{596}{621}
+
+\paragraph{GET\_ENV\_ASID}
+生成 ASID 时右移 11 位再左移 6 位，对应 MIPS 8-bit ASID 字段。原分析报告 仅提到“获取 ASID”并未说明位宽。
+\codefilerange{c}{../../include/env.h}{10}{14}
+
+\paragraph{PTE\_ADDR 再强调}
+在 \codeinline{tlb_invalidate} 等路径中，需要把 \codeinline{va} 清掉低 12 位再与 ASID 组合，这也是宏被频繁使用的原因。
+\codefilerange{c}{../../mm/pmap.c}{389}{394}
+
+\paragraph{curenv}
+该全局指针定义在 \codeinline{lib/env.c}，初值为 NULL。原分析报告 只写“指向当前环境”但未指出存放位置。
+\codefilerange{c}{../../lib/env.c}{13}{13}
+\subsection*{全局变量}
+\paragraph{maxpa / basemem / extmem / npage}
+\codeinline{mips_detect_memory()} 会确定物理地址上界并推导页数，这四个 \codeinline{u_long} 变量集中声明在 \codeinline{mm/pmap.c} 文件头部。
+\codefilerange{c}{../../mm/pmap.c}{8}{13}
+
+\paragraph{boot\_pgdir}
+页目录全局指针在同一文件里定义，指向内核自用的启动页目录，供 \codeinline{pgdir_walk}、\codeinline{page_insert} 等处引用。
+\codefilerange{c}{../../mm/pmap.c}{15}{15}
+
+\paragraph{pages 数组}
+真实的 \codeinline{struct Page *pages} 定义也在 \codeinline{mm/pmap.c}，并由 \codeinline{mips_vm_init()} 分配空间后指向全局描述符数组；原分析报告 中重复列举可合并。
+\codefilerange{c}{../../mm/pmap.c}{17}{17}
+
+\paragraph{page\_free\_list}
+虽然 原分析报告 未强调，该 \codeinline{Page_list} 变量与链表宏配套，负责串联所有空闲页，是理解 \codeinline{page_alloc/page_free} 的关键。
+\codefilerange{c}{../../mm/pmap.c}{20}{20}
+
+\paragraph{curenv（再次归类为全局变量）}
+除了在宏段提及，这里补充定义位于 \codeinline{lib/env.c}，初始化为 NULL，只有在 \codeinline{env_run} 成功切换后才指向有效环境。
+\codefilerange{c}{../../lib/env.c}{13}{13}
+\section*{二、MIPS 虚存映射布局}
+\addcontentsline{toc}{section}{二、MIPS 虚存映射布局}
+
+结合 实验二指导书 的布局图与内核源码内 \codeinline{include/mmu.h} 的常量，可将整个 32 位虚拟空间概括如下：
+
+1. \codeinline{0x0000_0000} 到 \codeinline{UTEXT}（缺省 \codeinline{0x0040_0000}）供用户文本使用，再向上是数据、堆与用户普通栈(\codeinline{USTACKTOP}/\codeinline{UTOP - 2*BY2PG})；
+2. \codeinline{UXSTACKTOP}=\codeinline{UTOP} 保留用户异常栈，便于用户态页故障处理；
+3. \codeinline{UENVS}、\codeinline{UPAGES}、\codeinline{UVPT} 三个窗口每个占 \codeinline{PDMAP=4MB}，分别映射 \codeinline{envs[]}、\codeinline{pages[]} 与完整页表，统一只读；
+4. \codeinline{ULIM=0x8000_0000} 以上属于内核直接映射区，又在最顶端通过 \codeinline{VPT} 自映射形成页表调试窗口，同时 \codeinline{KSTACKTOP} 往下分配内核栈；
+5. \codeinline{KERNBASE} 定位内核 ELF 镜像装载地址，确保与硬件 reset vector 匹配。
+
+\codefilerange{c}{../../include/mmu.h}{34}{49}
+\section*{三、记录内存与页表的数据结构分析}
+\addcontentsline{toc}{section}{三、记录内存与页表的数据结构分析}
+
+\subsection*{1. Page\_list 及 Page\_LIST\_entry\_t}
+\codefilerange{c}{../../include/pmap.h}{10}{12}
+这段定义把 BSD queue 的 LIST 头与条目别名化：\codeinline{Page_list} 是空闲链表的头部类型，\codeinline{Page_LIST_entry_t} 是可嵌入 \codeinline{struct Page} 的链表字段。依靠 \codeinline{LIST_HEAD}、\codeinline{LIST_ENTRY} 等宏，分页分配器得以用 O(1) 插入/删除维护空闲页集合。
+
+\subsection*{2. struct Page}
+\codefilerange{c}{../../include/pmap.h}{14}{17}
+每个物理页对应一个 \codeinline{struct Page}：\codeinline{pp_link} 嵌入上述链表；\codeinline{pp_ref} 记录被多少页表项引用（仅运行期动态映射会递增）。\codeinline{page_init} 会遍历 \codeinline{pages[]} 初始化这两个字段，\codeinline{page_alloc/page_free} 基于它们做状态转换。
+
+\subsection*{3. struct Env}
+\codefilerange{c}{../../include/env.h}{19}{41}
+环境控制块同时保存 Trapframe、调度信息与 \codeinline{env_pgdir}（页目录基址）。因此它既参与“记录当前地址空间”的逻辑（\codeinline{curenv->env_pgdir}），也在 IPC/缺页处理时提供用户栈、异常处理入口等上下文，直接决定页表切换行为。
+
+\subsection*{4. Pde/Pte 类型}
+\codefilerange{c}{../../include/mmu.h}{75}{77}
+虽然只是 \codeinline{typedef u_long}，但它们统一了页目录/页表项的表示，保证 \codeinline{pgdir_walk}、\codeinline{page_insert} 等函数在 C 层拿到的都是 32 位值。结合 \codeinline{PTE_ADDR}/\codeinline{PTE_V} 等宏即可解码/设置页表项内容，是链接软硬件地址空间的基石。
+\section*{四、内存初始化}
+\addcontentsline{toc}{section}{四、内存初始化}
+
+\subsection*{1. mips\_detect\_memory()}
+\codefilerange{c}{../../mm/pmap.c}{23}{39}
+
+\subsection*{2. mips\_vm\_init()}
+\codefilerange{c}{../../mm/pmap.c}{132}{164}
+
+\subsection*{3. page\_init()}
+\codefilerange{c}{../../mm/pmap.c}{166}{191}
+\section*{五、内存分配与释放}
+\addcontentsline{toc}{section}{五、内存分配与释放}
+
+\subsection*{1. page\_alloc() 主体}
+\codefilerange{c}{../../mm/pmap.c}{193}{215}
+
+\paragraph{BFS 层 1：直接依赖的辅助逻辑}
+\begin{itemize}
+    \item \codeinline{LIST_EMPTY}：判空空闲链表，决定是否返回 \codeinline{-E_NO_MEM}。实现见 queue.h 第 18 行。
+\codefilerange{c}{../../include/queue.h}{18}{18}
+    \item \codeinline{LIST_FIRST}：取得链表首元指针供分配使用。
+\codefilerange{c}{../../include/queue.h}{19}{19}
+    \item \codeinline{LIST_REMOVE}：将首元从空闲链摘除，确保不会被重复分配。
+\codefilerange{c}{../../include/queue.h}{71}{76}
+    \item \codeinline{page2kva}：把 \codeinline{struct Page} 转为可写的内核虚拟地址，以便 \codeinline{bzero} 清空实际页帧内容。
+\codefilerange{c}{../../include/pmap.h}{34}{36}
+    \item \codeinline{bzero}：逐字写零的公共例程，用于满足实验要求的“返回前清零”。
+\codefilerange{c}{../../init/init.c}{67}{89}
+\end{itemize}
+
+\paragraph{分配流程小结}
+依次执行“判空→弹出链表→写入返回指针→清零物理页”，且不在此处修改 \codeinline{pp_ref}，把引用计数的职责交给后续 \codeinline{page_insert} 或调用者，满足 原分析报告 对“\codeinline{page_alloc} 清零但不自增 \codeinline{pp_ref}”的要求。
+
+\subsection*{2. page\_free() 主体}
+\codefilerange{c}{../../mm/pmap.c}{218}{236}
+
+\paragraph{BFS 层 1：直接依赖}
+\begin{itemize}
+    \item \codeinline{LIST_INSERT_HEAD}：当 \codeinline{pp_ref == 0} 时，把页面重新挂到空闲链表头部。
+\codefilerange{c}{../../include/queue.h}{48}{53}
+    \item \codeinline{panic}：若 \codeinline{pp_ref < 0}，认为发生了双重释放或越界操作，立即停止系统。
+\codefilerange{c}{../../include/printf.h}{7}{10}
+\end{itemize}
+
+\paragraph{回收流程小结}
+函数首先识别“仍被引用”的页（\codeinline{pp_ref == 1}）并保持不变；仅当引用计数降到 0 时才回收到 \codeinline{page_free_list}。出现负值会触发 panic，迫使调试者回溯引用计数逻辑。
+
+\paragraph{整体内存管理总结}
+结合 \codeinline{page_alloc/page_free} 可见，物理内存生命周期严格依赖 \codeinline{pp_ref}：所有可分配页都集中在 \codeinline{page_free_list}，每次分配都需要合作的 \codeinline{page_insert}、\codeinline{page_remove} 在建立/拆除映射时维护引用计数。这种设计满足 原分析报告 中“维护 \codeinline{pp_ref} 与 \codeinline{tlb_invalidate} 协同”的提示。
+\section*{六、地址转换与 TLB 重填}
+\addcontentsline{toc}{section}{六、地址转换与 TLB 重填}
+
+\subsection*{1. 地址转换方法概述}
+MIPS 两级页表配合自映射窗口的转换流程如下：
+
+1. 通过 \codeinline{PDX(va)}/\codeinline{PTX(va)} 划分虚拟地址的 10+10+12 位；
+2. \codeinline{va2pa()} 先用 PDX 找到页目录项，若 \codeinline{PTE_V} 未置位直接返回 \codeinline{~0}；
+3. 若页目录有效，则把其物理地址经 \codeinline{KADDR} 映射成内核虚拟地址获取二级页表；
+4. 再检查对应 PTE 的 \codeinline{PTE_V}，最终返回 \codeinline{PTE_ADDR} 所给出的物理页基址。
+
+上述逻辑直接体现在 \codeinline{include/pmap.h}：
+\codefilerange{c}{../../include/pmap.h}{38}{47}
+
+\subsection*{2. TLB 重填流程（在 原分析报告 原文基础上润色）}
+当使用 kuseg 虚拟地址访问内存而 TLB 未命中时，CPU 触发 \codeinline{handle_tlb}，随后跳到 \codeinline{lib/genex.S} 中的 \codeinline{do_refill}。其工作步骤为：“保存上下文→读取 \codeinline{CP0_BADVADDR}/\codeinline{ENTRYHI}→检查 V 位→若缺页则调用 \codeinline{pageout}→成功时写 EntryLo → \codeinline{tlbwr} 写随机项”。核心代码如下：
+\codefilerange{gas}{../../lib/genex.S}{80}{148}
+
+结合源码可对 原分析报告 文本进行更精确表述：
+
+- \codeinline{mfc0 a0, CP0_BADVADDR} 与 \codeinline{mfc0 a1, CP0_ENTRYHI} 把故障虚拟地址与 ASID 作为 C 例程参数；
+- \codeinline{sw ra, tlbra} 保存返回地址，确保调用 \codeinline{pageout} 或其他 C 例程后能回到汇编流程；
+- 若页表项的 \codeinline{PTE_V} 置位，直接 \codeinline{mtc0 k1, CP0_ENTRYLO0} 并执行 \codeinline{tlbwr}；
+- 否则跳转到 \codeinline{NOPAGE} 分支，调用 \codeinline{pageout} 触发懒分配，再回到标签 \codeinline{1b} 重试，直到页表项有效。
+
+\codeinline{pageout()} 位于 \codeinline{mm/pmap.c}，负责按需分配物理页、递增 \codeinline{pp_ref} 并调用 \codeinline{page_insert} 建立映射，最后打印调试信息：
+\codefilerange{c}{../../mm/pmap.c}{596}{621}
+
+TLB 清理仍靠 \codeinline{tlb_out()} 完成，\codeinline{tlb_invalidate()} 在 C 层根据是否存在 \codeinline{curenv} 决定是否携带 ASID。\codeinline{tlb_out} 的实现前文已引用（queue 段末），此处再次强调它会：恢复原 EntryHi、通过 \codeinline{tlbp} 探测、命中时用空条目 \codeinline{tlbwi} 覆盖，确保页表变动后硬件缓存同步。
+\section*{七、附加题：建表与映射函数}
+\addcontentsline{toc}{section}{七、附加题：建表与映射函数}
+
+原分析报告 末尾的三个题目与第五星等价：均要求“逐语句注释 + 调用链 BFS 分析”。以下分别给出 \codeinline{boot_pgdir_walk}、\codeinline{pgdir_walk}、\codeinline{boot_map_segment} 的代码引用与调用图解。
+
+\subsection*{1. boot\_pgdir\_walk：启动阶段页表分配}
+\codefilerange{c}{../../mm/pmap.c}{80}{106}
+
+\paragraph{BFS 层 1：直接依赖}
+\begin{itemize}
+    \item \codeinline{PDX}：定位目录项索引。
+\codefilerange{c}{../../include/mmu.h}{11}{11}
+    \item \codeinline{KADDR} + \codeinline{PTE_ADDR}：若目录项已有页表，则组合使用把物理地址转为内核线性地址并得到指向页表的指针。
+\codefilerange{c}{../../include/mmu.h}{91}{97}
+\codefilerange{c}{../../include/mmu.h}{14}{14}
+    \item \codeinline{alloc()}：当页表不存在且 \codeinline{create==1} 时，调用线性分配器按页对齐分配一整张页表。
+\codefilerange{c}{../../mm/pmap.c}{41}{78}
+    \item \codeinline{PADDR}：把新页表的内核虚拟地址翻译成物理地址后写回目录项。
+\codefilerange{c}{../../include/mmu.h}{82}{88}
+\end{itemize}
+
+\paragraph{流程总结}
+函数先读目录项，如果 \codeinline{PTE_V} 清零且允许创建，就分配一页、清零并写入 \codeinline{PTE_V}；若不允许创建则返回 NULL。否则最终返回 \codeinline{va} 对应的二级页表项指针，供 \codeinline{boot_map_segment} 写入映射。
+
+\subsection*{2. pgdir\_walk：运行期页表定位}
+\codefilerange{c}{../../mm/pmap.c}{238}{275}
+
+\paragraph{BFS 层 1：直接依赖}
+\begin{itemize}
+    \item \codeinline{PDX}/\codeinline{KADDR}/\codeinline{PTE_ADDR}：与启动版本一致，用于找到已有页表基址。
+\codefilerange{c}{../../include/mmu.h}{11}{14}
+\codefilerange{c}{../../include/mmu.h}{91}{97}
+    \item \codeinline{page_alloc}：若需要新页表，调用运行期分配器获取一个 \codeinline{struct Page}。
+\codefilerange{c}{../../mm/pmap.c}{193}{215}
+    \item \codeinline{page2kva}/\codeinline{page2pa}：分别把 \codeinline{struct Page} 转成内核虚拟地址（写 PTE 用）与物理地址（写 PDE 用）。
+\codefilerange{c}{../../include/pmap.h}{24}{36}
+    \item \codeinline{pp_ref++}：虽然不是函数，但表明页表页本身也需要引用计数管理，避免提前回收。
+\end{itemize}
+
+\paragraph{流程总结}
+\codeinline{pgdir_walk} 在运行期负责 lazy allocation：允许创建时若目录项无效，则分配新页表、递增引用计数并写入 \codeinline{PTE_V}；如 \codeinline{create==0} 则返回 0 表示“不存在”。最终把 \codeinline{va} 对应的二级 PTE 指针存入 \codeinline{*ppte} 供 \codeinline{page_insert} 等调用者继续操作。
+
+\subsection*{3. boot\_map\_segment：批量建立映射}
+\codefilerange{c}{../../mm/pmap.c}{108}{130}
+
+\paragraph{BFS 层 1：直接依赖}
+\begin{itemize}
+    \item \codeinline{BY2PG}：循环增量与合法性检查均以页大小为单位，确保 \codeinline{size} 为整页数。
+\codefilerange{c}{../../include/mmu.h}{5}{5}
+    \item \codeinline{boot_pgdir_walk}：对区间内的每一页调用一次，按需创建 PTE。
+\codefilerange{c}{../../mm/pmap.c}{80}{106}
+    \item \codeinline{PTE_V} 与 \codeinline{perm}：每次写入 PTE 时组合物理地址与权限位，保证 1:1 包含 \codeinline{PTE_V}。
+\codefilerange{c}{../../include/mmu.h}{25}{27}
+\end{itemize}
+
+\paragraph{流程总结}
+函数先确认 \codeinline{size} 是否整页，否则直接返回；随后以 \codeinline{BY2PG} 为步长遍历目标区间，对每个虚拟地址调用 \codeinline{boot_pgdir_walk(pgdir, va_temp, 1)} 保证存在 PTE，再把当前 \codeinline{pa} 与权限写入条目。该流程在 \codeinline{mips_vm_init()} 中被调用两次，构建 \codeinline{UPAGES/UENVS} 的只读窗口。
+\end{document}

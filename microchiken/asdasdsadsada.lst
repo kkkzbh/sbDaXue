@@ -1,0 +1,106 @@
+Microsoft (R) Macro Assembler Version 6.11		    10/29/25 14:53:56
+tempfile.asm						     Page 1 - 1
+
+
+				.MODEL SMALL
+				.STACK 100h
+
+ 0000				.DATA
+ 0000 0000			a1 DW ?
+
+ 0000				.CODE
+ 0000				main PROC
+ 0000  B8 ---- R		    mov ax, @data
+ 0003  8E D8			    mov ds, ax
+
+ 0005  E8 000A			    call ReadDecimal        ; AX <- user input integer
+ 0008  BB 0000 R		    mov bx, OFFSET a1
+ 000B  89 07			    mov [bx], ax            ; store the integer into a1
+
+ 000D  B8 4C00			    mov ax, 4C00h
+ 0010  CD 21			    int 21h
+ 0012				main ENDP
+
+ 0012				ReadDecimal PROC
+ 0012  53			    push bx
+ 0013  51			    push cx
+ 0014  52			    push dx
+				    
+ 0015  33 DB			    xor bx, bx
+ 0017  B9 000A			    mov cx, 10
+				    
+ 001A				read_loop:
+ 001A  B4 01			    mov ah, 01h
+ 001C  CD 21			    int 21h
+				    
+ 001E  3C 30			    cmp al, '0'
+ 0020  72 14			    jb read_done
+ 0022  3C 39			    cmp al, '9'
+ 0024  77 10			    ja read_done
+				    
+ 0026  2C 30			    sub al, '0'
+ 0028  32 E4			    xor ah, ah
+				    
+ 002A  50			    push ax
+ 002B  8B C3			    mov ax, bx
+ 002D  F7 E1			    mul cx
+ 002F  8B D8			    mov bx, ax
+ 0031  58			    pop ax
+ 0032  03 D8			    add bx, ax
+				    
+ 0034  EB E4			    jmp read_loop
+				    
+ 0036				read_done:
+ 0036  8B C3			    mov ax, bx
+				    
+ 0038  5A			    pop dx
+ 0039  59			    pop cx
+ 003A  5B			    pop bx
+ 003B  C3			    ret
+ 003C				ReadDecimal ENDP
+
+				END main
+
+Microsoft (R) Macro Assembler Version 6.11		    10/29/25 14:53:56
+tempfile.asm						     Symbols 2 - 1
+
+
+
+
+Segments and Groups:
+
+                N a m e                 Size     Length   Align   Combine Class
+
+DGROUP . . . . . . . . . . . . .	GROUP
+_DATA  . . . . . . . . . . . . .	16 Bit	 0002	  Word	  Public  'DATA'	
+STACK  . . . . . . . . . . . . .	16 Bit	 0100	  Para	  Stack	  'STACK'	 
+_TEXT  . . . . . . . . . . . . .	16 Bit	 003C	  Word	  Public  'CODE'	
+
+
+Procedures,  parameters and locals:
+
+                N a m e                 Type     Value    Attr
+
+ReadDecimal  . . . . . . . . . .	P Near	 0012	  _TEXT	Length= 002A Public
+  read_loop  . . . . . . . . . .	L Near	 001A	  _TEXT	
+  read_done  . . . . . . . . . .	L Near	 0036	  _TEXT	
+main . . . . . . . . . . . . . .	P Near	 0000	  _TEXT	Length= 0012 Public
+
+
+Symbols:
+
+                N a m e                 Type     Value    Attr
+
+@CodeSize  . . . . . . . . . . .	Number	 0000h	 
+@DataSize  . . . . . . . . . . .	Number	 0000h	 
+@Interface . . . . . . . . . . .	Number	 0000h	 
+@Model . . . . . . . . . . . . .	Number	 0002h	 
+@code  . . . . . . . . . . . . .	Text   	 _TEXT
+@data  . . . . . . . . . . . . .	Text   	 DGROUP
+@fardata?  . . . . . . . . . . .	Text   	 FAR_BSS
+@fardata . . . . . . . . . . . .	Text   	 FAR_DATA
+@stack . . . . . . . . . . . . .	Text   	 DGROUP
+a1 . . . . . . . . . . . . . . .	Word	 0000	  _DATA	
+
+	   0 Warnings
+	   0 Errors

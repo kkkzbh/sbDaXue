@@ -1,0 +1,34 @@
+\documentclass[tikz,border=2mm]{standalone}
+\usepackage{amsmath}
+
+\begin{document}
+\begin{tikzpicture}[>=stealth, thick]
+    % Draw axes
+    \draw[->] (-4.5, 0) -- (4.5, 0) node[below] {$v_{\text{in+}} - v_{\text{in-}}$};
+    \draw[->] (0, -3.5) -- (0, 3.5) node[left] {$v_{\text{out}}$};
+    
+    % Draw linear region
+    \draw[blue, thick] (-0.5, -3) -- (0.5, 3);
+    
+    % Draw saturation regions
+    \draw[blue, thick] (-4.5, -3) -- (-0.5, -3);
+    \draw[blue, thick] (0.5, 3) -- (4.5, 3);
+    
+    % Add labels for regions
+    \node at (-3.5, -2.7) {负饱和区};
+    \node at (3.5, 2.7) {正饱和区};
+    \node[blue] at (0, 0) {线性工作区};
+    
+    % Add dashed lines for boundaries
+    \draw[dashed] (-0.5, -3.5) -- (-0.5, 3.5);
+    \draw[dashed] (0.5, -3.5) -- (0.5, 3.5);
+    
+    % Mark boundaries
+    \node at (-0.5, -3.8) {$-V_{\text{in(threshold)}}$};
+    \node at (0.5, -3.8) {$+V_{\text{in(threshold)}}$};
+    
+    % Mark saturation voltages
+    \node at (-4.8, -3) {$-V_{\text{sat}}$};
+    \node at (4.8, 3) {$+V_{\text{sat}}$};
+\end{tikzpicture}
+\end{document}

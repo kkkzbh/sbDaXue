@@ -1,0 +1,10 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+typst使用*text*包围text来加粗text而不是**text**
+typst如果要表达 < (小于) 要用 \<
+由于typst-Touying是非常新的东西，每次编写，如果不会写的话一定要去搜索学习。
+每次编写Touying(类似typst的beamer) 请结合编写要求 学习下面的文档
+typst-Touying入门: https://touying-typ.github.io/zh/docs/start

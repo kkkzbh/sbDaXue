@@ -1,0 +1,34 @@
+# ========= Device / Top =========
+set_global_assignment -name FAMILY "Cyclone III"
+set_global_assignment -name DEVICE EP3C16Q240C8
+set_global_assignment -name TOP_LEVEL_ENTITY transcode_led
+
+# ========= Match the two screenshots =========
+# nCEO -> Use as regular I/O
+set_global_assignment -name RESERVE_NCEO_AFTER_CONFIGURATION "USE AS REGULAR IO"
+# Default I/O standard -> 3.3-V LVCMOS
+set_global_assignment -name DEFAULT_IO_STANDARD "3.3-V LVCMOS"
+
+# ========= Pin locations (七段共阳极：段选低有效，字选 LDC1 低有效) =========
+# a,b,c,d,e,f,g,dp  -> 173,171,168,167,166,164,162,160
+set_location_assignment PIN_173 -to LEDC_a
+set_location_assignment PIN_171 -to LEDC_b
+set_location_assignment PIN_168 -to LEDC_c
+set_location_assignment PIN_167 -to LEDC_d
+set_location_assignment PIN_166 -to LEDC_e
+set_location_assignment PIN_164 -to LEDC_f
+set_location_assignment PIN_162 -to LEDC_g
+set_location_assignment PIN_160 -to LEDC_dp
+# 字选 LDC1 -> 148
+set_location_assignment PIN_148 -to LEDC1
+
+# 为了保险，给这些管脚再显式指定一次 I/O 标准（就算默认被改也不受影响）
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to LEDC_a
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to LEDC_b
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to LEDC_c
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to LEDC_d
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to LEDC_e
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to LEDC_f
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to LEDC_g
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to LEDC_dp
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to LEDC1

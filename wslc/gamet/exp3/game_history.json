@@ -1,0 +1,2702 @@
+[
+  {
+    "round": 1,
+    "agent1_threshold": 70,
+    "agent2_threshold": 75,
+    "agent1_students": 60,
+    "agent2_students": 0,
+    "agent1_payoff": 420.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 2,
+    "agent1_threshold": 70,
+    "agent2_threshold": 75,
+    "agent1_students": 60,
+    "agent2_students": 0,
+    "agent1_payoff": 420.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 3,
+    "agent1_threshold": 68.5,
+    "agent2_threshold": 74.175,
+    "agent1_students": 63,
+    "agent2_students": 0,
+    "agent1_payoff": 441.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 4,
+    "agent1_threshold": 67.225,
+    "agent2_threshold": 73.24875,
+    "agent1_students": 65,
+    "agent2_students": 0,
+    "agent1_payoff": 455.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 5,
+    "agent1_threshold": 66.14125,
+    "agent2_threshold": 72.2701875,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 6,
+    "agent1_threshold": 65.2200625,
+    "agent2_threshold": 71.275846875,
+    "agent1_students": 69,
+    "agent2_students": 0,
+    "agent1_payoff": 483.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 7,
+    "agent1_threshold": 64.43705312499999,
+    "agent2_threshold": 71.11747921874999,
+    "agent1_students": 71,
+    "agent2_students": 0,
+    "agent1_payoff": 497.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 8,
+    "agent1_threshold": 63.77149515624999,
+    "agent2_threshold": 70.86541530468749,
+    "agent1_students": 72,
+    "agent2_students": 0,
+    "agent1_payoff": 504.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 9,
+    "agent1_threshold": 63.205770882812494,
+    "agent2_threshold": 70.55132728242187,
+    "agent1_students": 73,
+    "agent2_students": 0,
+    "agent1_payoff": 511.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 10,
+    "agent1_threshold": 62.72490525039062,
+    "agent2_threshold": 70.19949382248046,
+    "agent1_students": 74,
+    "agent2_students": 0,
+    "agent1_payoff": 518.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 11,
+    "agent1_threshold": 62.31616946283203,
+    "agent2_threshold": 69.82830553666699,
+    "agent1_students": 75,
+    "agent2_students": 0,
+    "agent1_payoff": 525.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 12,
+    "agent1_threshold": 63.292989873907274,
+    "agent2_threshold": 69.45148512559174,
+    "agent1_students": 73,
+    "agent2_students": 0,
+    "agent1_payoff": 511.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 13,
+    "agent1_threshold": 64.06676416165995,
+    "agent2_threshold": 69.27771083783908,
+    "agent1_students": 71,
+    "agent2_students": 0,
+    "agent1_payoff": 497.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 14,
+    "agent1_threshold": 64.69840616308682,
+    "agent2_threshold": 69.2460688364122,
+    "agent1_students": 70,
+    "agent2_students": 0,
+    "agent1_payoff": 490.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 15,
+    "agent1_threshold": 65.23055556408562,
+    "agent2_threshold": 69.3139194354134,
+    "agent1_students": 69,
+    "agent2_students": 0,
+    "agent1_payoff": 483.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 16,
+    "agent1_threshold": 66.79762928387699,
+    "agent2_threshold": 69.45141485471423,
+    "agent1_students": 66,
+    "agent2_students": 0,
+    "agent1_payoff": 462.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 17,
+    "agent1_threshold": 68.79019067621755,
+    "agent2_threshold": 68.97834701908864,
+    "agent1_students": 62,
+    "agent2_students": 0,
+    "agent1_payoff": 434.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 18,
+    "agent1_threshold": 68.66841412764822,
+    "agent2_threshold": 68.87512356765798,
+    "agent1_students": 62,
+    "agent2_students": 0,
+    "agent1_payoff": 434.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 19,
+    "agent1_threshold": 68.54942054364969,
+    "agent2_threshold": 68.76911715165652,
+    "agent1_students": 62,
+    "agent2_students": 0,
+    "agent1_payoff": 434.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 20,
+    "agent1_threshold": 68.43237503485071,
+    "agent2_threshold": 68.66116266045549,
+    "agent1_students": 63,
+    "agent2_students": 0,
+    "agent1_payoff": 441.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 21,
+    "agent1_threshold": 69.18414781844844,
+    "agent2_threshold": 68.55184451661478,
+    "agent1_students": 0,
+    "agent2_students": 62,
+    "agent1_payoff": 0,
+    "agent2_payoff": 418.0
+  },
+  {
+    "round": 22,
+    "agent1_threshold": 68.81687957553586,
+    "agent2_threshold": 68.57169001188983,
+    "agent1_students": 0,
+    "agent2_students": 62,
+    "agent1_payoff": 0,
+    "agent2_payoff": 418.0
+  },
+  {
+    "round": 23,
+    "agent1_threshold": 68.63010114098896,
+    "agent2_threshold": 68.53346844643673,
+    "agent1_students": 0,
+    "agent2_students": 62,
+    "agent1_payoff": 0,
+    "agent2_payoff": 418.0
+  },
+  {
+    "round": 24,
+    "agent1_threshold": 68.46560623680612,
+    "agent2_threshold": 68.47296335061957,
+    "agent1_students": 31,
+    "agent2_students": 32,
+    "agent1_payoff": 217.0,
+    "agent2_payoff": 224.0
+  },
+  {
+    "round": 25,
+    "agent1_threshold": 68.31670980387814,
+    "agent2_threshold": 68.35880800001154,
+    "agent1_students": 63,
+    "agent2_students": 0,
+    "agent1_payoff": 441.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 26,
+    "agent1_threshold": 68.17302453329815,
+    "agent2_threshold": 68.23683590588152,
+    "agent1_students": 63,
+    "agent2_students": 0,
+    "agent1_payoff": 441.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 27,
+    "agent1_threshold": 68.03259623918565,
+    "agent2_threshold": 68.15226419999401,
+    "agent1_students": 63,
+    "agent2_students": 0,
+    "agent1_payoff": 441.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 28,
+    "agent1_threshold": 67.9005464333069,
+    "agent2_threshold": 68.05931400587275,
+    "agent1_students": 64,
+    "agent2_students": 0,
+    "agent1_payoff": 448.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 29,
+    "agent1_threshold": 67.77436156919178,
+    "agent2_threshold": 67.96049886998787,
+    "agent1_students": 64,
+    "agent2_students": 0,
+    "agent1_payoff": 448.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 30,
+    "agent1_threshold": 67.6522821643112,
+    "agent2_threshold": 67.85757827486846,
+    "agent1_students": 64,
+    "agent2_students": 0,
+    "agent1_payoff": 448.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 31,
+    "agent1_threshold": 65.31258804817227,
+    "agent2_threshold": 67.75178385828487,
+    "agent1_students": 69,
+    "agent2_students": 0,
+    "agent1_payoff": 483.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 32,
+    "agent1_threshold": 65.52846741968916,
+    "agent2_threshold": 68.13590448676798,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 33,
+    "agent1_threshold": 65.769582979751,
+    "agent2_threshold": 68.49478892670616,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 34,
+    "agent1_threshold": 66.02836387179427,
+    "agent2_threshold": 68.83600803466288,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 35,
+    "agent1_threshold": 66.29951049622456,
+    "agent2_threshold": 68.33986141023259,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 36,
+    "agent1_threshold": 65.71158933244772,
+    "agent2_threshold": 67.95880877313138,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 37,
+    "agent1_threshold": 65.89867224855027,
+    "agent2_threshold": 68.37172585702884,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 38,
+    "agent1_threshold": 66.11963028982206,
+    "agent2_threshold": 68.75076781575704,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 39,
+    "agent1_threshold": 66.3643009187123,
+    "agent2_threshold": 68.2810971868668,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 40,
+    "agent1_threshold": 66.50182035893548,
+    "agent2_threshold": 67.91857774664362,
+    "agent1_students": 66,
+    "agent2_students": 0,
+    "agent1_payoff": 462.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 41,
+    "agent1_threshold": 66.5643339670917,
+    "agent2_threshold": 67.6310641384874,
+    "agent1_students": 66,
+    "agent2_students": 0,
+    "agent1_payoff": 462.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 42,
+    "agent1_threshold": 66.57434349280105,
+    "agent2_threshold": 67.39605461277804,
+    "agent1_students": 66,
+    "agent2_students": 0,
+    "agent1_payoff": 462.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 43,
+    "agent1_threshold": 66.5476001607976,
+    "agent2_threshold": 67.1977979447815,
+    "agent1_students": 66,
+    "agent2_students": 0,
+    "agent1_payoff": 462.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 44,
+    "agent1_threshold": 66.49512982839518,
+    "agent2_threshold": 67.02526827718391,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 45,
+    "agent1_threshold": 66.42465059571349,
+    "agent2_threshold": 66.8707475098656,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 46,
+    "agent1_threshold": 66.34156513283631,
+    "agent2_threshold": 66.72883297274278,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 47,
+    "agent1_threshold": 66.24965530882228,
+    "agent2_threshold": 66.59574279675681,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 48,
+    "agent1_threshold": 66.15156843201247,
+    "agent2_threshold": 66.46882967356663,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 49,
+    "agent1_threshold": 66.04915761824559,
+    "agent2_threshold": 66.3462404873335,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 50,
+    "agent1_threshold": 65.94372004860878,
+    "agent2_threshold": 66.22667805697031,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 51,
+    "agent1_threshold": 65.836163749863,
+    "agent2_threshold": 66.93423435571609,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 52,
+    "agent1_threshold": 65.85087434074097,
+    "agent2_threshold": 67.51952376483813,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 53,
+    "agent1_threshold": 65.95117175435554,
+    "agent2_threshold": 68.01922635122355,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 54,
+    "agent1_threshold": 66.11137994388574,
+    "agent2_threshold": 68.45901816169335,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 55,
+    "agent1_threshold": 66.31352567655688,
+    "agent2_threshold": 68.03187242902221,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 56,
+    "agent1_threshold": 66.42127768942667,
+    "agent2_threshold": 67.69912041615241,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 57,
+    "agent1_threshold": 66.46295409843553,
+    "agent2_threshold": 67.43244400714354,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 58,
+    "agent1_threshold": 66.45837758474174,
+    "agent2_threshold": 67.21202052083734,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 59,
+    "agent1_threshold": 66.42142402515609,
+    "agent2_threshold": 67.023974080423,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 60,
+    "agent1_threshold": 66.36180653344613,
+    "agent2_threshold": 66.85859157213297,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 61,
+    "agent1_threshold": 66.28632428924915,
+    "agent2_threshold": 66.70907381632993,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 62,
+    "agent1_threshold": 66.19973671831127,
+    "agent2_threshold": 66.57066138726782,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 63,
+    "agent1_threshold": 66.10537541865476,
+    "agent2_threshold": 66.44002268692434,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 64,
+    "agent1_threshold": 66.0055725088952,
+    "agent2_threshold": 66.3148255966839,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 65,
+    "agent1_threshold": 65.90196047206351,
+    "agent2_threshold": 66.1934376335156,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 66,
+    "agent1_threshold": 65.79568204628131,
+    "agent2_threshold": 66.89971605929779,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 67,
+    "agent1_threshold": 65.81128714823379,
+    "agent2_threshold": 67.48411095734532,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 68,
+    "agent1_threshold": 65.91221071960052,
+    "agent2_threshold": 67.9831873859786,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 69,
+    "agent1_threshold": 66.07285721955724,
+    "agent2_threshold": 68.42254088602189,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 70,
+    "agent1_threshold": 66.27530976952693,
+    "agent2_threshold": 67.99508833605219,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 71,
+    "agent1_threshold": 66.38327655450571,
+    "agent2_threshold": 67.6621215510734,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 72,
+    "agent1_threshold": 66.42510330399087,
+    "agent2_threshold": 67.39529480158825,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 73,
+    "agent1_threshold": 66.42063202863048,
+    "agent2_threshold": 67.17476607694864,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 74,
+    "agent1_threshold": 66.3837521358782,
+    "agent2_threshold": 66.98664596970092,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 75,
+    "agent1_threshold": 66.32418621095161,
+    "agent2_threshold": 66.82121189462751,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 76,
+    "agent1_threshold": 66.24874006350299,
+    "agent2_threshold": 66.67165804207613,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 77,
+    "agent1_threshold": 66.16217776028897,
+    "agent2_threshold": 66.53322034529016,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 78,
+    "agent1_threshold": 66.06783414803915,
+    "agent2_threshold": 66.40256395753998,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 79,
+    "agent1_threshold": 65.96804361946428,
+    "agent2_threshold": 66.27735448611486,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 80,
+    "agent1_threshold": 65.86444024946186,
+    "agent2_threshold": 66.98095785611727,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 81,
+    "agent1_threshold": 65.88191789046017,
+    "agent2_threshold": 67.56348021511896,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 82,
+    "agent1_threshold": 65.98415223915899,
+    "agent2_threshold": 68.06124586642014,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 83,
+    "agent1_threshold": 66.14571628324816,
+    "agent2_threshold": 68.49968182233097,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 84,
+    "agent1_threshold": 66.34881111411059,
+    "agent2_threshold": 68.07158699146855,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 85,
+    "agent1_threshold": 66.45722749571428,
+    "agent2_threshold": 67.73817060986485,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 86,
+    "agent1_threshold": 66.49936896283687,
+    "agent2_threshold": 67.47102914274227,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 87,
+    "agent1_threshold": 66.49511798982267,
+    "agent2_threshold": 67.25028011575645,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 88,
+    "agent1_threshold": 66.45839230871275,
+    "agent2_threshold": 67.06200579686639,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 89,
+    "agent1_threshold": 66.39893433193579,
+    "agent2_threshold": 66.89646377364335,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 90,
+    "agent1_threshold": 66.32356374819193,
+    "agent2_threshold": 66.74683435738721,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 91,
+    "agent1_threshold": 66.23705433957122,
+    "agent2_threshold": 66.60834376600792,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 92,
+    "agent1_threshold": 66.14274775353672,
+    "agent2_threshold": 66.47765035204242,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 93,
+    "agent1_threshold": 66.04298314331258,
+    "agent2_threshold": 66.35241496226656,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 94,
+    "agent1_threshold": 65.93939791615568,
+    "agent2_threshold": 66.23100018942347,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 95,
+    "agent1_threshold": 65.83313825714585,
+    "agent2_threshold": 66.9372598484333,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 96,
+    "agent1_threshold": 65.84875649583897,
+    "agent2_threshold": 67.52164160974019,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 97,
+    "agent1_threshold": 65.94968926292415,
+    "agent2_threshold": 68.020708842655,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 98,
+    "agent1_threshold": 66.11034219988377,
+    "agent2_threshold": 68.46005590569537,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 99,
+    "agent1_threshold": 66.31279925575551,
+    "agent2_threshold": 68.03259884982363,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 100,
+    "agent1_threshold": 66.42076919486573,
+    "agent2_threshold": 67.69962891071341,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 101,
+    "agent1_threshold": 66.46259815224288,
+    "agent2_threshold": 67.43279995333626,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 102,
+    "agent1_threshold": 66.45812842240689,
+    "agent2_threshold": 67.21226968317225,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 103,
+    "agent1_threshold": 66.42124961152169,
+    "agent2_threshold": 67.02414849405744,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 104,
+    "agent1_threshold": 66.36168444390205,
+    "agent2_threshold": 66.85871366167709,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 105,
+    "agent1_threshold": 66.28623882656831,
+    "agent2_threshold": 66.70915927901083,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 106,
+    "agent1_threshold": 66.19967689443469,
+    "agent2_threshold": 66.57072121114446,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 107,
+    "agent1_threshold": 66.10533354194115,
+    "agent2_threshold": 66.44006456363799,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 108,
+    "agent1_threshold": 66.00554319519567,
+    "agent2_threshold": 66.31485491038346,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 109,
+    "agent1_threshold": 65.90193995247384,
+    "agent2_threshold": 66.1934581531053,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 110,
+    "agent1_threshold": 65.79566768256856,
+    "agent2_threshold": 66.89973042301058,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 111,
+    "agent1_threshold": 65.81127709363487,
+    "agent2_threshold": 67.48412101194428,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 112,
+    "agent1_threshold": 65.91220368138129,
+    "agent2_threshold": 67.98319442419788,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 113,
+    "agent1_threshold": 66.07285229280377,
+    "agent2_threshold": 68.42254581277538,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 114,
+    "agent1_threshold": 66.27530632079952,
+    "agent2_threshold": 67.99509178477965,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 115,
+    "agent1_threshold": 66.38327414039654,
+    "agent2_threshold": 67.66212396518263,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 116,
+    "agent1_threshold": 66.42510161411445,
+    "agent2_threshold": 67.39529649146472,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 117,
+    "agent1_threshold": 66.420630845717,
+    "agent2_threshold": 67.17476725986218,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 118,
+    "agent1_threshold": 66.38375130783878,
+    "agent2_threshold": 66.9866467977404,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 119,
+    "agent1_threshold": 66.32418563132403,
+    "agent2_threshold": 66.82121247425516,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 120,
+    "agent1_threshold": 66.24873965776369,
+    "agent2_threshold": 66.67165844781549,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 121,
+    "agent1_threshold": 66.16217747627147,
+    "agent2_threshold": 66.53322062930772,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 122,
+    "agent1_threshold": 66.06783394922691,
+    "agent2_threshold": 66.40256415635228,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 123,
+    "agent1_threshold": 65.96804348029572,
+    "agent2_threshold": 66.27735462528348,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 124,
+    "agent1_threshold": 65.86444015204388,
+    "agent2_threshold": 66.98095795353531,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 125,
+    "agent1_threshold": 65.8819178222676,
+    "agent2_threshold": 67.56348028331159,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 126,
+    "agent1_threshold": 65.9841521914242,
+    "agent2_threshold": 68.061245914155,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 127,
+    "agent1_threshold": 66.14571624983382,
+    "agent2_threshold": 68.49968185574538,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 128,
+    "agent1_threshold": 66.34881109072056,
+    "agent2_threshold": 68.07158701485865,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 129,
+    "agent1_threshold": 66.45722747934127,
+    "agent2_threshold": 67.73817062623793,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 130,
+    "agent1_threshold": 66.49936895137577,
+    "agent2_threshold": 67.47102915420344,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 131,
+    "agent1_threshold": 66.49511798179992,
+    "agent2_threshold": 67.25028012377929,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 132,
+    "agent1_threshold": 66.45839230309683,
+    "agent2_threshold": 67.06200580248239,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 133,
+    "agent1_threshold": 66.39893432800466,
+    "agent2_threshold": 66.89646377757455,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 134,
+    "agent1_threshold": 66.32356374544014,
+    "agent2_threshold": 66.74683436013908,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 135,
+    "agent1_threshold": 66.23705433764498,
+    "agent2_threshold": 66.60834376793423,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 136,
+    "agent1_threshold": 66.14274775218837,
+    "agent2_threshold": 66.47765035339084,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 137,
+    "agent1_threshold": 66.04298314236874,
+    "agent2_threshold": 66.35241496321048,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 138,
+    "agent1_threshold": 65.93939791549501,
+    "agent2_threshold": 66.23100019008422,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 139,
+    "agent1_threshold": 65.83313825668338,
+    "agent2_threshold": 66.93725984889583,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 140,
+    "agent1_threshold": 65.84875649551525,
+    "agent2_threshold": 67.52164161006397,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 141,
+    "agent1_threshold": 65.94968926269756,
+    "agent2_threshold": 68.02070884288166,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 142,
+    "agent1_threshold": 66.11034219972518,
+    "agent2_threshold": 68.46005590585405,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 143,
+    "agent1_threshold": 66.3127992556445,
+    "agent2_threshold": 68.03259884993471,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 144,
+    "agent1_threshold": 66.42076919478804,
+    "agent2_threshold": 67.69962891079118,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 145,
+    "agent1_threshold": 66.4625981521885,
+    "agent2_threshold": 67.4327999533907,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 146,
+    "agent1_threshold": 66.45812842236883,
+    "agent2_threshold": 67.21226968321037,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 147,
+    "agent1_threshold": 66.42124961149506,
+    "agent2_threshold": 67.02414849408413,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 148,
+    "agent1_threshold": 66.36168444388342,
+    "agent2_threshold": 66.85871366169577,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 149,
+    "agent1_threshold": 66.28623882655528,
+    "agent2_threshold": 66.70915927902392,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 150,
+    "agent1_threshold": 66.19967689442558,
+    "agent2_threshold": 66.57072121115363,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 151,
+    "agent1_threshold": 66.10533354193478,
+    "agent2_threshold": 66.44006456364441,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 152,
+    "agent1_threshold": 66.00554319519122,
+    "agent2_threshold": 66.31485491038796,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 153,
+    "agent1_threshold": 65.90193995247074,
+    "agent2_threshold": 66.19345815310845,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 154,
+    "agent1_threshold": 65.7956676825664,
+    "agent2_threshold": 66.8997304230128,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 155,
+    "agent1_threshold": 65.81127709363336,
+    "agent2_threshold": 67.48412101194585,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 156,
+    "agent1_threshold": 65.91220368138023,
+    "agent2_threshold": 67.98319442419897,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 157,
+    "agent1_threshold": 66.07285229280305,
+    "agent2_threshold": 68.42254581277616,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 158,
+    "agent1_threshold": 66.27530632079902,
+    "agent2_threshold": 67.9950917847802,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 159,
+    "agent1_threshold": 66.3832741403962,
+    "agent2_threshold": 67.66212396518303,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 160,
+    "agent1_threshold": 66.42510161411423,
+    "agent2_threshold": 67.395296491465,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 161,
+    "agent1_threshold": 66.42063084571684,
+    "agent2_threshold": 67.17476725986239,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 162,
+    "agent1_threshold": 66.38375130783868,
+    "agent2_threshold": 66.98664679774056,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 163,
+    "agent1_threshold": 66.32418563132396,
+    "agent2_threshold": 66.82121247425528,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 164,
+    "agent1_threshold": 66.24873965776365,
+    "agent2_threshold": 66.67165844781557,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 165,
+    "agent1_threshold": 66.16217747627144,
+    "agent2_threshold": 66.53322062930779,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 166,
+    "agent1_threshold": 66.0678339492269,
+    "agent2_threshold": 66.40256415635234,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 167,
+    "agent1_threshold": 65.9680434802957,
+    "agent2_threshold": 66.27735462528352,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 168,
+    "agent1_threshold": 65.86444015204388,
+    "agent2_threshold": 66.98095795353535,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 169,
+    "agent1_threshold": 65.88191782226761,
+    "agent2_threshold": 67.56348028331163,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 170,
+    "agent1_threshold": 65.98415219142422,
+    "agent2_threshold": 68.06124591415502,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 171,
+    "agent1_threshold": 66.14571624983384,
+    "agent2_threshold": 68.49968185574541,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 172,
+    "agent1_threshold": 66.34881109072057,
+    "agent2_threshold": 68.07158701485868,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 173,
+    "agent1_threshold": 66.45722747934128,
+    "agent2_threshold": 67.73817062623796,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 174,
+    "agent1_threshold": 66.49936895137579,
+    "agent2_threshold": 67.47102915420346,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 175,
+    "agent1_threshold": 66.49511798179994,
+    "agent2_threshold": 67.2502801237793,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 176,
+    "agent1_threshold": 66.45839230309684,
+    "agent2_threshold": 67.0620058024824,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 177,
+    "agent1_threshold": 66.39893432800467,
+    "agent2_threshold": 66.89646377757457,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 178,
+    "agent1_threshold": 66.32356374544015,
+    "agent2_threshold": 66.74683436013908,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 179,
+    "agent1_threshold": 66.23705433764499,
+    "agent2_threshold": 66.60834376793424,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 180,
+    "agent1_threshold": 66.14274775218838,
+    "agent2_threshold": 66.47765035339086,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 181,
+    "agent1_threshold": 66.04298314236875,
+    "agent2_threshold": 66.35241496321049,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 182,
+    "agent1_threshold": 65.93939791549502,
+    "agent2_threshold": 66.23100019008423,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 183,
+    "agent1_threshold": 65.8331382566834,
+    "agent2_threshold": 66.93725984889585,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 184,
+    "agent1_threshold": 65.84875649551526,
+    "agent2_threshold": 67.52164161006398,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 185,
+    "agent1_threshold": 65.94968926269758,
+    "agent2_threshold": 68.02070884288167,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 186,
+    "agent1_threshold": 66.1103421997252,
+    "agent2_threshold": 68.46005590585406,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 187,
+    "agent1_threshold": 66.31279925564452,
+    "agent2_threshold": 68.03259884993473,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 188,
+    "agent1_threshold": 66.42076919478805,
+    "agent2_threshold": 67.6996289107912,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 189,
+    "agent1_threshold": 66.46259815218852,
+    "agent2_threshold": 67.43279995339073,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 190,
+    "agent1_threshold": 66.45812842236884,
+    "agent2_threshold": 67.2122696832104,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 191,
+    "agent1_threshold": 66.42124961149507,
+    "agent2_threshold": 67.02414849408416,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 192,
+    "agent1_threshold": 66.36168444388343,
+    "agent2_threshold": 66.8587136616958,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 193,
+    "agent1_threshold": 66.28623882655529,
+    "agent2_threshold": 66.70915927902395,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 194,
+    "agent1_threshold": 66.1996768944256,
+    "agent2_threshold": 66.57072121115365,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 195,
+    "agent1_threshold": 66.1053335419348,
+    "agent2_threshold": 66.44006456364444,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 196,
+    "agent1_threshold": 66.00554319519125,
+    "agent2_threshold": 66.314854910388,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 197,
+    "agent1_threshold": 65.90193995247077,
+    "agent2_threshold": 66.19345815310848,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 198,
+    "agent1_threshold": 65.79566768256643,
+    "agent2_threshold": 66.89973042301283,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 199,
+    "agent1_threshold": 65.8112770936334,
+    "agent2_threshold": 67.48412101194587,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 200,
+    "agent1_threshold": 65.91220368138026,
+    "agent2_threshold": 67.983194424199,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 201,
+    "agent1_threshold": 66.07285229280308,
+    "agent2_threshold": 68.42254581277619,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 202,
+    "agent1_threshold": 66.27530632079905,
+    "agent2_threshold": 67.99509178478023,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 203,
+    "agent1_threshold": 66.38327414039622,
+    "agent2_threshold": 67.66212396518306,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 204,
+    "agent1_threshold": 66.42510161411425,
+    "agent2_threshold": 67.39529649146503,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 205,
+    "agent1_threshold": 66.42063084571687,
+    "agent2_threshold": 67.17476725986242,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 206,
+    "agent1_threshold": 66.38375130783871,
+    "agent2_threshold": 66.98664679774059,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 207,
+    "agent1_threshold": 66.32418563132399,
+    "agent2_threshold": 66.8212124742553,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 208,
+    "agent1_threshold": 66.24873965776368,
+    "agent2_threshold": 66.6716584478156,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 209,
+    "agent1_threshold": 66.16217747627147,
+    "agent2_threshold": 66.53322062930782,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 210,
+    "agent1_threshold": 66.06783394922692,
+    "agent2_threshold": 66.40256415635237,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 211,
+    "agent1_threshold": 65.96804348029573,
+    "agent2_threshold": 66.27735462528355,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 212,
+    "agent1_threshold": 65.86444015204391,
+    "agent2_threshold": 66.98095795353538,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 213,
+    "agent1_threshold": 65.88191782226764,
+    "agent2_threshold": 67.56348028331166,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 214,
+    "agent1_threshold": 65.98415219142424,
+    "agent2_threshold": 68.06124591415505,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 215,
+    "agent1_threshold": 66.14571624983387,
+    "agent2_threshold": 68.49968185574544,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 216,
+    "agent1_threshold": 66.3488110907206,
+    "agent2_threshold": 68.07158701485871,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 217,
+    "agent1_threshold": 66.45722747934131,
+    "agent2_threshold": 67.73817062623799,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 218,
+    "agent1_threshold": 66.49936895137581,
+    "agent2_threshold": 67.47102915420349,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 219,
+    "agent1_threshold": 66.49511798179996,
+    "agent2_threshold": 67.25028012377933,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 220,
+    "agent1_threshold": 66.45839230309687,
+    "agent2_threshold": 67.06200580248243,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 221,
+    "agent1_threshold": 66.3989343280047,
+    "agent2_threshold": 66.8964637775746,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 222,
+    "agent1_threshold": 66.32356374544018,
+    "agent2_threshold": 66.7468343601391,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 223,
+    "agent1_threshold": 66.23705433764502,
+    "agent2_threshold": 66.60834376793427,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 224,
+    "agent1_threshold": 66.14274775218841,
+    "agent2_threshold": 66.47765035339089,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 225,
+    "agent1_threshold": 66.04298314236878,
+    "agent2_threshold": 66.35241496321052,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 226,
+    "agent1_threshold": 65.93939791549505,
+    "agent2_threshold": 66.23100019008426,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 227,
+    "agent1_threshold": 65.83313825668343,
+    "agent2_threshold": 66.93725984889588,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 228,
+    "agent1_threshold": 65.84875649551529,
+    "agent2_threshold": 67.52164161006401,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 229,
+    "agent1_threshold": 65.9496892626976,
+    "agent2_threshold": 68.0207088428817,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 230,
+    "agent1_threshold": 66.11034219972522,
+    "agent2_threshold": 68.46005590585409,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 231,
+    "agent1_threshold": 66.31279925564455,
+    "agent2_threshold": 68.03259884993476,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 232,
+    "agent1_threshold": 66.42076919478808,
+    "agent2_threshold": 67.69962891079123,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 233,
+    "agent1_threshold": 66.46259815218855,
+    "agent2_threshold": 67.43279995339076,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 234,
+    "agent1_threshold": 66.45812842236887,
+    "agent2_threshold": 67.21226968321042,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 235,
+    "agent1_threshold": 66.4212496114951,
+    "agent2_threshold": 67.02414849408419,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 236,
+    "agent1_threshold": 66.36168444388346,
+    "agent2_threshold": 66.85871366169583,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 237,
+    "agent1_threshold": 66.28623882655532,
+    "agent2_threshold": 66.70915927902398,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 238,
+    "agent1_threshold": 66.19967689442562,
+    "agent2_threshold": 66.57072121115368,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 239,
+    "agent1_threshold": 66.10533354193483,
+    "agent2_threshold": 66.44006456364447,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 240,
+    "agent1_threshold": 66.00554319519128,
+    "agent2_threshold": 66.31485491038802,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 241,
+    "agent1_threshold": 65.9019399524708,
+    "agent2_threshold": 66.19345815310851,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 242,
+    "agent1_threshold": 65.79566768256646,
+    "agent2_threshold": 66.89973042301285,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 243,
+    "agent1_threshold": 65.81127709363342,
+    "agent2_threshold": 67.4841210119459,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 244,
+    "agent1_threshold": 65.91220368138029,
+    "agent2_threshold": 67.98319442419903,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 245,
+    "agent1_threshold": 66.0728522928031,
+    "agent2_threshold": 68.42254581277622,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 246,
+    "agent1_threshold": 66.27530632079907,
+    "agent2_threshold": 67.99509178478026,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 247,
+    "agent1_threshold": 66.38327414039625,
+    "agent2_threshold": 67.66212396518308,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 248,
+    "agent1_threshold": 66.42510161411428,
+    "agent2_threshold": 67.39529649146506,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 249,
+    "agent1_threshold": 66.4206308457169,
+    "agent2_threshold": 67.17476725986245,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 250,
+    "agent1_threshold": 66.38375130783874,
+    "agent2_threshold": 66.98664679774062,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 251,
+    "agent1_threshold": 66.32418563132401,
+    "agent2_threshold": 66.82121247425533,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 252,
+    "agent1_threshold": 66.2487396577637,
+    "agent2_threshold": 66.67165844781563,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 253,
+    "agent1_threshold": 66.1621774762715,
+    "agent2_threshold": 66.53322062930785,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 254,
+    "agent1_threshold": 66.06783394922695,
+    "agent2_threshold": 66.4025641563524,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 255,
+    "agent1_threshold": 65.96804348029576,
+    "agent2_threshold": 66.27735462528358,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 256,
+    "agent1_threshold": 65.86444015204394,
+    "agent2_threshold": 66.98095795353541,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 257,
+    "agent1_threshold": 65.88191782226767,
+    "agent2_threshold": 67.56348028331169,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 258,
+    "agent1_threshold": 65.98415219142427,
+    "agent2_threshold": 68.06124591415508,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 259,
+    "agent1_threshold": 66.1457162498339,
+    "agent2_threshold": 68.49968185574546,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 260,
+    "agent1_threshold": 66.34881109072063,
+    "agent2_threshold": 68.07158701485874,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 261,
+    "agent1_threshold": 66.45722747934134,
+    "agent2_threshold": 67.73817062623802,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 262,
+    "agent1_threshold": 66.49936895137584,
+    "agent2_threshold": 67.47102915420352,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 263,
+    "agent1_threshold": 66.49511798179999,
+    "agent2_threshold": 67.25028012377936,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 264,
+    "agent1_threshold": 66.4583923030969,
+    "agent2_threshold": 67.06200580248246,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 265,
+    "agent1_threshold": 66.39893432800473,
+    "agent2_threshold": 66.89646377757462,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 266,
+    "agent1_threshold": 66.32356374544021,
+    "agent2_threshold": 66.74683436013913,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 267,
+    "agent1_threshold": 66.23705433764505,
+    "agent2_threshold": 66.6083437679343,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 268,
+    "agent1_threshold": 66.14274775218844,
+    "agent2_threshold": 66.47765035339091,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 269,
+    "agent1_threshold": 66.04298314236881,
+    "agent2_threshold": 66.35241496321055,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 270,
+    "agent1_threshold": 65.93939791549508,
+    "agent2_threshold": 66.23100019008429,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 271,
+    "agent1_threshold": 65.83313825668345,
+    "agent2_threshold": 66.9372598488959,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 272,
+    "agent1_threshold": 65.84875649551532,
+    "agent2_threshold": 67.52164161006404,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 273,
+    "agent1_threshold": 65.94968926269763,
+    "agent2_threshold": 68.02070884288173,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 274,
+    "agent1_threshold": 66.11034219972525,
+    "agent2_threshold": 68.46005590585412,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 275,
+    "agent1_threshold": 66.31279925564458,
+    "agent2_threshold": 68.03259884993479,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 276,
+    "agent1_threshold": 66.42076919478811,
+    "agent2_threshold": 67.69962891079126,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 277,
+    "agent1_threshold": 66.46259815218858,
+    "agent2_threshold": 67.43279995339078,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 278,
+    "agent1_threshold": 66.4581284223689,
+    "agent2_threshold": 67.21226968321045,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 279,
+    "agent1_threshold": 66.42124961149513,
+    "agent2_threshold": 67.02414849408422,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 280,
+    "agent1_threshold": 66.36168444388349,
+    "agent2_threshold": 66.85871366169586,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 281,
+    "agent1_threshold": 66.28623882655535,
+    "agent2_threshold": 66.709159279024,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 282,
+    "agent1_threshold": 66.19967689442565,
+    "agent2_threshold": 66.57072121115371,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 283,
+    "agent1_threshold": 66.10533354193485,
+    "agent2_threshold": 66.4400645636445,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 284,
+    "agent1_threshold": 66.00554319519131,
+    "agent2_threshold": 66.31485491038805,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 285,
+    "agent1_threshold": 65.90193995247083,
+    "agent2_threshold": 66.19345815310854,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 286,
+    "agent1_threshold": 65.79566768256649,
+    "agent2_threshold": 66.89973042301288,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 287,
+    "agent1_threshold": 65.81127709363345,
+    "agent2_threshold": 67.48412101194593,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 288,
+    "agent1_threshold": 65.91220368138032,
+    "agent2_threshold": 67.98319442419906,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 289,
+    "agent1_threshold": 66.07285229280313,
+    "agent2_threshold": 68.42254581277625,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 290,
+    "agent1_threshold": 66.2753063207991,
+    "agent2_threshold": 67.99509178478029,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 291,
+    "agent1_threshold": 66.38327414039628,
+    "agent2_threshold": 67.66212396518311,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 292,
+    "agent1_threshold": 66.42510161411431,
+    "agent2_threshold": 67.39529649146509,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 293,
+    "agent1_threshold": 66.42063084571693,
+    "agent2_threshold": 67.17476725986248,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 294,
+    "agent1_threshold": 66.38375130783876,
+    "agent2_threshold": 66.98664679774065,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 295,
+    "agent1_threshold": 66.32418563132404,
+    "agent2_threshold": 66.82121247425536,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 296,
+    "agent1_threshold": 66.24873965776374,
+    "agent2_threshold": 66.67165844781566,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 297,
+    "agent1_threshold": 66.16217747627152,
+    "agent2_threshold": 66.53322062930788,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 298,
+    "agent1_threshold": 66.06783394922698,
+    "agent2_threshold": 66.40256415635243,
+    "agent1_students": 67,
+    "agent2_students": 0,
+    "agent1_payoff": 469.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 299,
+    "agent1_threshold": 65.96804348029579,
+    "agent2_threshold": 66.2773546252836,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  },
+  {
+    "round": 300,
+    "agent1_threshold": 65.86444015204397,
+    "agent2_threshold": 66.98095795353544,
+    "agent1_students": 68,
+    "agent2_students": 0,
+    "agent1_payoff": 476.0,
+    "agent2_payoff": 0
+  }
+]
